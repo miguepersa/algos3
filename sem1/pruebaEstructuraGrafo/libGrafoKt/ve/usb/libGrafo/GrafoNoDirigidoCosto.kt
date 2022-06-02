@@ -1,6 +1,7 @@
 package ve.usb.libGrafo
 
 import java.io.File
+import java.util.LinkedList
 
 public class GrafoNoDirigidoCosto: Grafo {
     // Atributos de la clase
@@ -24,7 +25,7 @@ public class GrafoNoDirigidoCosto: Grafo {
     constructor(numDeVertices: Int) {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
-        listaLados = LinkedList<AristaCosto>
+        listaLados = LinkedList<AristaCosto>()
         nLados = 0
     }
 
@@ -43,15 +44,13 @@ public class GrafoNoDirigidoCosto: Grafo {
     constructor(nombreArchivo: String) {
         val fileContent: List<String> = File(nombreArchivo).readLines()
         nVertices = fileContent[0].toInt()
-        repGrafo = Array<Lista>(nVertices){LinkedList<Int>()}
+        repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
         listaLados = LinkedList<AristaCosto>()
         nLados = fileContent[1].toInt()
 
         for (i in 2 until fileContent.size) {
-            val arista. AristaCosto = obtenerAristaCosto(fileContent[i])
+            val arista: AristaCosto = obtenerAristaCosto(fileContent[i])
 
-            repGrafo[arista.x].add(arista.y)
-            repGrafo[arista.y].add(arista.x)
             this.agregarAristaCosto(arista)
         }
     }
@@ -70,7 +69,7 @@ public class GrafoNoDirigidoCosto: Grafo {
         Tiempo de ejecucion O(|vertices adyacentes de a.x|)
     */
     fun agregarAristaCosto(a: AristaCosto) : Boolean {
-        if (a.x < 0 || a.x >= nVertices || a.y < 0 || a.y >= nVertces) {
+        if (a.x < 0 || a.x >= nVertices || a.y < 0 || a.y >= nVertices) {
             throw RuntimeException("La arista a agregar tiene vertices invalidos")
         }
 
@@ -85,7 +84,7 @@ public class GrafoNoDirigidoCosto: Grafo {
         repGrafo[a.x].add(a.y)
         repGrafo[a.y].add(a.x)
         listaLados.add(a)
-        nlados++
+        nLados++
 
         return true
     }
@@ -94,14 +93,13 @@ public class GrafoNoDirigidoCosto: Grafo {
     override fun obtenerNumeroDeLados() : Int = nLados
 
     // Retorna el número de vértices del grafo
-    override fun obtenerNumeroDeVertices() : Int = nVertces
+    override fun obtenerNumeroDeVertices() : Int = nVertices
 
     // Retorna los lados adyacentes al vértice v, es decir, los lados que contienen al vértice v
     override fun adyacentes(v: Int) : Iterable<AristaCosto> {
         var ady: LinkedList<AristaCosto> = LinkedList<AristaCosto>()
         for (i in listaLados){
-            if (i.inicio == v || i.fin == v)
-            {
+            if (i.x == v || i.y == v) {
                 ady.add(i)
             }
         }
@@ -118,8 +116,8 @@ public class GrafoNoDirigidoCosto: Grafo {
         }
         var ady: LinkedList<AristaCosto> = LinkedList<AristaCosto>()
         for (i in listaLados) {
-            if (!aristaEnLista(ady, i) && (i.v != l.v && i.u != l.u)) {
-                if (i.v == l.v || i.v == l.u || i.u == l.v || i.u == l.u) {
+            if (!aristaCostoEnLista(ady, i) && (i.y != l.y && i.x != l.x)) {
+                if (i.y == l.y || i.y == l.x || i.x == l.y || i.x == l.x) {
                     ady.add(i)
                 }
             }
@@ -134,7 +132,7 @@ public class GrafoNoDirigidoCosto: Grafo {
     
     // Grado del grafo
     override fun grado(v: Int) : Int {
-        if (v < 0 || v >= nVertces) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El vertice dado es invalido")
         }
 
@@ -143,8 +141,11 @@ public class GrafoNoDirigidoCosto: Grafo {
 
     // Retorna un string con una representación del grafo, en donde se nuestra todo su contenido
     override fun toString() : String {
+        var s: String = " "
         for (i in listaLados) {
-            println(i)
+            s += i.toString() + " "
         }
+
+        return s
     }
 }

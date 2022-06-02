@@ -6,7 +6,7 @@ import java.util.LinkedList
 public class GrafoDirigidoCosto : Grafo {
     //Atributos de la clase
     val nVertices: Int
-    val repGrafo: Array<LinkedList<Int>
+    val repGrafo: Array<LinkedList<Int>>
     var listaLados: LinkedList<ArcoCosto>
     var nLados: Int
 
@@ -24,7 +24,7 @@ public class GrafoDirigidoCosto : Grafo {
     */
     constructor(numDeVertices: Int) {
         nVertices = numDeVertices
-        repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList()}
+        repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
         listaLados = LinkedList<ArcoCosto>()
         nLados = 0
     }
@@ -44,15 +44,14 @@ public class GrafoDirigidoCosto : Grafo {
     constructor(nombreArchivo: String)  {
         val fileContent: List<String> = File(nombreArchivo).readLines()
         nVertices = fileContent[0].toInt()
-        repGrafo = Array<Lista>(nVertices){Lista()}
-        listaLados = ListaArcoCosto()
-        nLados = fileContent[1].toInt()
+        repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
+        listaLados = LinkedList<ArcoCosto>()
+        nLados = 0
 
         for (i in 2 until fileContent.size) {
             val arco: ArcoCosto = obtenerArcoCosto(fileContent[i])
 
-            repGrafo[arco.inicio].add(arco.sumidero)
-            agregarArcoCosto(arco)
+            this.agregarArcoCosto(arco)
         }
     }
 
@@ -70,11 +69,11 @@ public class GrafoDirigidoCosto : Grafo {
         Tiempo de ejecucion o(|vertices adyacentes de a.inicio|)
      */
     fun agregarArcoCosto(a: ArcoCosto) : Boolean {
-        if (a.x < 0 || a.x >= nVertices || a.x < 0 || a.v >= nVertices) {
+        if (a.x < 0 || a.x >= nVertices || a.y < 0 || a.y >= nVertices) {
             throw RuntimeException("El ArcoCosto a agregar tiene extremos invalidos")
         }
 
-        if (arcoEnGrafoDirgido(repGrafo, a)) {
+        if (arcoEnGrafoDirigido(repGrafo, a)) {
             return false
         }
 
@@ -88,7 +87,7 @@ public class GrafoDirigidoCosto : Grafo {
 
     // Retorna el grado exterior del grafo. Si el vértice no pertenece al grafo se lanza una RuntimeException
     fun gradoExterior(v: Int) : Int {
-        if (v.x < 0 || v.y >= nVertices) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El vertce dado es invalido")
         }
 
@@ -97,7 +96,7 @@ public class GrafoDirigidoCosto : Grafo {
 
     // Retorna el grado interior del grafo. Si el vértice no pertenece al grafo se lanza una RuntimeException
     fun gradoInterior(v: Int) : Int {
-        if (v.x < 0 || v.y >= nVertices) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El vertice dado es invaldo")
         }
 
@@ -114,7 +113,7 @@ public class GrafoDirigidoCosto : Grafo {
 
     // Retorna el grado del grafo. Si el vértice no pertenece al grafo se lanza una RuntimeException
     override fun grado(v: Int) : Int {
-        if (v.x < 0 || v.y >= nVertices) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El vertce dado es invalido")
         }
 
@@ -136,8 +135,7 @@ public class GrafoDirigidoCosto : Grafo {
     override fun adyacentes(v: Int) : Iterable<ArcoCosto> {
         var ady: LinkedList<ArcoCosto> = LinkedList<ArcoCosto>()
         for (i in listaLados){
-            if (i.inicio == v)
-            {
+            if (i.inicio == v) {
                 ady.add(i)
             }
         }
@@ -152,10 +150,11 @@ public class GrafoDirigidoCosto : Grafo {
         if (!arcoEnGrafoDirigido(repGrafo, l)) {
             throw RuntimeException("La arista no pertenece al grafo")
         }
+
         var ady: LinkedList<ArcoCosto> = LinkedList<ArcoCosto>()
         for (i in listaLados) {
-            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, ArcoCosto(l.fin, l.inicio)) && (i.v != l.v && i.u != l.u)) {
-                if (i.v == l.v || i.v == l.u || i.u == l.v || i.u == l.u) {
+            if (!arcoCostoEnLista(ady, i) && !arcoCostoEnLista(ady, ArcoCosto(l.x, l.y, 1.0)) && (i.y != l.y && i.x != l.x)) {
+                if (i.y == l.y || i.y == l.x || i.x == l.y || i.x == l.y) {
                     ady.add(i)
                 }
             }
@@ -175,9 +174,11 @@ public class GrafoDirigidoCosto : Grafo {
     // String que muestra el contenido del grafo
     // println(grafo)
     override fun toString() : String {
+        var s: String = " "
         for (i in listaLados) {
-            println(i)
+            s += i.toString() + " "
         }
-    }
 
+        return s
+    }
 }

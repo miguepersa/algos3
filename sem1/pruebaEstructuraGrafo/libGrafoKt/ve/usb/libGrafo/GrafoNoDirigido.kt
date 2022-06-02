@@ -23,7 +23,7 @@ public class GrafoNoDirigido: Grafo {
         Tiempo de ejecicion O(numDeVertices)
     */
     constructor(numDeVertices: Int) {
-        nVertices = numDeVertces
+        nVertices = numDeVertices
         repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
         listaLados = LinkedList<Arista>()
         nLados = 0
@@ -43,16 +43,15 @@ public class GrafoNoDirigido: Grafo {
      
     */  
     constructor(nombreArchivo: String) {
-        val fileContent: Lista<String> = File(nombreArchivo).readLines()
+        val fileContent: List<String> = File(nombreArchivo).readLines()
         nVertices = fileContent[0].toInt()
-        nLados = fileContent[1].toInt()
+        repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
+        nLados = 0
         listaLados = LinkedList<Arista>()
 
         for (i in 2 until fileContent.size) {
             val arista: Arista = obtenerArista(fileContent[2])
 
-            repGrafo[arista.v].add(arista.u)
-            repGrafo[arista.u].add(arista.v)
             this.agregarArista(arista)
         }
     }
@@ -101,7 +100,7 @@ public class GrafoNoDirigido: Grafo {
     override fun adyacentes(v: Int) : Iterable<Arista> {
         var ady: LinkedList<Arista> = LinkedList<Arista>()
         for (i in listaLados){
-            if (i.inicio == v || i.fin == v)
+            if (i.v == v || i.u == v)
             {
                 ady.add(i)
             }
@@ -119,7 +118,7 @@ public class GrafoNoDirigido: Grafo {
         Outpu: grado del vertce
     */
     override fun grado(v: Int) : Int {
-        if (a.inicio < 0 || a.inicio >= nVertices || a.final < 0 || a.final >= nVertices) {
+        if (v < 0 || v >= nVertices || v < 0 || v >= nVertices) {
             throw RuntimeException("El arco a agregar tiene extremos invalidos")
         }
 
@@ -152,8 +151,11 @@ public class GrafoNoDirigido: Grafo {
 
     // Retorna un string con una representación del grafo, en donde se nuestra todo su contenido
     override fun toString() : String {
+        var s: String = " "
         for (i in listaLados) {
-            println(i)
+            s += i.toString() + " "
         }
+
+        return s
     }
 }

@@ -1,3 +1,6 @@
+package ve.usb.libGrafo
+import java.util.LinkedList
+
 // Implementacion de algunas funciones que son usadas en los metodos de los grados
 
 /* 
@@ -28,7 +31,7 @@ fun obtenerArista(linea: String): Arista {
     Output: La arista que representa la informacion de linea
 */
 fun obtenerAristaCosto(linea: String): AristaCosto {
-    val infoLinea: List<Array> = linea.split(" ")
+    val infoLinea: List<String> = linea.split(" ")
 
     return AristaCosto(infoLinea[0].toInt(), infoLinea[1].toInt(), infoLinea[2].toDouble())
 }
@@ -41,7 +44,7 @@ fun obtenerAristaCosto(linea: String): AristaCosto {
     Output: Un arco que representa la informacion de linea
 */
 fun obtenerArco(linea: String): Arco {
-    val infoLinea: List<Array> = linea.split(" ")
+    val infoLinea: List<String> = linea.split(" ")
 
     return Arco(infoLinea[0].toInt(), infoLinea[1].toInt())
 }
@@ -53,8 +56,8 @@ fun obtenerArco(linea: String): Arco {
     Input: linea -> String que contiene informacion sobre un arcoCosto
     Output: Un arcoCosto que representa la informacion de linea
 */
-fun obtenerArcoCosto(line: String): ArcoCosto {
-    val infoLinea: List<Array> = linea.split(" ")
+fun obtenerArcoCosto(linea: String): ArcoCosto {
+    val infoLinea: List<String> = linea.split(" ")
 
     return ArcoCosto(infoLinea[0].toInt(), infoLinea[1].toInt(), infoLinea[2].toDouble())
 }
@@ -70,8 +73,7 @@ fun obtenerArcoCosto(line: String): ArcoCosto {
     Output: true -> Si la arista se encuentra en el grafo
             false -> Caso contrario
 */
-fun aristaEnGrafoNoDirigido(arr: Array<LinkedList<Arista>>, arista: Arista): Boolean = arista.u in arr[arista.v]
-
+fun aristaEnGrafoNoDirigido(arr: Array<LinkedList<Int>>, arista: Arista): Boolean = arr[arista.u].contains(arista.v)
 /* 
     Determina si existe o no un arco en un grafo
 
@@ -83,7 +85,7 @@ fun aristaEnGrafoNoDirigido(arr: Array<LinkedList<Arista>>, arista: Arista): Boo
     Output: true -> Si la arista se encuentra en el grafo
             false -> Caso contrario
 */
-fun arcoEnGrafoDirigido(arr: Array<LinkedList<Arco>>, arco: Arco): Boolean = arco.fin in arr[arco.inicio]
+fun arcoEnGrafoDirigido(arr: Array<LinkedList<Int>>, arco: Arco): Boolean = arr[arco.inicio].contains(arco.fin)
 
 /*
     Determina si una arista está en una lista enlazada
@@ -97,7 +99,7 @@ fun arcoEnGrafoDirigido(arr: Array<LinkedList<Arco>>, arco: Arco): Boolean = arc
             false -> la arista no esta en la lista
  */
 
- fun aristaEnLista(lista: LinkedList<Arista>, arista: Arista) {
+ fun aristaEnLista(lista: LinkedList<Arista>, arista: Arista): Boolean {
     for (i in lista) {
         if ((i.v == arista.v && i.u == arista.u) || i.u == arista.v && i.v == arista.u) {
             return true
@@ -118,9 +120,27 @@ fun arcoEnGrafoDirigido(arr: Array<LinkedList<Arco>>, arco: Arco): Boolean = arc
             false -> El arco no esta en la lista
 */
 
-fun arcoEnLista(lista: LinkedList<Arco>, arco: Arco) {
+fun arcoEnLista(lista: LinkedList<Arco>, arco: Arco): Boolean {
     for (i in lista) {
-        if (i.v == arco.v && i.u == arco.u) {
+        if (i.inicio == arco.inicio && i.fin == arco.fin) {
+            return true
+        }
+    }
+    return false
+}
+
+fun arcoCostoEnLista(lista: LinkedList<ArcoCosto>, arco: ArcoCosto): Boolean {
+    for (i in lista) {
+        if (i.inicio == arco.inicio && i.fin == arco.fin) {
+            return true
+        }
+    }
+    return false
+}
+
+fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boolean {
+    for (i in lista) {
+        if ((i.y == arista.y && i.x == arista.x) || i.x == arista.y && i.y == arista.x) {
             return true
         }
     }

@@ -45,13 +45,12 @@ public class GrafoDirigido : Grafo {
         val fileContent: List<String> = File(nombreArchivo).readLines()
         nVertices = fileContent[0].toInt()
         repGrafo = Array<LinkedList<Int>>(nVertices){LinkedList<Int>()}
-        nLados = fileContent[1].toInt()
         listaLados = LinkedList<Arco>()
+        nLados = 0
 
         for (i in 2 until fileContent.size) {
             val arco: Arco = obtenerArco(fileContent[i])
 
-            repGrafo[arco.inicio].add(arco.sumidero)
             this.agregarArco(arco)
         }
     }
@@ -67,7 +66,7 @@ public class GrafoDirigido : Grafo {
                 false -> si la arista no se pudo agregar al grafo
     */
     fun agregarArco(a: Arco) : Boolean {
-        if (a.inicio < 0 || a.inicio >= nVertices || a.final < 0 || a.final >= nVertices) {
+        if (a.inicio < 0 || a.inicio >= nVertices || a.fin < 0 || a.fin >= nVertices) {
             throw RuntimeException("El arco a agregar tiene extremos invalidos")
         }
 
@@ -75,7 +74,7 @@ public class GrafoDirigido : Grafo {
             return false
         }
 
-        repGrafo[a.inicio].add(sumidero)
+        repGrafo[a.inicio].add(a.fin)
         listaLados.add(a)
         nLados++
 
@@ -94,7 +93,7 @@ public class GrafoDirigido : Grafo {
         Tiempo de ejecucion O(1)
     */
     fun gradoExterior(v: Int) : Int {
-        if (a.inicio < 0 || a.inicio >= nVertices || a.final < 0 || a.final >= nVertices) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El arco a agregar tiene extremos invalidos")
         }
 
@@ -113,7 +112,7 @@ public class GrafoDirigido : Grafo {
         Tiempo de ejecucion O(repGrafo.size + cantidad de lados)
     */ 
     fun gradoInterior(v: Int) : Int {
-        if (v.inicio < 0 || v.inicio >= nVertices) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El vertce dado es invalido")
         }
 
@@ -130,7 +129,7 @@ public class GrafoDirigido : Grafo {
 
     // Retorna el grado del grafo. Si el vértice no pertenece al grafo se lanza una RuntimeException
     override fun grado(v: Int) : Int {
-        if (v.inicio < 0 || v.inicio >= nVertices) {
+        if (v < 0 || v >= nVertices) {
             throw RuntimeException("El vertice dado es invalido")
         }
 
@@ -168,8 +167,8 @@ public class GrafoDirigido : Grafo {
         }
         var ady: LinkedList<Arco> = LinkedList<Arco>()
         for (i in listaLados) {
-            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, Arco(l.fin, l.inicio)) && (i.v != l.v && i.u != l.u)) {
-                if (i.v == l.v || i.v == l.u || i.u == l.v || i.u == l.u) {
+            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, Arco(l.fin, l.inicio)) && (i.inicio != l.fin && i.inicio != l.fin)) {
+                if (i.fin == l.fin || i.fin == l.inicio || i.inicio == l.fin || i.inicio == l.inicio) {
                     ady.add(i)
                 }
             }
@@ -184,8 +183,11 @@ public class GrafoDirigido : Grafo {
      
     // String que muestra el contenido del grafo
     override fun toString() : String {
+        var s: String = " "
         for (i in listaLados) {
-            println(i)
+            s += i.toString() + " "
         }
+
+        return s
     }
 }
