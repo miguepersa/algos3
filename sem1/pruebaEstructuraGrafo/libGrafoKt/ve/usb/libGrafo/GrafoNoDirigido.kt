@@ -50,7 +50,7 @@ public class GrafoNoDirigido: Grafo {
         listaLados = LinkedList<Arista>()
 
         for (i in 2 until fileContent.size) {
-            val arista: Arista = obtenerArista(fileContent[2])
+            val arista: Arista = obtenerArista(fileContent[i])
 
             this.agregarArista(arista)
         }

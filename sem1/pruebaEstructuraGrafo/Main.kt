@@ -66,7 +66,7 @@ fun operacionesGrafoDirigido(archivo: String) { // Operaciones sobre un grafo di
     for (i in ady) {
         print(i.toString() + " ")
 
-        if (Random(System.nanoTime()).nextInt(0, n) % 2 == 0) {
+        if (Random(System.nanoTime()).nextInt(0, n + 1) % 2 == 0) {
             arco = i
         }
     }
@@ -84,27 +84,27 @@ fun operacionesGrafoNoDirigido(archivo: String) {  // Operaciones sobre un grafo
 
     var grafoPrueba: GrafoNoDirigido = GrafoNoDirigido(archivo)
 
-    println("El grafo tiene $(grafoPrueba.nVertices) vertices y $(grafoPrueba.nLados) lados")
-    println("El grafo cargado es: ")
+    println("El grafo tiene ${grafoPrueba.nVertices} vertices y ${grafoPrueba.nLados} lados")
+    println("El grafo cargado es: $grafoPrueba")
 
     val n: Int = Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices)
     val ady: Iterable<Arista> = grafoPrueba.adyacentes(n)
     var arista: Arista = grafoPrueba.listaLados.getFirst()
 
-    println("El grado del vertice $n es: $(grafoPrueba.grado(n))")
+    println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son: ")
     for (i in ady) {
-        println(i.toString() + " ")
+        print(i.toString() + " ")
 
-        if (Random(System.nanoTime()).nextInt(0, n) % 2 == 0) {
+        if (Random(System.nanoTime()).nextInt(0, n + 1) % 2 == 0) {
             arista = i
         }
     }
 
     val adyl: Iterable<Arista> = grafoPrueba.ladosAdyacentes(arista)
-    println("Los lados adyacentes al lado $arista son: ")
+    println("\nLos lados adyacentes al lado $arista son: ")
     for (i in adyl) {
-        println(i.toString() + " ")
+        print(i.toString() + " ")
     }
 }
 
@@ -164,9 +164,9 @@ fun operacionesGrafoNoDirigidoCosto(archivo: String) { // Operaciones sobre un g
     }
 
     val adyl: Iterable<AristaCosto> = grafoPrueba.ladosAdyacentes(arista)
-    println("\nLos lados adyacentes al lado $arista.toString() son: ")
+    println("\nLos lados adyacentes al lado $arista son: ")
     for (i in adyl) {
-        println(i.toString() + " ")
+        print(i.toString() + " ")
     }
 }
 
@@ -204,6 +204,6 @@ fun main(args: Array<String>) {
         println(e)
 
     } finally {
-        println("\nPruebas terminadas")
+        println("\n\nPruebas terminadas")
     }
 }
