@@ -1,0 +1,7 @@
+Para compilar ejecute:
+
+>make
+
+Para correr el cliente ejecute:
+
+>./runIterator.sh
