@@ -53,7 +53,7 @@ fun operacionesGrafoDirigido(archivo: String) { // Operaciones sobre un grafo di
 
     var grafoPrueba: GrafoDirigido = GrafoDirigido(archivo)
 
-    println("El grafo tiene $grafoPrueba.nVertices vertices y $grafoPrueba.nLados lados")
+    println("El grafo tiene ${grafoPrueba.nVertices} vertices y ${grafoPrueba.nLados} lados")
     println("El grafo cargado es: ")
     println(grafoPrueba)
 
@@ -61,7 +61,7 @@ fun operacionesGrafoDirigido(archivo: String) { // Operaciones sobre un grafo di
     val ady: Iterable<Arco> = grafoPrueba.adyacentes(n)
     var arco: Arco = grafoPrueba.listaLados.getFirst()
 
-    println("El grado del vertice $n es: $grafoPrueba.grado(n)")
+    println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son:")
     for (i in ady) {
         print(i.toString() + " ")
@@ -72,9 +72,9 @@ fun operacionesGrafoDirigido(archivo: String) { // Operaciones sobre un grafo di
     }
 
     val adyl: Iterable<Arco> = grafoPrueba.ladosAdyacentes(arco)
-    println("Los lados adyacentes al lado $arco.toString() son: ")
+    println("\nLos lados adyacentes al lado $arco son: ")
     for (i in adyl) {
-        println(i.toString() + " ")
+        print(i.toString() + " ")
     }
 }
 
@@ -84,14 +84,14 @@ fun operacionesGrafoNoDirigido(archivo: String) {  // Operaciones sobre un grafo
 
     var grafoPrueba: GrafoNoDirigido = GrafoNoDirigido(archivo)
 
-    println("El grafo tiene $grafoPrueba.nVertices vertices y $grafoPrueba.nLados lados")
+    println("El grafo tiene $(grafoPrueba.nVertices) vertices y $(grafoPrueba.nLados) lados")
     println("El grafo cargado es: ")
 
     val n: Int = Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices)
     val ady: Iterable<Arista> = grafoPrueba.adyacentes(n)
     var arista: Arista = grafoPrueba.listaLados.getFirst()
 
-    println("El grado del vertice $n es: $grafoPrueba.grado(n)")
+    println("El grado del vertice $n es: $(grafoPrueba.grado(n))")
     println("Los lados adyacentes al vertice $n son: ")
     for (i in ady) {
         println(i.toString() + " ")
@@ -102,7 +102,7 @@ fun operacionesGrafoNoDirigido(archivo: String) {  // Operaciones sobre un grafo
     }
 
     val adyl: Iterable<Arista> = grafoPrueba.ladosAdyacentes(arista)
-    println("Los lados adyacentes al lado $arista.toString() son: ")
+    println("Los lados adyacentes al lado $arista son: ")
     for (i in adyl) {
         println(i.toString() + " ")
     }
@@ -114,7 +114,7 @@ fun operacionesGrafoDirigidoCosto(archivo: String) { // Operaciones sobre un gra
 
     var grafoPrueba: GrafoDirigidoCosto = GrafoDirigidoCosto(archivo)
 
-    println("El grafo tiene $grafoPrueba.nVertices vertices y $grafoPrueba.nLados lados")
+    println("El grafo tiene ${grafoPrueba.nVertices} vertices y ${grafoPrueba.nLados} lados")
     println("El grafo cargado es: ")
     println(grafoPrueba)
 
@@ -122,7 +122,7 @@ fun operacionesGrafoDirigidoCosto(archivo: String) { // Operaciones sobre un gra
     val ady: Iterable<ArcoCosto> = grafoPrueba.adyacentes(n)
     var arco: ArcoCosto = grafoPrueba.listaLados.getFirst()
 
-    println("El grado del vertice $n es: $grafoPrueba.grado(n)")
+    println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son:")
     for (i in ady) {
         print(i.toString() + " ")
@@ -133,9 +133,9 @@ fun operacionesGrafoDirigidoCosto(archivo: String) { // Operaciones sobre un gra
     }
 
     val adyl: Iterable<ArcoCosto> = grafoPrueba.ladosAdyacentes(arco)
-    println("Los lados adyacentes al lado $arco.toString() son: ")
+    println("\nLos lados adyacentes al lado $arco son: ")
     for (i in adyl) {
-        println(i.toString() + " ")
+        print(i.toString() + " ")
     }
 }
 
@@ -145,7 +145,7 @@ fun operacionesGrafoNoDirigidoCosto(archivo: String) { // Operaciones sobre un g
 
     var grafoPrueba: GrafoNoDirigidoCosto = GrafoNoDirigidoCosto(archivo)
 
-    println("El grafo tiene $grafoPrueba.nVertices vertices y $grafoPrueba.nLados lados")
+    println("El grafo tiene ${grafoPrueba.nVertices} vertices y ${grafoPrueba.nLados} lados")
     println("El grafo cargado es: ")
     println(grafoPrueba)
 
@@ -153,7 +153,7 @@ fun operacionesGrafoNoDirigidoCosto(archivo: String) { // Operaciones sobre un g
     val ady: Iterable<AristaCosto> = grafoPrueba.adyacentes(n)
     var arista: AristaCosto = grafoPrueba.listaLados.getFirst()
 
-    println("El grado del vertice $n es: $grafoPrueba.grado(n)")
+    println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son:")
     for (i in ady) {
         print(i.toString() + " ")
@@ -164,7 +164,7 @@ fun operacionesGrafoNoDirigidoCosto(archivo: String) { // Operaciones sobre un g
     }
 
     val adyl: Iterable<AristaCosto> = grafoPrueba.ladosAdyacentes(arista)
-    println("Los lados adyacentes al lado $arista.toString() son: ")
+    println("\nLos lados adyacentes al lado $arista.toString() son: ")
     for (i in adyl) {
         println(i.toString() + " ")
     }
@@ -187,10 +187,10 @@ fun main(args: Array<String>) {
         println("Se realizaran pruebas sobre un tipo de grafo y se mostraran los resultados \n")
         
         when (opt) {
-            'd' -> operacionesGrafoDirigido(args[2])
-            'n' -> operacionesGrafoNoDirigido(args[2])
-            'c' -> operacionesGrafoDirigidoCosto(args[2])
-            'p' -> operacionesGrafoNoDirigidoCosto(args[2])
+            'd' -> operacionesGrafoDirigido(args[1])
+            'n' -> operacionesGrafoNoDirigido(args[1])
+            'c' -> operacionesGrafoDirigidoCosto(args[1])
+            'p' -> operacionesGrafoNoDirigidoCosto(args[1])
         }
 
 
@@ -204,6 +204,6 @@ fun main(args: Array<String>) {
         println(e)
 
     } finally {
-        println("Pruebas terminadas")
+        println("\nPruebas terminadas")
     }
 }
