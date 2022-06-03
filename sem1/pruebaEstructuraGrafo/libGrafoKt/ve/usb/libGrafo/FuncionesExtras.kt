@@ -1,10 +1,10 @@
 package ve.usb.libGrafo
 import java.util.LinkedList
 
-// Implementacion de algunas funciones que son usadas en los metodos de los grados
+// Implementacion de algunas funciones que son usadas en los metodos de los grafos
 
 /* 
-    Las funciones obtenerArita, obtenerAristaCosto, obtenerArco y obtenerArcoCosto 
+    Las funciones obtenerArista, obtenerAristaCosto, obtenerArco y obtenerArcoCosto 
     transforman un string con el formato
         int int -> Si es arista o arco
         int int double -> Si es aristaCosto o arcoCosto
@@ -109,6 +109,26 @@ fun arcoEnGrafoDirigido(arr: Array<LinkedList<Int>>, arco: Arco): Boolean = arr[
 }
 
 /*
+    Determina si una arista con costo está en una lista enlazada
+
+    {P: true}
+    {Q: true si la arista esta en la lista, false si no}
+
+    Input:  lista -> LinkedList<AristaCosto> Lista enlazada de aristas
+            arista -> Arista que va a ser buscada en la lista
+    Output: true -> la arista esta en la lista
+            false -> la arista no esta en la lista
+ */
+fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boolean {
+    for (i in lista) {
+        if ((i.y == arista.y && i.x == arista.x) || i.x == arista.y && i.y == arista.x) {
+            return true
+        }
+    }
+    return false
+}
+
+/*
     Determina si un arco está en una lista enlazada
 
     {P: true}
@@ -129,18 +149,20 @@ fun arcoEnLista(lista: LinkedList<Arco>, arco: Arco): Boolean {
     return false
 }
 
+/*
+    Determina si un arco con costo está en una lista enlazada
+
+    {P: true}
+    {Q: true si el arco esta en la lista, false si no}
+
+    Input:  lista -> LinkedList<ArcoCosto> Lista enlazada de arcos
+            arco -> Arco que va a ser buscado en la lista
+    Output: true -> El arco esta en la lista
+            false -> El arco no esta en la lista
+*/
 fun arcoCostoEnLista(lista: LinkedList<ArcoCosto>, arco: ArcoCosto): Boolean {
     for (i in lista) {
         if (i.inicio == arco.inicio && i.fin == arco.fin) {
-            return true
-        }
-    }
-    return false
-}
-
-fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boolean {
-    for (i in lista) {
-        if ((i.y == arista.y && i.x == arista.x) || i.x == arista.y && i.y == arista.x) {
             return true
         }
     }

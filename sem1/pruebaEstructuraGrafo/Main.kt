@@ -3,11 +3,14 @@ import java.io.File
 import kotlin.random.Random
 
 /* 
+    {P: true}
+    {Q: true} 
+
     Input: Arreglo de string que contiene los parametros con los cuales se ejecuto el programa
     Output: true -> Si el primer elemento esta en formato correcto.
             false -> Caso contrario
 
-    El formato correcto es que sea de la gorma -g[d|n|c|p] 
+    El formato correcto es que sea de la forma -g[d|n|c|p] 
 */
 fun verificarTipoGrafoEntrada(args: Array<String>): Boolean {
     val par: String = args[0]
@@ -39,16 +42,16 @@ fun verificarTipoGrafoEntrada(args: Array<String>): Boolean {
 fun obtenerOpcionTipoGrafo(s: String): Char = s[2]
 
 /* 
-    Las siguientes funciones realizaon operaciones sobre grafos y muestran el resulado
+    Las siguientes funciones realizan operaciones sobre grafos y muestran el resulado
     de las operaciones.
 
-    Todas tienen la misma entrada y es la direccions de un archivo que contiene un grafo.
+    Todas tienen la misma entrada y es la direccion de un archivo que contiene un grafo.
 
     El grafo sobre el cual se ejecutaran las pruebas se carga desde el archivo
 */
 fun operacionesGrafoDirigido(archivo: String) { // Operaciones sobre un grafo dirigido
     println(".: Pruebas sobre un grafo dirigido :.")
-    println("El grafo se cargarada desde el archivo $archivo")
+    println("El grafo se cargara desde el archivo $archivo")
 
     var grafoPrueba: GrafoDirigido = GrafoDirigido(archivo)
 

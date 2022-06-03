@@ -96,7 +96,18 @@ public class GrafoNoDirigido: Grafo {
     // Retorna el número de vértices del grafo
     override fun obtenerNumeroDeVertices() : Int = nVertices
 
-    // Retorna los lados adyacentes al vértice v, es decir, los lados que contienen al vértice v
+    /* 
+        Retorna los adyacentes de v, en este caso los lados que tienen como vértice a v. 
+        Si el vértice no pertenece al grafo se lanza una RuntimeException
+
+        {P: v pertenece al grafo}
+        {Q: ady contiene los lados adyacentes a v}
+
+        Input: v -> Vertice cuyos adyacentes se quieren hallar
+        Output: ady -> Iterable que contiene los lados adyacentes a v
+
+        O(nLados)
+     */
     override fun adyacentes(v: Int) : Iterable<Arista> {
         var ady: LinkedList<Arista> = LinkedList<Arista>()
         for (i in listaLados){
@@ -111,11 +122,11 @@ public class GrafoNoDirigido: Grafo {
     /* 
         Calcula el grado de un vertice dado del grafo
 
-        {P: v es un vaertice que pertenece al lado}
-        {Q: devuelve el numero de ladosa incidentes del vertice}
+        {P: v es un vertice que pertenece al lado}
+        {Q: devuelve el numero de lados incidentes del vertice}
 
         Input: v -> Entero, numero del vertice del cual se obtendra el vertice
-        Outpu: grado del vertce
+        Output: grado del vertce
     */
     override fun grado(v: Int) : Int {
         if (v < 0 || v >= nVertices || v < 0 || v >= nVertices) {
@@ -125,9 +136,18 @@ public class GrafoNoDirigido: Grafo {
         return repGrafo[v].count()
     }
 
-    /* Retorna los lados adyacentes de un lado l. 
-     Se tiene que dos lados son iguales si tiene los mismos extremos. 
-     Si un lado no pertenece al grafo se lanza una RuntimeException.
+    /* 
+        Retorna los lados adyacentes de un lado l. 
+        Se tiene que dos lados son iguales si tiene los mismos extremos. 
+        Si un lado no pertenece al grafo se lanza una RuntimeException.
+
+        {P: l pertenece al grafo}
+        {Q: ady contiene los lados adyacentes a l}
+
+        Input: l -> Lado cuyos lados adyacentes se quieren hallar
+        Output: ady -> Iterable con los lados adyacentes a l
+
+        O(nLados)
      */
     fun ladosAdyacentes(l: Arista) : Iterable<Arista> {
         if (!aristaEnGrafoNoDirigido(repGrafo, l)) {
@@ -144,12 +164,32 @@ public class GrafoNoDirigido: Grafo {
         return ady.asIterable()
     }
     
-    // Retorna todos los lados del grafo no dirigido
+    /*
+        Retorna todos los lados del grafo en un iterador
+
+        {P: true}
+        {Q: el iterador contiene todos los lados del grafo}
+
+        Input:
+        Output: Iterador con los lados del grafo
+
+        O(nLados)
+    */
     override operator fun iterator() : Iterator<Arista> {
         return listaLados.iterator()
     }
 
-    // Retorna un string con una representación del grafo, en donde se nuestra todo su contenido
+    /*
+        Metodo para imprimir los elementos del grafo
+
+        {P: true}
+        {Q: true}
+
+        Input:
+        Output:
+
+        O(nLados)
+    */
     override fun toString() : String {
         var s: String = " "
         for (i in listaLados) {
