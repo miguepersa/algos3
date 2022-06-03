@@ -27,7 +27,6 @@ fun verificarTipoGrafoEntrada(args: Array<String>): Boolean {
     return true
 }
 
-
 /* 
     Devuelve la opcion ingresada por el usuario
 
@@ -58,18 +57,17 @@ fun operacionesGrafoDirigido(archivo: String) { // Operaciones sobre un grafo di
     println(grafoPrueba)
 
     val n: Int = Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices)
-    val ady: Iterable<Arco> = grafoPrueba.adyacentes(n)
-    var arco: Arco = grafoPrueba.listaLados.getFirst()
-
+    
     println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
+
+    val ady: Iterable<Arco> = grafoPrueba.adyacentes(n)
+
     println("Los lados adyacentes al vertice $n son:")
     for (i in ady) {
         print(i.toString() + " ")
-
-        if (Random(System.nanoTime()).nextInt(0, n + 1) % 2 == 0) {
-            arco = i
-        }
     }
+
+    var arco: Arco = grafoPrueba.listaLados.get(Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices))
 
     val adyl: Iterable<Arco> = grafoPrueba.ladosAdyacentes(arco)
     println("\nLos lados adyacentes al lado $arco son: ")
@@ -89,17 +87,14 @@ fun operacionesGrafoNoDirigido(archivo: String) {  // Operaciones sobre un grafo
 
     val n: Int = Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices)
     val ady: Iterable<Arista> = grafoPrueba.adyacentes(n)
-    var arista: Arista = grafoPrueba.listaLados.getFirst()
 
     println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son: ")
     for (i in ady) {
         print(i.toString() + " ")
-
-        if (Random(System.nanoTime()).nextInt(0, n + 1) % 2 == 0) {
-            arista = i
-        }
     }
+
+    var arista: Arista = grafoPrueba.listaLados.get(Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices))
 
     val adyl: Iterable<Arista> = grafoPrueba.ladosAdyacentes(arista)
     println("\nLos lados adyacentes al lado $arista son: ")
@@ -120,18 +115,14 @@ fun operacionesGrafoDirigidoCosto(archivo: String) { // Operaciones sobre un gra
 
     val n: Int = Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices)
     val ady: Iterable<ArcoCosto> = grafoPrueba.adyacentes(n)
-    var arco: ArcoCosto = grafoPrueba.listaLados.getFirst()
 
     println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son:")
     for (i in ady) {
         print(i.toString() + " ")
-
-        if (Random(System.nanoTime()).nextInt(0, n) % 2 == 0) {
-            arco = i
-        }
     }
 
+    var arco: ArcoCosto = grafoPrueba.listaLados.get(Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices))
     val adyl: Iterable<ArcoCosto> = grafoPrueba.ladosAdyacentes(arco)
     println("\nLos lados adyacentes al lado $arco son: ")
     for (i in adyl) {
@@ -151,18 +142,14 @@ fun operacionesGrafoNoDirigidoCosto(archivo: String) { // Operaciones sobre un g
 
     val n: Int = Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices)
     val ady: Iterable<AristaCosto> = grafoPrueba.adyacentes(n)
-    var arista: AristaCosto = grafoPrueba.listaLados.getFirst()
 
     println("El grado del vertice $n es: ${grafoPrueba.grado(n)}")
     println("Los lados adyacentes al vertice $n son:")
     for (i in ady) {
         print(i.toString() + " ")
-
-        if (Random(System.nanoTime()).nextInt(0, n) % 2 == 0) {
-            arista = i
-        }
     }
 
+    var arista: AristaCosto = grafoPrueba.listaLados.get(Random(System.nanoTime()).nextInt(0, grafoPrueba.nVertices))
     val adyl: Iterable<AristaCosto> = grafoPrueba.ladosAdyacentes(arista)
     println("\nLos lados adyacentes al lado $arista son: ")
     for (i in adyl) {
@@ -202,6 +189,9 @@ fun main(args: Array<String>) {
 
     } catch (e: RuntimeException) {
         println(e)
+
+    } catch (e: java.lang.IndexOutOfBoundsException){
+        println("El grafo esta vacio, ninguno de los lados tiene un lado adyacente")
 
     } finally {
         println("\n\nPruebas terminadas")

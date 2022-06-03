@@ -154,7 +154,7 @@ public class GrafoDirigidoCosto : Grafo {
         var ady: LinkedList<ArcoCosto> = LinkedList<ArcoCosto>()
         for (i in listaLados) {
             if (!arcoCostoEnLista(ady, i) && !arcoCostoEnLista(ady, ArcoCosto(l.x, l.y, 1.0)) && (i.y != l.y && i.x != l.x)) {
-                if (i.y == l.y || i.y == l.x || i.x == l.y || i.x == l.y) {
+                if (i.y == l.y || i.y == l.x || i.x == l.y || i.x == l.x) {
                     ady.add(i)
                 }
             }

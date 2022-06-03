@@ -167,7 +167,7 @@ public class GrafoDirigido : Grafo {
         }
         var ady: LinkedList<Arco> = LinkedList<Arco>()
         for (i in listaLados) {
-            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, Arco(l.fin, l.inicio)) && (i.inicio != l.fin && i.inicio != l.fin)) {
+            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, Arco(l.inicio, l.fin)) && (i.inicio != l.inicio && i.fin != l.fin)) {
                 if (i.fin == l.fin || i.fin == l.inicio || i.inicio == l.fin || i.inicio == l.inicio) {
                     ady.add(i)
                 }
