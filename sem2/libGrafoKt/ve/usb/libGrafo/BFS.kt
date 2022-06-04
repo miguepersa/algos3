@@ -12,6 +12,8 @@ public class BFS(val g: Grafo, val s: Int) {
     
     /** 
         Ejecuta BFS sobre el grafo g desde el vertice s
+
+        Tiemo de ejecucion O(numero de vertices de g + numero de lados de g)
     */
     init {
         arrVertices[s].color = Color.GRIS
@@ -39,7 +41,6 @@ public class BFS(val g: Grafo, val s: Int) {
                     arrVertices[v.b.n].pred = u
 
                     q.addLast(v.b)
-
                 }
             }
             
@@ -54,10 +55,14 @@ public class BFS(val g: Grafo, val s: Int) {
         {P: v es un vertice valido}
         {Q: true}
 
-        Input. v -> Entero, vertice del cual se sabra el su predecesor
+        Input: v -> Entero, vertice del cual se sabra el su predecesor
+        Output: Entero -> Representa el predecesor del vertice v
+                null -> Si el vertice v no tiene predecesor
+
+        Tiempo de ejecucion O(1)
     */
     fun obtenerPredecesor(v: Int) : Int? {
-        if (v < 0 || v >= g.nVertices) {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("BFS.obtenerPredecesor: Vertice invalido")
         }
 
@@ -65,25 +70,42 @@ public class BFS(val g: Grafo, val s: Int) {
     } 
 
     /*
-     Retorna la distancia, del camino obtenido por BFS, desde el vértice inicial s 
-     hasta el un vértice v. En caso de que el vétice v no sea alcanzable desde s,
-     entonces se retorna -1.
-     En caso de que el vértice v no exista en el grafo se lanza una RuntimeException. 
-     */
+        Obtiene la distancia de un vertice dado.
+
+        {P: v es un vertice valido}
+        {Q: true}
+
+        Input: v -> Entero, vertice del cual se sabra su distancia desde el vertice raiz
+        Output: Entero -> v.d si el vertice es alcanzable desde la raiz
+                          -1 si el vertice no es alcanzable desde la raiz
+
+        Tiempo de ejecucion O(1) 
+    */
     fun obtenerDistancia(v: Int) : Int {
-        if (v < 0 || v >= g.nVertices) {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("BFS.obtenerDistancia: Vertice invalido")
+        }
+
+        if (arrVertices[v].dist == Int.MAX_VALUE) {
+            return -1
         }
         
         return arrVertices[v].dist
     }
     /*
-     Indica si hay camino desde el vértice inicial s hasta el vértice v.
-     Si el camino existe retorna true, de lo contrario falso.
-     En caso de que el vértice v no exista en el grafo se lanza una RuntimeException. 
-     */ 
+        Determina si hay o no un camino desde la raiz hasta v
+
+        {P: v es un vertice valido}
+        {Q: true}
+
+        Input: v -> Entero, vertice del cual se determinara si existe un camino hasta el desde la raiz
+        Output: true -> Si existe un camino desde la raiz hasta v
+                false -> Caso contrario
+
+        Tiempo de ejecucion O(1)
+    */ 
     fun hayCaminoHasta(v: Int) : Boolean {
-        if (v < 0 || v >= g.nVertices) {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("BFS.hayCaminoHasta: Vertice invalido")
         }
         
@@ -91,14 +113,16 @@ public class BFS(val g: Grafo, val s: Int) {
     }
 
     /*
-     Retorna el camino con menos lados, obtenido por BFS, desde el vértice inicial s 
-     hasta el un vértice v. El camino es representado como un objeto iterable con
-     los vértices del camino desde s hasta v.
-     En caso de que el vétice v no sea alcanzable desde s, entonces se lanza una RuntimeException.
-     En caso de que el vértice v no exista en el grafo se lanza una RuntimeException.
-     */ 
+        Devuelve el camino desde la raiz hasta un vertice v
+
+        {P: v es un vertice valido}
+        {Q: true}
+
+        Input: v -> Entero, que representa el vertice del cual se buscara su camino desde la raiz
+        Output: Un iterable que contiene los elementos del camino que va desde la raiz hasta v 
+    */ 
     fun caminoHasta(v: Int) : Iterable<Int> {
-        if (v < 0 || v >= nVertices) {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("BFS.caminoHasta: Vertice invalido")
         }
 
@@ -117,8 +141,11 @@ public class BFS(val g: Grafo, val s: Int) {
     }
 
     // Imprime por la salida estándar el breadth-first tree
-    // Muestra todos los lados (u, v) tales que v.pred = u
     fun mostrarArbolBFS() {
-        print(" ")
+        for (i in 0 until g.obtenerNumeroDeVertices()) {
+            if (arrVertices[i].pred != null) {
+                println("(${arrVertices[i].pred?.n}, ${i})")
+            }
+        }
     }
 }
