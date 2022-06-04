@@ -74,8 +74,8 @@ fun obtenerArcoCosto(linea: String): ArcoCosto {
             false -> Caso contrario
 */
 fun aristaEnGrafoNoDirigido(arr: Array<LinkedList<Vertice>>, arista: Arista): Boolean {
-    for (i in arr[arista.u.etiqueta]) {
-        if (i.etiqueta == arista.v.etiqueta) {
+    for (i in arr[arista.u.n]) {
+        if (i.n == arista.v.n) {
             return true
         }
     }
@@ -93,8 +93,8 @@ fun aristaEnGrafoNoDirigido(arr: Array<LinkedList<Vertice>>, arista: Arista): Bo
             false -> Caso contrario
 */
 fun arcoEnGrafoDirigido(arr: Array<LinkedList<Vertice>>, arco: Arco): Boolean {
-    for (i in arr[arco.inicio.etiqueta]) {
-        if (i.etiqueta == arco.fin.etiqueta) {
+    for (i in arr[arco.inicio.n]) {
+        if (i.n == arco.fin.n) {
             return true
         }
     }
@@ -115,7 +115,7 @@ fun arcoEnGrafoDirigido(arr: Array<LinkedList<Vertice>>, arco: Arco): Boolean {
 
  fun aristaEnLista(lista: LinkedList<Arista>, arista: Arista): Boolean {
     for (i in lista) {
-        if ((i.v.etiqueta == arista.v.etiqueta && i.u.etiqueta == arista.u.etiqueta) || i.u.etiqueta == arista.v.etiqueta && i.v.etiqueta == arista.u.etiqueta) {
+        if ((i.v.n == arista.v.n && i.u.n == arista.u.n) || i.u.n == arista.v.n && i.v.n == arista.u.n) {
             return true
         }
     }
@@ -135,7 +135,7 @@ fun arcoEnGrafoDirigido(arr: Array<LinkedList<Vertice>>, arco: Arco): Boolean {
  */
 fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boolean {
     for (i in lista) {
-        if ((i.y.etiqueta == arista.y.etiqueta && i.x.etiqueta == arista.x.etiqueta) || i.x.etiqueta == arista.y.etiqueta && i.y.etiqueta == arista.x.etiqueta) {
+        if ((i.y.n == arista.y.n && i.x.n == arista.x.n) || i.x.n == arista.y.n && i.y.n == arista.x.n) {
             return true
         }
     }
@@ -156,7 +156,7 @@ fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boo
 
 fun arcoEnLista(lista: LinkedList<Arco>, arco: Arco): Boolean {
     for (i in lista) {
-        if (i.inicio.etiqueta == arco.inicio.etiqueta && i.fin.etiqueta == arco.fin.etiqueta) {
+        if (i.inicio.n == arco.inicio.n && i.fin.n == arco.fin.n) {
             return true
         }
     }
@@ -176,7 +176,7 @@ fun arcoEnLista(lista: LinkedList<Arco>, arco: Arco): Boolean {
 */
 fun arcoCostoEnLista(lista: LinkedList<ArcoCosto>, arco: ArcoCosto): Boolean {
     for (i in lista) {
-        if (i.inicio.etiqueta == arco.inicio.etiqueta && i.fin.etiqueta == arco.fin.etiqueta) {
+        if (i.inicio.n == arco.inicio.n && i.fin.n == arco.fin.n) {
             return true
         }
     }

@@ -8,6 +8,7 @@ public class GrafoDirigidoCosto : Grafo {
     val nVertices: Int
     val repGrafo: Array<LinkedList<Vertice>>
     var listaLados: LinkedList<ArcoCosto>
+    var arrVertices: Array<Vertice>
     var nLados: Int
 
     /* 
@@ -26,6 +27,7 @@ public class GrafoDirigidoCosto : Grafo {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<ArcoCosto>()
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
         nLados = 0
     }
 
@@ -53,6 +55,8 @@ public class GrafoDirigidoCosto : Grafo {
 
             this.agregarArcoCosto(arco)
         }
+
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /* 
@@ -69,7 +73,7 @@ public class GrafoDirigidoCosto : Grafo {
         Tiempo de ejecucion o(|vertices adyacentes de a.inicio|)
      */
     fun agregarArcoCosto(a: ArcoCosto) : Boolean {
-        if (a.x.etiqueta < 0 || a.x.etiqueta >= nVertices || a.y.etiqueta < 0 || a.y.etiqueta >= nVertices) {
+        if (a.x.n < 0 || a.x.n >= nVertices || a.y.n < 0 || a.y.n >= nVertices) {
             throw RuntimeException("El ArcoCosto a agregar tiene extremos invalidos")
         }
 
@@ -77,7 +81,7 @@ public class GrafoDirigidoCosto : Grafo {
             return false
         }
 
-        repGrafo[a.x.etiqueta].add(a.y)
+        repGrafo[a.x.n].add(a.y)
         listaLados.add(a)
         nLados++
 
@@ -124,7 +128,7 @@ public class GrafoDirigidoCosto : Grafo {
 
         for (i in 0 until nVertices) {
             for (j in repGrafo[i]) {
-                if (j.etiqueta == v) {
+                if (j.n == v) {
                     cont++
                 }
             }
@@ -173,7 +177,7 @@ public class GrafoDirigidoCosto : Grafo {
     override fun adyacentes(v: Int) : Iterable<ArcoCosto> {
         var ady: LinkedList<ArcoCosto> = LinkedList<ArcoCosto>()
         for (i in listaLados){
-            if (i.inicio.etiqueta == v) {
+            if (i.inicio.n == v) {
                 ady.add(i)
             }
         }
@@ -200,8 +204,8 @@ public class GrafoDirigidoCosto : Grafo {
 
         var ady: LinkedList<ArcoCosto> = LinkedList<ArcoCosto>()
         for (i in listaLados) {
-            if (!arcoCostoEnLista(ady, i) && !arcoCostoEnLista(ady, ArcoCosto(l.y, l.x, 1.0)) && (i.y.etiqueta != l.y.etiqueta && i.x.etiqueta != l.x.etiqueta)) {
-                if (i.y.etiqueta == l.y.etiqueta || i.y.etiqueta == l.x.etiqueta || i.x.etiqueta == l.y.etiqueta || i.x.etiqueta == l.x.etiqueta) {
+            if (!arcoCostoEnLista(ady, i) && !arcoCostoEnLista(ady, ArcoCosto(l.y, l.x, 1.0)) && (i.y.n != l.y.n && i.x.n != l.x.n)) {
+                if (i.y.n == l.y.n || i.y.n == l.x.n || i.x.n == l.y.n || i.x.n == l.x.n) {
                     ady.add(i)
                 }
             }

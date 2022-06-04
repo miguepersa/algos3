@@ -8,6 +8,7 @@ public class GrafoNoDirigidoCosto: Grafo {
     val nVertices: Int
     val repGrafo: Array<LinkedList<Vertice>>
     var listaLados: LinkedList<AristaCosto>
+    var arrVertices: Array<Vertice>
     var nLados: Int
 
     /* :
@@ -26,6 +27,7 @@ public class GrafoNoDirigidoCosto: Grafo {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<AristaCosto>()
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
         nLados = 0
     }
 
@@ -53,6 +55,8 @@ public class GrafoNoDirigidoCosto: Grafo {
 
             this.agregarAristaCosto(arista)
         }
+        
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /* 
@@ -60,20 +64,20 @@ public class GrafoNoDirigidoCosto: Grafo {
         se termina el prorama
 
         {P: Arsita cuyos extremos sean validos y no sean iguales}
-        {Q: repGrafo[a.y.etiqueta].contains(a.x.etiqueta) && repGrafo[a.x.etiqueta].contains(a.y.etiqueta) && listaLados.contains(a)}
+        {Q: repGrafo[a.y.n].contains(a.x.n) && repGrafo[a.x.n].contains(a.y.n) && listaLados.contains(a)}
 
         Input: a -> Arista valida
         Output: true -> Si la arista se puedo agregar al grafo
                 false -> Si la arista no se pudo añadir al grafo
 
-        Tiempo de ejecucion O(|vertices adyacentes de a.x.etiqueta|)
+        Tiempo de ejecucion O(|vertices adyacentes de a.x.n|)
     */
     fun agregarAristaCosto(a: AristaCosto) : Boolean {
-        if (a.x.etiqueta < 0 || a.x.etiqueta >= nVertices || a.y.etiqueta < 0 || a.y.etiqueta >= nVertices) {
+        if (a.x.n < 0 || a.x.n >= nVertices || a.y.n < 0 || a.y.n >= nVertices) {
             throw RuntimeException("La arista a agregar tiene vertices invalidos")
         }
 
-        if (a.x.etiqueta == a.y.etiqueta) {
+        if (a.x.n == a.y.n) {
             throw RuntimeException("La arista a agregar tiene vertices iguales")
         }
 
@@ -81,8 +85,8 @@ public class GrafoNoDirigidoCosto: Grafo {
             return false
         }
 
-        repGrafo[a.x.etiqueta].add(a.y)
-        repGrafo[a.y.etiqueta].add(a.x)
+        repGrafo[a.x.n].add(a.y)
+        repGrafo[a.y.n].add(a.x)
         listaLados.add(a)
         nLados++
 
@@ -110,7 +114,7 @@ public class GrafoNoDirigidoCosto: Grafo {
     override fun adyacentes(v: Int) : Iterable<AristaCosto> {
         var ady: LinkedList<AristaCosto> = LinkedList<AristaCosto>()
         for (i in listaLados){
-            if (i.x.etiqueta == v || i.y.etiqueta == v) {
+            if (i.x.n == v || i.y.n == v) {
                 ady.add(i)
             }
         }
@@ -136,8 +140,8 @@ public class GrafoNoDirigidoCosto: Grafo {
         }
         var ady: LinkedList<AristaCosto> = LinkedList<AristaCosto>()
         for (i in listaLados) {
-            if (!aristaCostoEnLista(ady, i) && (i.y.etiqueta != l.y.etiqueta && i.x.etiqueta != l.x.etiqueta)) {
-                if (i.y.etiqueta == l.y.etiqueta || i.y.etiqueta == l.x.etiqueta || i.x.etiqueta == l.y.etiqueta || i.x.etiqueta == l.x.etiqueta) {
+            if (!aristaCostoEnLista(ady, i) && (i.y.n != l.y.n && i.x.n != l.x.n)) {
+                if (i.y.n == l.y.n || i.y.n == l.x.n || i.x.n == l.y.n || i.x.n == l.x.n) {
                     ady.add(i)
                 }
             }

@@ -1,15 +1,15 @@
 package ve.usb.libGrafo
 
-public open class Vertice(val etiqueta: Int) {
+public open class Vertice(val n: Int) {
 
-    var distancia: Int = -1
+    var dist: Int = Int.MAX_VALUE
     var color: Color = Color.BLANCO
     var pred: Vertice? = null
-    var ti: Int = 0
-    var tf: Int = 0
+    var d: Int = 0
+    var f: Int = 0
 
     override fun toString(): String {
-        return etiqueta.toString()
+        return n.toString()
     }
 
 }

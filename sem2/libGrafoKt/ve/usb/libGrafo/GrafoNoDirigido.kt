@@ -8,6 +8,7 @@ public class GrafoNoDirigido: Grafo {
     val nVertices: Int
     val repGrafo: Array<LinkedList<Vertice>>
     var listaLados: LinkedList<Arista>
+    var arrVertices: Array<Vertice>
     var nLados: Int
 
     /* 
@@ -26,6 +27,7 @@ public class GrafoNoDirigido: Grafo {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<Arista>()
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
         nLados = 0
     }
 
@@ -54,6 +56,8 @@ public class GrafoNoDirigido: Grafo {
 
             this.agregarArista(arista)
         }
+
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /* 
@@ -61,20 +65,20 @@ public class GrafoNoDirigido: Grafo {
         programa.
 
         {P: Arista cuyos extremos sean vertices validos y no se encuentre en el grafo}
-        {Q: repGrafo[a.v.etiqueta].busqueda(a.u.etiqueta) && repGrafo[a.u.etiqueta].busqueda(a.v.etiqueta)
+        {Q: repGrafo[a.v.n].busqueda(a.u.n) && repGrafo[a.u.n].busqueda(a.v.n)
 
         Input: a -> Arista valida.
         Output: true -> Si la arista se pudo agregar al grafo
                 false -> Si la arista no se pudo agregar al grafo
 
-        Tiempo de ejecucion O(|vertices adyacentes de a.u.etiqueta|)
+        Tiempo de ejecucion O(|vertices adyacentes de a.u.n|)
      */
     fun agregarArista(a: Arista) : Boolean {
-        if (a.v.etiqueta < 0 || a.v.etiqueta >= nVertices || a.u.etiqueta < 0 || a.u.etiqueta >= nVertices) { // verificamos que los vertices sean validos
+        if (a.v.n < 0 || a.v.n >= nVertices || a.u.n < 0 || a.u.n >= nVertices) { // verificamos que los vertices sean validos
             throw RuntimeException("La arista a agregar tiene vertices invalidos")
         }
 Int
-        if (a.v.etiqueta == a.u.etiqueta) { // en los grafos no dirigidos no se permiten los lados (a, a)
+        if (a.v.n == a.u.n) { // en los grafos no dirigidos no se permiten los lados (a, a)
             throw RuntimeException("La arista a agregar tiene vertices iguales")
         }
 
@@ -82,8 +86,8 @@ Int
             return false
         }
 
-        repGrafo[a.v.etiqueta].add(a.u)
-        repGrafo[a.u.etiqueta].add(a.v)
+        repGrafo[a.v.n].add(a.u)
+        repGrafo[a.u.n].add(a.v)
         listaLados.add(a)
         nLados++
 
@@ -111,7 +115,7 @@ Int
     override fun adyacentes(v: Int) : Iterable<Arista> {
         var ady: LinkedList<Arista> = LinkedList<Arista>()
         for (i in listaLados){
-            if (i.v.etiqueta == v || i.u.etiqueta == v)
+            if (i.v.n == v || i.u.n == v)
             {
                 ady.add(i)
             }
@@ -155,8 +159,8 @@ Int
         }
         var ady: LinkedList<Arista> = LinkedList<Arista>()
         for (i in listaLados) {
-            if (!aristaEnLista(ady, i) && (i.v.etiqueta != l.v.etiqueta && i.u.etiqueta != l.u.etiqueta)) {
-                if (i.v.etiqueta == l.v.etiqueta || i.v.etiqueta == l.u.etiqueta || i.u.etiqueta == l.v.etiqueta || i.u.etiqueta == l.u.etiqueta) {
+            if (!aristaEnLista(ady, i) && (i.v.n != l.v.n && i.u.n != l.u.n)) {
+                if (i.v.n == l.v.n || i.v.n == l.u.n || i.u.n == l.v.n || i.u.n == l.u.n) {
                     ady.add(i)
                 }
             }

@@ -8,6 +8,7 @@ public class GrafoDirigido : Grafo {
     val nVertices: Int
     val repGrafo: Array<LinkedList<Vertice>>
     var listaLados: LinkedList<Arco>
+    var arrVertices: Array<Vertice>
     var nLados: Int
 
     /*
@@ -26,6 +27,7 @@ public class GrafoDirigido : Grafo {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<Arco>()
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
         nLados = 0
     }
 
@@ -39,7 +41,7 @@ public class GrafoDirigido : Grafo {
         Input: nombreArchivo -> String que contiene la direcion a un archivo.
         Output: ~~
 
-        Tiempo de ejecutio O(lineas del archivo)
+        Tiempo de ejecutio O(nLados + nVertices)
      */
     constructor(nombreArchivo: String) {
         val fileContent: List<String> = File(nombreArchivo).readLines()
@@ -53,6 +55,8 @@ public class GrafoDirigido : Grafo {
 
             this.agregarArco(arco)
         }
+
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /*
@@ -66,7 +70,7 @@ public class GrafoDirigido : Grafo {
                 false -> si la arista no se pudo agregar al grafo
     */
     fun agregarArco(a: Arco) : Boolean {
-        if (a.inicio.etiqueta < 0 || a.inicio.etiqueta >= nVertices || a.fin.etiqueta < 0 || a.fin.etiqueta >= nVertices) {
+        if (a.inicio.n < 0 || a.inicio.n >= nVertices || a.fin.n < 0 || a.fin.n >= nVertices) {
             throw RuntimeException("El arco a agregar tiene extremos invalidos")
         }
 
@@ -74,7 +78,7 @@ public class GrafoDirigido : Grafo {
             return false
         }
 
-        repGrafo[a.inicio.etiqueta].add(a.fin)
+        repGrafo[a.inicio.n].add(a.fin)
         listaLados.add(a)
         nLados++
 
@@ -120,7 +124,7 @@ public class GrafoDirigido : Grafo {
 
         for (i in 0 until nVertices) {
             for (j in repGrafo[i]) {
-                if (j.etiqueta == v) {
+                if (j.n == v) {
                     cont++
                 }
             }
@@ -169,7 +173,7 @@ public class GrafoDirigido : Grafo {
     override fun adyacentes(v: Int) : Iterable<Arco> {
         var ady: LinkedList<Arco> = LinkedList<Arco>()
         for (i in listaLados){
-            if (i.inicio.etiqueta == v)
+            if (i.inicio.n == v)
             {
                 ady.add(i)
             }
@@ -196,8 +200,8 @@ public class GrafoDirigido : Grafo {
         }
         var ady: LinkedList<Arco> = LinkedList<Arco>()
         for (i in listaLados) {
-            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, Arco(l.fin, l.inicio)) && (i.inicio.etiqueta != l.inicio.etiqueta && i.fin.etiqueta != l.fin.etiqueta)) {
-                if (i.fin.etiqueta == l.fin.etiqueta || i.fin.etiqueta == l.inicio.etiqueta || i.inicio.etiqueta == l.fin.etiqueta || i.inicio.etiqueta == l.inicio.etiqueta) {
+            if (!arcoEnLista(ady, i) && !arcoEnLista(ady, Arco(l.fin, l.inicio)) && (i.inicio.n != l.inicio.n && i.fin.n != l.fin.n)) {
+                if (i.fin.n == l.fin.n || i.fin.n == l.inicio.n || i.inicio.n == l.fin.n || i.inicio.n == l.inicio.n) {
                     ady.add(i)
                 }
             }
