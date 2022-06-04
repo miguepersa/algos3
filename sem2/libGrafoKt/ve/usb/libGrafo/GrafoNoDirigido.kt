@@ -50,14 +50,14 @@ public class GrafoNoDirigido: Grafo {
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         nLados = 0
         listaLados = LinkedList<Arista>()
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})        
 
         for (i in 2 until fileContent.size) {
-            val arista: Arista = obtenerArista(fileContent[i])
+            val arista: Arista = obtenerArista(fileContent[i], arrVertices)
 
             this.agregarArista(arista)
         }
 
-        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /* 
@@ -77,7 +77,7 @@ public class GrafoNoDirigido: Grafo {
         if (a.v.n < 0 || a.v.n >= nVertices || a.u.n < 0 || a.u.n >= nVertices) { // verificamos que los vertices sean validos
             throw RuntimeException("La arista a agregar tiene vertices invalidos")
         }
-Int
+        
         if (a.v.n == a.u.n) { // en los grafos no dirigidos no se permiten los lados (a, a)
             throw RuntimeException("La arista a agregar tiene vertices iguales")
         }
@@ -89,6 +89,7 @@ Int
         repGrafo[a.v.n].add(a.u)
         repGrafo[a.u.n].add(a.v)
         listaLados.add(a)
+        listaLados.add(Arista(a.u, a.v))
         nLados++
 
         return true
@@ -159,7 +160,7 @@ Int
         }
         var ady: LinkedList<Arista> = LinkedList<Arista>()
         for (i in listaLados) {
-            if (!aristaEnLista(ady, i) && (i.v.n != l.v.n && i.u.n != l.u.n)) {
+            if (!aristaEnLista(ady, i) && !aristaEnLista(ady, Arista(i.u, i.v))) {
                 if (i.v.n == l.v.n || i.v.n == l.u.n || i.u.n == l.v.n || i.u.n == l.u.n) {
                     ady.add(i)
                 }

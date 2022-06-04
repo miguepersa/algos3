@@ -49,14 +49,15 @@ public class GrafoNoDirigidoCosto: Grafo {
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<AristaCosto>()
         nLados = fileContent[1].toInt()
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
 
         for (i in 2 until fileContent.size) {
-            val arista: AristaCosto = obtenerAristaCosto(fileContent[i])
+            val arista: AristaCosto = obtenerAristaCosto(fileContent[i], arrVertices)
 
             this.agregarAristaCosto(arista)
         }
         
-        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
+        
     }
 
     /* 
@@ -88,6 +89,7 @@ public class GrafoNoDirigidoCosto: Grafo {
         repGrafo[a.x.n].add(a.y)
         repGrafo[a.y.n].add(a.x)
         listaLados.add(a)
+        listaLados.add(AristaCosto(a.y, a.x, a.costo))
         nLados++
 
         return true

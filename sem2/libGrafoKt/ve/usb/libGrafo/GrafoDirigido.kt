@@ -48,15 +48,15 @@ public class GrafoDirigido : Grafo {
         nVertices = fileContent[0].toInt()
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<Arco>()
-        nLados = 0
+        nLados = 0      
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
 
         for (i in 2 until fileContent.size) {
-            val arco: Arco = obtenerArco(fileContent[i])
+            val arco: Arco = obtenerArco(fileContent[i], arrVertices)
 
             this.agregarArco(arco)
         }
 
-        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /*

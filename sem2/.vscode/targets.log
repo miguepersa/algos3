@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 13:05:56 2022
+# Make data base, printed on Sat Jun  4 13:24:04 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-455989e1-3457-4acf-8897-a6085afd4c67.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-dcaf85e6-0e21-477e-9f3c-d3455c31bfc2.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
@@ -71,7 +71,7 @@ CURDIR := /home/miguelp/algos3/sem2
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -99,7 +99,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 396308
+VSCODE_PID = 107024
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -151,7 +151,6 @@ XDG_CONFIG_HOME = /home/miguelp/.config
 # environment
 QT_DBL_CLICK_DIST = 15
 # environment
- 
 VSCODE_LOG_NATIVE = false
 # environment
 LC_TELEPHONE = es_VE.UTF-8
@@ -204,7 +203,7 @@ LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 396308
+GIO_LAUNCHED_DESKTOP_FILE_PID = 107024
 # environment
 _ = /usr/share/code/code
 # environment
@@ -252,9 +251,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2053, inode 1197260): 8 files, no impossibilities.
+# . (device 2053, inode 1197260): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -294,6 +293,7 @@ all: jarlib MainKt.class
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
+ 
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -349,9 +349,9 @@ jarlib:
 # strcache buffers: 1 (0) / strings = 17 / storage = 203 B / avg = 11 B
 # current buf: size = 8162 B / used = 203 B / count = 17 / avg = 11 B
 
-# strcache performance: lookups = 29 / hit rate = 41%
+# strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Fri Jun  3 13:05:56 2022
+# Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
+# Finished Make data base on Sat Jun  4 13:24:04 2022
 
  

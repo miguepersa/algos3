@@ -17,23 +17,24 @@ import java.util.LinkedList
     Input: linea -> String que contiene informacion sobre una arista.
     Output: La arista que representa la informacion de linea
 */
-fun obtenerArista(linea: String): Arista {
+fun obtenerArista(linea: String, vertices: Array<Vertice>): Arista {
     val infoLinea: List<String> = linea.split(" ")
 
-    return Arista(Vertice(infoLinea[0].toInt()), Vertice(infoLinea[1].toInt()))
+    return Arista(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()])
 } 
 
 /* 
     {P: linea debe estar en formato -> int int double}
     {Q: La salida es una aristaCosto con extremos (int, int, double)}
 
-    Input: linea -> String que contiene informacion sobre una aristaCosto
+    Input:  linea -> String que contiene informacion sobre una aristaCosto
+            vertices -> Arreglo de vertices del grafo donde será agregada la arista
     Output: La arista que representa la informacion de linea
 */
-fun obtenerAristaCosto(linea: String): AristaCosto {
+fun obtenerAristaCosto(linea: String, vertices: Array<Vertice>): AristaCosto {
     val infoLinea: List<String> = linea.split(" ")
 
-    return AristaCosto(Vertice(infoLinea[0].toInt()), Vertice(infoLinea[1].toInt()), infoLinea[2].toDouble())
+    return AristaCosto(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()], infoLinea[2].toDouble())
 }
 
 /* 
@@ -43,10 +44,10 @@ fun obtenerAristaCosto(linea: String): AristaCosto {
     Input: linea -> String que contiene informacion sobre una arista
     Output: Un arco que representa la informacion de linea
 */
-fun obtenerArco(linea: String): Arco {
+fun obtenerArco(linea: String, vertices: Array<Vertice>): Arco {
     val infoLinea: List<String> = linea.split(" ")
 
-    return Arco(Vertice(infoLinea[0].toInt()), Vertice(infoLinea[1].toInt()))
+    return Arco(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()])
 }
 
 /* 
@@ -56,10 +57,10 @@ fun obtenerArco(linea: String): Arco {
     Input: linea -> String que contiene informacion sobre un arcoCosto
     Output: Un arcoCosto que representa la informacion de linea
 */
-fun obtenerArcoCosto(linea: String): ArcoCosto {
+fun obtenerArcoCosto(linea: String, vertices: Array<Vertice>): ArcoCosto {
     val infoLinea: List<String> = linea.split(" ")
 
-    return ArcoCosto(Vertice(infoLinea[0].toInt()), Vertice(infoLinea[1].toInt()), infoLinea[2].toDouble())
+    return ArcoCosto(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()], infoLinea[2].toDouble())
 }
 
 /* 

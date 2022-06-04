@@ -49,14 +49,14 @@ public class GrafoDirigidoCosto : Grafo {
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<ArcoCosto>()
         nLados = 0
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
 
         for (i in 2 until fileContent.size) {
-            val arco: ArcoCosto = obtenerArcoCosto(fileContent[i])
+            val arco: ArcoCosto = obtenerArcoCosto(fileContent[i], arrVertices)
 
             this.agregarArcoCosto(arco)
         }
 
-        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
     }
 
     /* 

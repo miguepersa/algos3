@@ -7,12 +7,20 @@ package ve.usb.libGrafo
 */
 public class DFS(val g: Grafo) {
     
+    var tiempo: Int
+
     init {
-	// Se ejecuta DFS
+        tiempo = 0;
+        for (v in g.arrVertices) {
+            if (v.color == Color.BLANCO) {
+                dfsVisit(g, v.n)
+            }
+        }
     }
 
     private fun dfsVisit(g: Grafo, u: Int) {
-
+        tiempo++
+        
     }
 
     /*
