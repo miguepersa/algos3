@@ -9,17 +9,22 @@ public class DFS(val g: Grafo) {
     
     var tiempo: Int
     var arrVertices: Array<Vertice> = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)}) // color blanco y dist 0 y pred nulo
+    var raices: LinkedList<Int> = LinkedList<Int>()
+    var arboles: LinkedList<LinkedList<Int>> = LinkedList<LinkedList<Int>>()
 
     init {
         tiempo = 0;
         for (v in arrVertices) {
             if (v.color == Color.BLANCO) {
+                raices.add(v.n)
+                arboles.add(LinkedList<Int>())
                 dfsVisit(g, v.n)
             }
         }
     }
 
     private fun dfsVisit(g: Grafo, u: Int) {
+        arboles[raices.size-1].add(u)
         tiempo++
         var v = arrVertices[u]
         v.d = tiempo
@@ -107,34 +112,66 @@ public class DFS(val g: Grafo) {
     }
 
     // Retorna true si hay lados del bosque o false en caso contrario.
-    fun hayLadosDeBosque(): Boolean {  }
+    fun hayLadosDeBosque(): Boolean {
+        for (i in arboles) {
+            if (i.size > 1) {
+                return true
+            }
+        }
+        return false
+    }
     
     // Retorna los lados del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
-    fun ladosDeBosque() : Iterator<Lado> { }
+    fun ladosDeBosque() : Iterator<Lado> {
+        if (!self.hayLadosDeBosque()) {
+            throw RuntimeException("DFS.ladosDeBosque: No hay lados del bosque")
+        }
+        var lados: LinkedList<Lado> = LinkedList<Lado>()
+        for (i in arboles) {
+            for (j in 0..i.size-2) {
+                lados.add(Lado(arrVertices[i[j]], arrVertices[i[j+1]]))
+            }
+        }
+        return lados.asIterable()
+    }
 
     // Retorna true si hay forward edges o false en caso contrario.
-    fun hayLadosDeIda(): Boolean {  }
-    
+    fun hayLadosDeIda(): Boolean {}
+
     // Retorna los forward edges del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
     fun ladosDeIda() : Iterator<Lado> { }
 
     // Retorna true si hay back edges o false en caso contrario.
     fun hayLadosDeVuelta(): Boolean {  }
-    
+
     // Retorna los back edges del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
     fun ladosDeVuelta() : Iterator<Lado> { }
 
     // Retorna true si hay cross edges o false en caso contrario.
     fun hayLadosCruzados(): Boolean {  }
-    
+
     // Retorna los cross edges del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
     fun ladosCruzados() : Iterator<Lado> { }
 
     // Imprime por la salida estándar el depth-first forest.
-    fun mostrarBosqueDFS() { }
+    fun mostrarBosqueDFS() {
+        var nArbol = 1
+        for (i in arboles) {
+            prinln("Arbol " + nArbol.toString() + ":\n")
+            for (j in 0..i.size-1) {
+                if (j == i.size-1) {
+                    println(i[j].toString() + "\n")
+                }
+                else {
+                    println(i[j].toString() + " ->")
+                }
+            }
+            nArbol++
+        }
+    }
     
 }

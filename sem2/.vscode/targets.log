@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun  4 13:24:04 2022
+# Make data base, printed on Sun Jun  5 11:38:19 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-dcaf85e6-0e21-477e-9f3c-d3455c31bfc2.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3d4f11ff-a9c4-4119-8557-2f2f506671b6.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
@@ -34,6 +34,7 @@ GDM_LANG = es_ES
 MAKE_COMMAND := make
 # environment
 QT_ACCESSIBILITY = 1
+ 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -99,7 +100,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 107024
+VSCODE_PID = 97414
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -203,7 +204,7 @@ LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 107024
+GIO_LAUNCHED_DESKTOP_FILE_PID = 97414
 # environment
 _ = /usr/share/code/code
 # environment
@@ -293,7 +294,6 @@ all: jarlib MainKt.class
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
- 
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -336,6 +336,7 @@ jarlib:
 .SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # files hash-table stats:
@@ -352,6 +353,6 @@ jarlib:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Sat Jun  4 13:24:04 2022
+# Finished Make data base on Sun Jun  5 11:38:19 2022
 
  
