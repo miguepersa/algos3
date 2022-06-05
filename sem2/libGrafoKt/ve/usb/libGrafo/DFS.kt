@@ -173,5 +173,4 @@ public class DFS(val g: Grafo) {
             nArbol++
         }
     }
-    
 }
