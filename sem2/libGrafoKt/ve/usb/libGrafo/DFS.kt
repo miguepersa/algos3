@@ -8,10 +8,11 @@ package ve.usb.libGrafo
 public class DFS(val g: Grafo) {
     
     var tiempo: Int
+    var arrVertices: Array<Vertice> = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)}) // color blanco y dist 0 y pred nulo
 
     init {
         tiempo = 0;
-        for (v in g.arrVertices) {
+        for (v in arrVertices) {
             if (v.color == Color.BLANCO) {
                 dfsVisit(g, v.n)
             }
@@ -20,7 +21,20 @@ public class DFS(val g: Grafo) {
 
     private fun dfsVisit(g: Grafo, u: Int) {
         tiempo++
-        
+        var v = arrVertices[u]
+        v.d = tiempo
+        v.color = Color.GRIS
+        var ady: Iterable<Lado> = g.adyacentes(u)
+        for (i in ady) {
+            var p: Vertice = arrVertices[i.elOtroVertice(u).n]
+            if (p.color == Color.BLANCO) {
+                p.pred = v
+                dfsVisit(g, p.n)
+            }
+        }
+        v.color = Color.NEGRO
+        tiempo++
+        v.f = tiempo
     }
 
     /*
@@ -28,20 +42,45 @@ public class DFS(val g: Grafo) {
      se retorna null. En caso de que el vértice v no exista en el grafo se lanza
      una RuntimeException 
      */    
-    fun obtenerPredecesor(v: Int) : Int? { }
+    fun obtenerPredecesor(v: Int) : Int? {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("DFS.obtenerPredecesor: Vertice invalido")
+        }
+
+        return arrVertices[v].pred?.n
+    }
 
      /*
      Retorna un par con el tiempo inical y final de un vértice durante la ejecución de DFS. 
      En caso de que el vértice v no exista en el grafo se lanza una RuntimeException 
      */
-    fun obtenerTiempos(v: Int) : Pair<Int, Int> {  }
+    fun obtenerTiempos(v: Int) : Pair<Int, Int> {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("DFS.obtenerTiempos: Vertice invalido")
+        }
+        
+        return Pair<arrVertices[v].d, arrVertices[v].f>
+    }
 
     /*
      Indica si hay camino desde el vértice inicial u hasta el vértice v.
      Si el camino existe retorna true, de lo contrario falso
      En caso de que alguno de los vértices no exista en el grafo se lanza una RuntimeException 
      */ 
-    fun hayCamino(u: Int, v: Int) : Boolean {  }
+    fun hayCamino(u: Int, v: Int) : Boolean {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices() || u < 0 || u >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("DFS.hayCamino: Vertice invalido")
+        }
+
+        var p = arrVertices[v].pred
+        while (p != null) {
+            if (p.n == u) {
+                return true
+            }
+            p = p.pred
+        }
+        return false
+    }
 
     /*
      Retorna el camino desde el vértice  u hasta el un vértice v. 
@@ -49,7 +88,23 @@ public class DFS(val g: Grafo) {
      En caso de que no exista un camino desde u hasta v, se lanza una RuntimeException. 
      En caso de que alguno de los vértices no exista en el grafo se lanza una RuntimeException.
      */ 
-    fun caminoDesdeHasta(u: Int, v: Int) : Iterable<Int>  {  }
+    fun caminoDesdeHasta(u: Int, v: Int) : Iterable<Int>  {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices() || u < 0 || u >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("DFS.caminoDesdeHasta: Vertice invalido")
+        }
+        
+        var p = arrVertices[v].pred
+        var camino = LinkedList<int>()
+        camino.addFirst(v)
+        while (p != null) {
+            camino.addFirst(p.n)
+            if (p.n == u) {
+                return camino.asIterable()
+            }
+            p = p.pred
+        }
+        throw RuntimeException("DFS.caminoDesdeHasta: Camino desde $u hasta $v no existe")
+    }
 
     // Retorna true si hay lados del bosque o false en caso contrario.
     fun hayLadosDeBosque(): Boolean {  }
