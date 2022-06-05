@@ -26,9 +26,7 @@ public class BFS(val g: Grafo, val s: Int) {
         while (!q.isEmpty()) {
             var u: Vertice = q.getFirst()
             q.removeFirst()
-
             for (v in g.adyacentes(u.n)) {
-
                 if (arrVertices[v.b.n].color == Color.BLANCO) {
                     // hacemos los cambios en la lista de adyacencias
                     v.b.color = Color.GRIS
@@ -40,7 +38,7 @@ public class BFS(val g: Grafo, val s: Int) {
                     arrVertices[v.b.n].dist = u.dist + 1
                     arrVertices[v.b.n].pred = u
 
-                    q.addLast(v.b)
+                    q.addLast(arrVertices[v.b.n])
                 }
             }
             
@@ -133,9 +131,10 @@ public class BFS(val g: Grafo, val s: Int) {
         var camino: LinkedList<Int> = LinkedList<Int>()
         
         while (vertice?.pred != null) {
-            camino.add(vertice?.n)
+            camino.addFirst(vertice?.n)
             vertice = vertice?.pred
         }
+        camino.addFirst(s)
 
         return camino.asIterable()
     }
@@ -144,8 +143,9 @@ public class BFS(val g: Grafo, val s: Int) {
     fun mostrarArbolBFS() {
         for (i in 0 until g.obtenerNumeroDeVertices()) {
             if (arrVertices[i].pred != null) {
-                println("(${arrVertices[i].pred?.n}, ${i})")
+                print("(${arrVertices[i].pred?.n}, ${i}) ")
             }
         }
+        println()
     }
 }

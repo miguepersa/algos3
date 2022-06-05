@@ -89,7 +89,6 @@ public class GrafoNoDirigidoCosto: Grafo {
         repGrafo[a.x.n].add(a.y)
         repGrafo[a.y.n].add(a.x)
         listaLados.add(a)
-        listaLados.add(AristaCosto(a.y, a.x, a.costo))
         nLados++
 
         return true
