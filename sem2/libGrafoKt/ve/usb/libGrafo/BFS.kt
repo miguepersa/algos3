@@ -131,8 +131,8 @@ public class BFS(val g: Grafo, val s: Int) {
         var camino: LinkedList<Int> = LinkedList<Int>()
         
         while (vertice?.pred != null) {
-            camino.addFirst(vertice?.n)
-            vertice = vertice?.pred
+            camino.addFirst(vertice.n)
+            vertice = vertice.pred
         }
         camino.addFirst(s)
 

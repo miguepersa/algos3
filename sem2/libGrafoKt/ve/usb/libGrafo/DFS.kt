@@ -1,4 +1,5 @@
 package ve.usb.libGrafo
+import java.util.LinkedList
 
 /* 
    Implementación del algoritmo DFS. 
@@ -31,7 +32,7 @@ public class DFS(val g: Grafo) {
         v.color = Color.GRIS
         var ady: Iterable<Lado> = g.adyacentes(u)
         for (i in ady) {
-            var p: Vertice = arrVertices[i.elOtroVertice(u).n]
+            var p: Vertice = arrVertices[i.elOtroVertice(u)!!.n]
             if (p.color == Color.BLANCO) {
                 p.pred = v
                 dfsVisit(g, p.n)
@@ -64,7 +65,7 @@ public class DFS(val g: Grafo) {
             throw RuntimeException("DFS.obtenerTiempos: Vertice invalido")
         }
         
-        return Pair<arrVertices[v].d, arrVertices[v].f>
+        return Pair<Int,Int>(arrVertices[v].d, arrVertices[v].f)
     }
 
     /*
@@ -99,7 +100,7 @@ public class DFS(val g: Grafo) {
         }
         
         var p = arrVertices[v].pred
-        var camino = LinkedList<int>()
+        var camino = LinkedList<Int>()
         camino.addFirst(v)
         while (p != null) {
             camino.addFirst(p.n)
@@ -124,44 +125,147 @@ public class DFS(val g: Grafo) {
     // Retorna los lados del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
     fun ladosDeBosque() : Iterator<Lado> {
-        if (!self.hayLadosDeBosque()) {
+        if (!this.hayLadosDeBosque()) {
             throw RuntimeException("DFS.ladosDeBosque: No hay lados del bosque")
         }
-        var lados: LinkedList<Lado> = LinkedList<Lado>()
+        var gLados = g.iterator()                           // Lados del grafo
+        var lados: LinkedList<Lado> = LinkedList<Lado>()    // Lados del bosque
         for (i in arboles) {
             for (j in 0..i.size-2) {
-                lados.add(Lado(arrVertices[i[j]], arrVertices[i[j+1]]))
+                for (k in gLados) {
+                    if (k.a.n == i[j] && k.b.n == i[j+1]) {
+                        lados.add(k)
+                        break
+                    }
+                }
             }
         }
-        return lados.asIterable()
+        return lados.iterator()
     }
 
     // Retorna true si hay forward edges o false en caso contrario.
-    fun hayLadosDeIda(): Boolean {}
+    fun hayLadosDeIda(): Boolean {
+        for (i in arrVertices) {
+            var ady = g.adyacentes(i.n)
+            
+        }
+    }
 
     // Retorna los forward edges del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
-    fun ladosDeIda() : Iterator<Lado> { }
+    fun ladosDeIda() : Iterator<Lado> {
+        if (!this.hayLadosDeIda()) {
+            throw RuntimeException("DFS.ladosDeIda: No hay lados de ida")
+        }
+        var ldb = this.ladosDeBosque()  // Lados del bosque
+        var ldg = g.iterator()          // Lados del grafo
+        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
+        var ldi = LinkedList<Lado>()    // Lados de ida
+
+        for (i in ldg) {
+            for (j in ldb) {
+                if (i != j) {
+                    lnb.add(i)
+                }
+            }
+        }
+
+        var v: Vertice?
+        var pred: Vertice?
+        for (i in arrVertices) {
+            v = i
+            pred = v.pred
+            while (pred != null) {
+                pred = pred.pred
+                if (pred != null) {
+                    for (j in lnb) {
+                        if (j.a.n == pred.n && j.b.n == v.n) {
+                            ldi.add(j)
+                        }
+                    }
+                }
+            }
+        }
+        return ldi.iterator()
+    }
 
     // Retorna true si hay back edges o false en caso contrario.
-    fun hayLadosDeVuelta(): Boolean {  }
+    fun hayLadosDeVuelta(): Boolean {
+        return true
+    }
 
     // Retorna los back edges del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
-    fun ladosDeVuelta() : Iterator<Lado> { }
+    fun ladosDeVuelta() : Iterator<Lado> {
+        if (!this.hayLadosDeVuelta()) {
+            throw RuntimeException("DFS.ladosDeVuelta: No hay lados de vuelta")
+        }
+        var ldb = this.ladosDeBosque()  // Lados del bosque
+        var ldg = g.iterator()          // Lados del grafo
+        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
+        var ldv = LinkedList<Lado>()    // Lados de vuelta
+
+        for (i in ldg) {
+            for (j in ldb) {
+                if (i != j) {
+                    lnb.add(i)
+                }
+            }
+        }
+
+        var v: Vertice?
+        var pred: Vertice?
+        for (i in arrVertices) {
+            v = i
+            pred = v.pred
+            while (pred != null) {
+                pred = pred.pred
+                for (j in lnb) {
+                    if (j.b.n == pred!!.n && j.a.n == v.n) {
+                        ldv.add(j)
+                    }
+                }
+            }
+        }
+        return ldv.iterator()
+    }
 
     // Retorna true si hay cross edges o false en caso contrario.
-    fun hayLadosCruzados(): Boolean {  }
+    fun hayLadosCruzados(): Boolean {
+        return true
+    }
 
     // Retorna los cross edges del bosque obtenido por DFS.
     // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
-    fun ladosCruzados() : Iterator<Lado> { }
+    fun ladosCruzados() : Iterator<Lado> {
+        if (!this.hayLadosCruzados()) {
+            throw RuntimeException("DFS.ladosDeVuelta: No hay lados de vuelta")
+        }
+
+        var ldg = g.iterator()          // Lados del grafo
+        var ldi = this.ladosDeIda()     // Lados de ida
+        var ldv = this.ladosDeVuelta()  // Lados de vuelta
+        var ldc = LinkedList<Lado>()   // Lados cruzados
+
+        for (i in ldg) {
+            for (j in ldi) {
+                if (i != j) {
+                    for (k in ldv) {
+                        if (i != k) {
+                            ldc.add(i)
+                        }
+                    }
+                }
+            }
+        }
+        return ldc.iterator()
+    }
 
     // Imprime por la salida estándar el depth-first forest.
     fun mostrarBosqueDFS() {
         var nArbol = 1
         for (i in arboles) {
-            prinln("Arbol " + nArbol.toString() + ":\n")
+            println("Arbol " + nArbol.toString() + ":\n")
             for (j in 0..i.size-1) {
                 if (j == i.size-1) {
                     println(i[j].toString() + "\n")
