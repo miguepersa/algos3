@@ -42,9 +42,9 @@ abstract class Lado(val a: Vertice, val b: Vertice) {
         }
 
         if (w == a.n) {
-            return a
+            return b
         }
 
-        return b
+        return a
     }
 }

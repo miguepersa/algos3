@@ -10,35 +10,32 @@ public class DFS(val g: Grafo) {
     
     var tiempo: Int
     var arrVertices: Array<Vertice> = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)}) // color blanco y dist 0 y pred nulo
-    var raices: LinkedList<Int> = LinkedList<Int>()
-    var arboles: LinkedList<LinkedList<Int>> = LinkedList<LinkedList<Int>>()
+    var raices = LinkedList<Int>()
 
     init {
         tiempo = 0;
         for (v in arrVertices) {
             if (v.color == Color.BLANCO) {
                 raices.add(v.n)
-                arboles.add(LinkedList<Int>())
                 dfsVisit(g, v.n)
             }
         }
     }
 
     private fun dfsVisit(g: Grafo, u: Int) {
-        arboles[raices.size-1].add(u)
         tiempo++
         var v = arrVertices[u]
         v.d = tiempo
         v.color = Color.GRIS
         var ady: Iterable<Lado> = g.adyacentes(u)
         for (i in ady) {
-            var p: Vertice = arrVertices[i.elOtroVertice(u)!!.n]
+            var p = arrVertices[i.elOtroVertice(u)!!.n]
             if (p.color == Color.BLANCO) {
                 p.pred = v
                 dfsVisit(g, p.n)
             }
         }
-        v.color = Color.NEGRO
+        arrVertices[u].color = Color.NEGRO
         tiempo++
         v.f = tiempo
     }
@@ -114,11 +111,12 @@ public class DFS(val g: Grafo) {
 
     // Retorna true si hay lados del bosque o false en caso contrario.
     fun hayLadosDeBosque(): Boolean {
-        for (i in arboles) {
-            if (i.size > 1) {
+        for (v in arrVertices) {
+            if (v.pred != null) {
                 return true
             }
         }
+        
         return false
     }
     
@@ -130,12 +128,11 @@ public class DFS(val g: Grafo) {
         }
         var gLados = g.iterator()                           // Lados del grafo
         var lados: LinkedList<Lado> = LinkedList<Lado>()    // Lados del bosque
-        for (i in arboles) {
-            for (j in 0..i.size-2) {
-                for (k in gLados) {
-                    if (k.a.n == i[j] && k.b.n == i[j+1]) {
-                        lados.add(k)
-                        break
+        for (v in arrVertices) {
+            if (v.pred != null) {
+                for (l in gLados) {
+                    if (l.a.n == v.pred!!.n && l.b.n == v.n) {
+                        lados.add(l)
                     }
                 }
             }
@@ -145,10 +142,35 @@ public class DFS(val g: Grafo) {
 
     // Retorna true si hay forward edges o false en caso contrario.
     fun hayLadosDeIda(): Boolean {
+        var ldg = g.iterator()          // Lados del grafo
+        var ldb = this.ladosDeBosque()  // Lados del bosque
+        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
+        
+        for (i in ldg) {
+            for (j in ldb) {
+                if (i != j) {
+                    lnb.add(i)
+                }
+            }
+        }
+
         for (i in arrVertices) {
             var ady = g.adyacentes(i.n)
-            
+            for (j in ady) {
+                for (k in lnb) {
+                    if (j == k) {
+                        var pred = arrVertices[k.b.n].pred
+                        while (pred != null) {
+                            if (pred == i) {
+                                return true
+                            }
+                            pred = pred.pred
+                        }
+                    }
+                }
+            }
         }
+        return false
     }
 
     // Retorna los forward edges del bosque obtenido por DFS.
@@ -191,7 +213,35 @@ public class DFS(val g: Grafo) {
 
     // Retorna true si hay back edges o false en caso contrario.
     fun hayLadosDeVuelta(): Boolean {
-        return true
+        var ldg = g.iterator()          // Lados del grafo
+        var ldb = this.ladosDeBosque()  // Lados del bosque
+        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
+        
+        for (i in ldg) {
+            for (j in ldb) {
+                if (i != j) {
+                    lnb.add(i)
+                }
+            }
+        }
+
+        for (i in arrVertices) {
+            var ady = g.adyacentes(i.n)
+            for (j in ady) {
+                for (k in lnb) {
+                    if (j == k) {
+                        var pred = i.pred
+                        while (pred != null) {
+                            if (pred.n == k.b.n) {
+                                return true
+                            }
+                            pred = pred.pred
+                        }
+                    }
+                }
+            }
+        }
+        return false
     }
 
     // Retorna los back edges del bosque obtenido por DFS.
@@ -232,7 +282,22 @@ public class DFS(val g: Grafo) {
 
     // Retorna true si hay cross edges o false en caso contrario.
     fun hayLadosCruzados(): Boolean {
-        return true
+        var ldg = g.iterator()          // Lados del grafo
+        var ldi = this.ladosDeIda()     // Lados de ida
+        var ldv = this.ladosDeVuelta()  // Lados de vuelta
+
+        for (i in ldg) {
+            for (j in ldi) {
+                if (i != j) {
+                    for (k in ldv) {
+                        if (i != k) {
+                            return true
+                        }
+                    }
+                }
+            }
+        }
+        return false
     }
 
     // Retorna los cross edges del bosque obtenido por DFS.
@@ -264,16 +329,9 @@ public class DFS(val g: Grafo) {
     // Imprime por la salida estándar el depth-first forest.
     fun mostrarBosqueDFS() {
         var nArbol = 1
-        for (i in arboles) {
-            println("Arbol " + nArbol.toString() + ":\n")
-            for (j in 0..i.size-1) {
-                if (j == i.size-1) {
-                    println(i[j].toString() + "\n")
-                }
-                else {
-                    println(i[j].toString() + " ->")
-                }
-            }
+        for (r in raices) {
+            println("Arbol " + nArbol.toString() + ":")
+            println(r)
             nArbol++
         }
     }
