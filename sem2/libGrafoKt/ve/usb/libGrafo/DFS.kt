@@ -5,13 +5,11 @@ public class DFS(val g: Grafo) {
     
     var tiempo: Int
     var arrVertices: Array<Vertice> = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)}) // color blanco y dist 0 y pred nulo
-    var raices = LinkedList<Int>()
 
     init {
         tiempo = 0;
         for (v in arrVertices) {
             if (v.color == Color.BLANCO) {
-                raices.add(v.n)
                 dfsVisit(g, v.n)
             }
         }
@@ -106,8 +104,9 @@ public class DFS(val g: Grafo) {
         if (v < 0 || v >= g.obtenerNumeroDeVertices() || u < 0 || u >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("DFS.hayCamino: Vertice invalido")
         }
-
-        return arrVertices[u].d < arrVertices[v].d  && arrVertices[v].d < arrVertices[v].f  && arrVertices[v].f < arrVertices[u].f
+        var intervaloDirigido: Boolean = arrVertices[u].d < arrVertices[v].d  && arrVertices[v].d < arrVertices[v].f  && arrVertices[v].f < arrVertices[u].f
+        
+        return intervaloDirigido
     }
 
     /*
@@ -193,7 +192,7 @@ public class DFS(val g: Grafo) {
             var verInit: Vertice = l.a
             var verFin: Vertice = l.b
             var anidamiento: Boolean = arrVertices[verInit.n].d < arrVertices[verFin.n].d && arrVertices[verFin.n].d < arrVertices[verFin.n].f  && arrVertices[verFin.n].f < arrVertices[verInit.n].f
-            if (arrVertices[verFin.n].pred == verInit && anidamiento) {
+            if (arrVertices[verFin.n].pred?.n == verInit.n && anidamiento) {
                 ldb.add(l)
             }
         }
@@ -223,7 +222,7 @@ public class DFS(val g: Grafo) {
             var verInit: Vertice = l.a
             var verFin: Vertice = l.b
             var anidamiento: Boolean = arrVertices[verInit.n].d < arrVertices[verFin.n].d && arrVertices[verFin.n].d < arrVertices[verFin.n].f  && arrVertices[verFin.n].f < arrVertices[verInit.n].f
-            if (arrVertices[verFin.n].pred != verInit && anidamiento) {
+            if (arrVertices[verFin.n].pred?.n != verInit.n && anidamiento) {
                 return true
             }
         }
@@ -255,7 +254,7 @@ public class DFS(val g: Grafo) {
             var verInit: Vertice = l.a
             var verFin: Vertice = l.b
             var anidamiento: Boolean = arrVertices[verInit.n].d < arrVertices[verFin.n].d && arrVertices[verFin.n].d < arrVertices[verFin.n].f  && arrVertices[verFin.n].f < arrVertices[verFin.n].f 
-            if (arrVertices[verFin.n].pred != verInit && anidamiento) {
+            if (arrVertices[verFin.n].pred?.n != verInit.n && anidamiento) {
                 ldi.add(l)
             }
         }
@@ -368,11 +367,12 @@ public class DFS(val g: Grafo) {
 
     // Imprime por la salida estándar el depth-first forest.
     fun mostrarBosqueDFS() {
-        var nArbol = 1
-        for (r in raices) {
-            println("Arbol " + nArbol.toString() + ":")
-            println(r)
-            nArbol++
+        var ldb = this.ladosDeBosque()
+
+        for (l in ldb) {
+            print(l.toString() + " ")
         }
+
+        println()
     }
 }
