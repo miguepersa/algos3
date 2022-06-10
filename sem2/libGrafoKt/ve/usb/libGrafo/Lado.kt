@@ -35,7 +35,7 @@ abstract class Lado(val a: Vertice, val b: Vertice) {
         
         Tiempo de ejecucion O(1)
     */
-    fun elOtroVertice(w: Int) : Vertice? {
+    fun elOtroVertice(w: Int) : Vertice {
         if (w != a.n && w != b.n) {
             throw RuntimeException("Error en elOtroVertice($w). \n Ninguno de los extremos del lado es $w")
 

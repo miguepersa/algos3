@@ -25,19 +25,31 @@ public class DFS(val g: Grafo) {
     private fun dfsVisit(g: Grafo, u: Int) {
         tiempo++
         var v = arrVertices[u]
+        
         v.d = tiempo
         v.color = Color.GRIS
+
+        arrVertices[u].d = tiempo
+        arrVertices[u].color = Color.GRIS
+
         var ady: Iterable<Lado> = g.adyacentes(u)
+
         for (i in ady) {
-            var p = arrVertices[i.elOtroVertice(u)!!.n]
-            if (p.color == Color.BLANCO) {
+            var p = arrVertices[i.elOtroVertice(u).n]
+            if (arrVertices[p.n].color == Color.BLANCO) {
                 p.pred = v
+                arrVertices[p.n].pred = v
                 dfsVisit(g, p.n)
             }
         }
-        arrVertices[u].color = Color.NEGRO
+        
         tiempo++
+
         v.f = tiempo
+        v.color = Color.NEGRO
+
+        arrVertices[u].color = Color.NEGRO
+        arrVertices[u].f = tiempo
     }
 
     /*

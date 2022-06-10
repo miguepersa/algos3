@@ -27,18 +27,30 @@ public class BFS(val g: Grafo, val s: Int) {
             var u: Vertice = q.getFirst()
             q.removeFirst()
             for (v in g.adyacentes(u.n)) {
-                if (arrVertices[v.b.n].color == Color.BLANCO) {
-                    // hacemos los cambios en la lista de adyacencias
-                    v.b.color = Color.GRIS
-                    v.b.dist = u.dist + 1
-                    v.b.pred = u
+                var ver: Int = v.b.n
+
+                if (ver == u.n) { // Siempre agarramos la coordenada diferente al vertice
+                    ver = v.a.n
+                }
+
+                if (arrVertices[ver].color == Color.BLANCO) {
+                    if (ver == v.b.n) {
+                        // hacemos los cambios en la lista de adyacencias
+                        v.b.color = Color.GRIS
+                        v.b.dist = u.dist + 1
+                        v.b.pred = u
+                    } else {
+                        v.a.color = Color.GRIS
+                        v.a.dist = u.dist + 1
+                        v.a.pred = u
+                    }
 
                     // hacemos los cambios en el arreglo de vertices
-                    arrVertices[v.b.n].color = Color.GRIS
-                    arrVertices[v.b.n].dist = u.dist + 1
-                    arrVertices[v.b.n].pred = u
+                    arrVertices[ver].color = Color.GRIS
+                    arrVertices[ver].dist = u.dist + 1
+                    arrVertices[ver].pred = u
 
-                    q.addLast(arrVertices[v.b.n])
+                    q.addLast(arrVertices[ver])
                 }
             }
             
