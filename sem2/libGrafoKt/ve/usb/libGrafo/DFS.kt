@@ -1,11 +1,6 @@
 package ve.usb.libGrafo
 import java.util.LinkedList
 
-/* 
-   Implementación del algoritmo DFS. 
-   Con la creación de la instancia, se ejecuta el algoritmo DFS
-   desde todos los vértices del grafo
-*/
 public class DFS(val g: Grafo) {
     
     var tiempo: Int
@@ -53,10 +48,17 @@ public class DFS(val g: Grafo) {
     }
 
     /*
-     Retorna el predecesor de un vértice v. Si el vértice no tiene predecesor 
-     se retorna null. En caso de que el vértice v no exista en el grafo se lanza
-     una RuntimeException 
-     */    
+        Obtiene el predecesor de un vertice v.
+
+        {P: v es un vertice valido}
+        {Q: true}
+
+        Input: v -> Entero, vertice al cual obtendremos el predecesor
+        Output: v.pred -> Entero, en caso de que el vertice v tenga predecesor
+                null -> En caso que que el vertice v no tenga predecesor
+         
+        Tiempo de ejecucion O(1)
+    */    
     fun obtenerPredecesor(v: Int) : Int? {
         if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("DFS.obtenerPredecesor: Vertice invalido")
@@ -65,10 +67,18 @@ public class DFS(val g: Grafo) {
         return arrVertices[v].pred?.n
     }
 
-     /*
-     Retorna un par con el tiempo inical y final de un vértice durante la ejecución de DFS. 
-     En caso de que el vértice v no exista en el grafo se lanza una RuntimeException 
-     */
+    /*
+        Obtiene el tiempo en el que se descubrio y se termino el vertice v
+
+        {P: v es un vertice valido}
+        {Q: true}
+
+        Input: v -> Eneri, vertice del cual obtendremos su tiempo de descubrimiento y terminado
+        Output: Pair<Int, Int> -> Par que contiene <v.d, v.f>
+
+        Tiempo de ejecucion O(1)
+    
+    */
     fun obtenerTiempos(v: Int) : Pair<Int, Int> {
         if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("DFS.obtenerTiempos: Vertice invalido")
@@ -78,50 +88,79 @@ public class DFS(val g: Grafo) {
     }
 
     /*
-     Indica si hay camino desde el vértice inicial u hasta el vértice v.
-     Si el camino existe retorna true, de lo contrario falso
-     En caso de que alguno de los vértices no exista en el grafo se lanza una RuntimeException 
-     */ 
+        Determina si existe un camino entre un vertice u y un vertice v.
+
+        Para determinar si existe un camino o no usamos el anidamiento de intervalos de descendientes
+
+        {P: u y v son vertices validos}
+        {Q: true}
+
+        Input: u, v -> Enteros, vertices
+        Output: true -> Si existe camino desde u hasta v
+                false -> Caso contrario
+
+        Tiempo de ejecucion O(1)
+    
+    */ 
     fun hayCamino(u: Int, v: Int) : Boolean {
         if (v < 0 || v >= g.obtenerNumeroDeVertices() || u < 0 || u >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("DFS.hayCamino: Vertice invalido")
         }
 
-        var p = arrVertices[v].pred
-        while (p != null) {
-            if (p.n == u) {
-                return true
-            }
-            p = p.pred
-        }
-        return false
+        return arrVertices[u].d < arrVertices[v].d  && arrVertices[v].d < arrVertices[v].f  && arrVertices[v].f < arrVertices[u].f
     }
 
     /*
-     Retorna el camino desde el vértice  u hasta el un vértice v. 
-     El camino es representado como un objeto iterable con los vértices del camino desde u hasta v.
-     En caso de que no exista un camino desde u hasta v, se lanza una RuntimeException. 
-     En caso de que alguno de los vértices no exista en el grafo se lanza una RuntimeException.
-     */ 
+        Devuelve un iterable que contiene los vertices que forman el camino desde u hasta v
+
+        {P: u y v son vertices validos y existes un camino entre u y v}
+        {Q: true}
+
+        Input: u, v -> Enteros, vertices del grafo
+        Output: Un iterable con los vertices del camino desde u hasta v
+
+        Tiempo de ejecucion O(v.d - u.d) // v se descubrio luego de que se descubriera u
+    */ 
     fun caminoDesdeHasta(u: Int, v: Int) : Iterable<Int>  {
         if (v < 0 || v >= g.obtenerNumeroDeVertices() || u < 0 || u >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("DFS.caminoDesdeHasta: Vertice invalido")
         }
+
+        if (!this.hayCamino(u, v)) {
+            throw RuntimeException("DFS.caminoDesdeHasta: Camino desde $u hasta $v no existe")
+        }
         
-        var p = arrVertices[v].pred
         var camino = LinkedList<Int>()
         camino.addFirst(v)
-        while (p != null) {
-            camino.addFirst(p.n)
-            if (p.n == u) {
-                return camino.asIterable()
-            }
-            p = p.pred
+
+        var p = arrVertices[v].pred
+
+        while (p?.n != u) {
+            camino.addFirst(p?.n)
+            p = p?.pred
         }
-        throw RuntimeException("DFS.caminoDesdeHasta: Camino desde $u hasta $v no existe")
+
+        camino.addFirst(u)
+        
+        return camino.asIterable()
     }
 
-    // Retorna true si hay lados del bosque o false en caso contrario.
+    /* 
+        Determina si existen lados bosque (tree edges) luego de la ejecuion de DFS
+
+        Un lado (u,v) es un lado bosque si y solo si existe un vertice cuyo predecesor no sea
+        nulo, pues el lado seria (u.pred, u), ademas se cumple el anidamiento de intervalos
+        descendientes
+
+        {P: true}
+        {Q: true}
+
+        Input: ~
+        Output: true -> Si existe un vertce u, cuyo predecesor sea no nulo
+
+        Tiempo de ejecucion O(|V|) 
+    
+    */
     fun hayLadosDeBosque(): Boolean {
         for (v in arrVertices) {
             if (v.pred != null) {
@@ -132,182 +171,175 @@ public class DFS(val g: Grafo) {
         return false
     }
     
-    // Retorna los lados del bosque obtenido por DFS.
-    // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
+    /* 
+        Devuelve un iterador con todos los lados bosque del grafo.
+
+        {P: true}
+        {Q: true}
+
+        Input: ~~
+        Output: Un iterador que itera sobre todos los lados arbol del grafo
+
+        Tiempo de ejecucion O(|V|)
+    */
     fun ladosDeBosque() : Iterator<Lado> {
         if (!this.hayLadosDeBosque()) {
             throw RuntimeException("DFS.ladosDeBosque: No hay lados del bosque")
         }
-        var gLados = g.iterator()                           // Lados del grafo
-        var lados: LinkedList<Lado> = LinkedList<Lado>()    // Lados del bosque
-        for (v in arrVertices) {
-            if (v.pred != null) {
-                for (l in gLados) {
-                    if (l.a.n == v.pred!!.n && l.b.n == v.n) {
-                        lados.add(l)
-                    }
-                }
+        var ldg = g.iterator()
+        var ldb: LinkedList<Lado> = LinkedList<Lado>()    // Lados del bosque
+        
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verInit.n].d < arrVertices[verFin.n].d && arrVertices[verFin.n].d < arrVertices[verFin.n].f  && arrVertices[verFin.n].f < arrVertices[verInit.n].f
+            if (arrVertices[verFin.n].pred == verInit && anidamiento) {
+                ldb.add(l)
             }
         }
-        return lados.iterator()
+        return ldb.iterator()
     }
 
-    // Retorna true si hay forward edges o false en caso contrario.
+    /* 
+        Determina si hay lados de ida (fordward edges) en el arbol DFS
+
+        Un lado de  (u, v) cumple con el anidamiento de intervalos de descendientes
+        pero no se cumple que u = v.pred
+
+        {P: true}
+        {Q: true}
+
+        Input: ~~
+        Output: true -> Si existe un lado de ida
+                false -> Caso contrario
+
+        Tiempo de ejecucion O(|E|)
+    
+    */
     fun hayLadosDeIda(): Boolean {
-        var ldg = g.iterator()          // Lados del grafo
-        var ldb = this.ladosDeBosque()  // Lados del bosque
-        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
+        var ldg = g.iterator() // Lados del grafoif ()
         
-        for (i in ldg) {
-            for (j in ldb) {
-                if (i != j) {
-                    lnb.add(i)
-                }
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verInit.n].d < arrVertices[verFin.n].d && arrVertices[verFin.n].d < arrVertices[verFin.n].f  && arrVertices[verFin.n].f < arrVertices[verInit.n].f
+            if (arrVertices[verFin.n].pred != verInit && anidamiento) {
+                return true
             }
         }
 
-        for (i in arrVertices) {
-            var ady = g.adyacentes(i.n)
-            for (j in ady) {
-                for (k in lnb) {
-                    if (j == k) {
-                        var pred = arrVertices[k.b.n].pred
-                        while (pred != null) {
-                            if (pred == i) {
-                                return true
-                            }
-                            pred = pred.pred
-                        }
-                    }
-                }
-            }
-        }
         return false
     }
 
-    // Retorna los forward edges del bosque obtenido por DFS.
-    // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
+    /* 
+        Devuelve un iterados de lados que itera sobre los lados de ida
+        del arbol DFS
+
+        {P: true}
+        {Q: true}
+
+        Input: ~~
+        Output: Un iterados de lados que itera sobre los lados de ida del arbol
+
+        Tiempo de ejecucion O(|E|)
+    */
     fun ladosDeIda() : Iterator<Lado> {
         if (!this.hayLadosDeIda()) {
             throw RuntimeException("DFS.ladosDeIda: No hay lados de ida")
         }
-        var ldb = this.ladosDeBosque()  // Lados del bosque
+
         var ldg = g.iterator()          // Lados del grafo
-        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
         var ldi = LinkedList<Lado>()    // Lados de ida
 
-        for (i in ldg) {
-            for (j in ldb) {
-                if (i != j) {
-                    lnb.add(i)
-                }
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verInit.n].d < arrVertices[verFin.n].d && arrVertices[verFin.n].d < arrVertices[verFin.n].f  && arrVertices[verFin.n].f < arrVertices[verFin.n].f 
+            if (arrVertices[verFin.n].pred != verInit && anidamiento) {
+                ldi.add(l)
             }
         }
 
-        var v: Vertice?
-        var pred: Vertice?
-        for (i in arrVertices) {
-            v = i
-            pred = v.pred
-            while (pred != null) {
-                pred = pred.pred
-                if (pred != null) {
-                    for (j in lnb) {
-                        if (j.a.n == pred.n && j.b.n == v.n) {
-                            ldi.add(j)
-                        }
-                    }
-                }
-            }
-        }
         return ldi.iterator()
     }
 
-    // Retorna true si hay back edges o false en caso contrario.
+    /* 
+        Determina si hay lados de vuelta en el grafo luego de ejecuar DFS
+
+        {P: true}
+        {Q: true}
+
+        Input: ~~
+        Output: true -> Si existe al menos un lado de vuelta en el grafo
+                false -> Caso contrario
+    */
     fun hayLadosDeVuelta(): Boolean {
         var ldg = g.iterator()          // Lados del grafo
-        var ldb = this.ladosDeBosque()  // Lados del bosque
-        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
         
-        for (i in ldg) {
-            for (j in ldb) {
-                if (i != j) {
-                    lnb.add(i)
-                }
-            }
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verFin.n].d <= arrVertices[verInit.n].d && arrVertices[verInit.n].d < arrVertices[verInit.n].f && arrVertices[verInit.n].f <= arrVertices[verFin.n].f
+            if (anidamiento) {
+                return true
+            } 
         }
-
-        for (i in arrVertices) {
-            var ady = g.adyacentes(i.n)
-            for (j in ady) {
-                for (k in lnb) {
-                    if (j == k) {
-                        var pred = i.pred
-                        while (pred != null) {
-                            if (pred.n == k.b.n) {
-                                return true
-                            }
-                            pred = pred.pred
-                        }
-                    }
-                }
-            }
-        }
+        
         return false
     }
 
-    // Retorna los back edges del bosque obtenido por DFS.
-    // Si no existen ese tipo de lados, entonces se lanza una RuntimeException.
+    /* 
+        Devuelve un iterador de lados que contiene los lados de vuelta del arbol DFS
+
+        {P: true}
+        {Q: true}
+
+        Input: ~~
+        Output: Un iterador de lados que itera sobre los lados devuelta del arbols DFS
+
+        Tiempo de ejecucion O(|E|)
+    */
     fun ladosDeVuelta() : Iterator<Lado> {
         if (!this.hayLadosDeVuelta()) {
             throw RuntimeException("DFS.ladosDeVuelta: No hay lados de vuelta")
         }
-        var ldb = this.ladosDeBosque()  // Lados del bosque
+        
         var ldg = g.iterator()          // Lados del grafo
-        var lnb = LinkedList<Lado>()    // Lados del grafo que no son lados del bosque
         var ldv = LinkedList<Lado>()    // Lados de vuelta
-
-        for (i in ldg) {
-            for (j in ldb) {
-                if (i != j) {
-                    lnb.add(i)
-                }
-            }
-        }
-
-        var v: Vertice?
-        var pred: Vertice?
-        for (i in arrVertices) {
-            v = i
-            pred = v.pred
-            while (pred != null) {
-                pred = pred.pred
-                for (j in lnb) {
-                    if (j.b.n == pred!!.n && j.a.n == v.n) {
-                        ldv.add(j)
-                    }
-                }
-            }
+        
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verFin.n].d <= arrVertices[verInit.n].d && arrVertices[verInit.n].d < arrVertices[verInit.n].f && arrVertices[verInit.n].f <= arrVertices[verFin.n].f
+            if (anidamiento) {
+                ldv.add(l)
+            } 
         }
         return ldv.iterator()
     }
 
-    // Retorna true si hay cross edges o false en caso contrario.
+    /* 
+        Determina si exsite un lado cruzado en el grafo luego de DFS
+
+        {P: true}
+        {Q: true}
+
+        Input: ~~
+        Output: true -> Si existe un lado cruzado en el grafo
+                false -> Caso contrario
+
+        Tiempo de ejecucion O(|E|) 
+    */
     fun hayLadosCruzados(): Boolean {
         var ldg = g.iterator()          // Lados del grafo
-        var ldi = this.ladosDeIda()     // Lados de ida
-        var ldv = this.ladosDeVuelta()  // Lados de vuelta
-
-        for (i in ldg) {
-            for (j in ldi) {
-                if (i != j) {
-                    for (k in ldv) {
-                        if (i != k) {
-                            return true
-                        }
-                    }
-                }
-            }
+        
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verFin.n].d < arrVertices[verFin.n].f && arrVertices[verFin.n].f < arrVertices[verInit.n].d && arrVertices[verInit.n].d < arrVertices[verInit.n].f
+            if (anidamiento) {
+                return true
+            } 
         }
         return false
     }
@@ -320,21 +352,17 @@ public class DFS(val g: Grafo) {
         }
 
         var ldg = g.iterator()          // Lados del grafo
-        var ldi = this.ladosDeIda()     // Lados de ida
-        var ldv = this.ladosDeVuelta()  // Lados de vuelta
         var ldc = LinkedList<Lado>()   // Lados cruzados
 
-        for (i in ldg) {
-            for (j in ldi) {
-                if (i != j) {
-                    for (k in ldv) {
-                        if (i != k) {
-                            ldc.add(i)
-                        }
-                    }
-                }
-            }
+        for (l in ldg) {
+            var verInit: Vertice = l.a
+            var verFin: Vertice = l.b
+            var anidamiento: Boolean = arrVertices[verFin.n].d < arrVertices[verFin.n].f && arrVertices[verFin.n].f < arrVertices[verInit.n].d && arrVertices[verInit.n].d < arrVertices[verInit.n].f
+            if (anidamiento) {
+                ldc.add(l)
+            } 
         }
+        
         return ldc.iterator()
     }
 
