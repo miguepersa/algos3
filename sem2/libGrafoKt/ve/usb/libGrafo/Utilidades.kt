@@ -7,11 +7,11 @@ package ve.usb.libGrafo
 
 */
 fun digrafoInverso(g: GrafoDirigido) : GrafoDirigido {
-    var gInverso: GrafoDirigido(g.obtenerNumeroDeVertices())
+    var gInverso: GrafoDirigido = GrafoDirigido(g.obtenerNumeroDeVertices())
     var ladosG = g.iterator()
 
     for (i in ladosG) {
-        gInverso.agregar(Arista(i.b, i.a))
+        gInverso.agregarArco(Arco(i.b, i.a))
     }
 
     return gInverso

@@ -7,8 +7,52 @@ import java.util.LinkedList
 */
 public class OrdenamientoTopologico(val g: GrafoDirigido) {
     var tiempo: Int
-    var arrVertices: Array<Vertice> = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)})
-	var ordenTopologico: LinkedList<Int> = LinkedList<Int>()
+    var arrVertices: Array<Vertice>
+	var ordenTopologico: LinkedList<Int>
+
+	init {
+		tiempo = 0
+		arrVertices = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)})
+		ordenTopologico = LinkedList<Int>()
+
+		for (v in arrVertices) {
+			if (v.color == Color.BLANCO) {
+				dfsVisitTopologico(g, v.n)
+			}
+		}
+	}
+
+	private fun dfsVisitTopologico(g: Grafo, u: Int) {
+		tiempo++
+		var v = arrVertices[u]
+
+		v.d = tiempo
+		v.color = Color.GRIS
+
+		arrVertices[u].d = tiempo
+		arrVertices[u].color = Color.GRIS
+
+		var ady = g.adyacentes(u)
+		for (i in ady) {
+			var p = arrVertices[i.elOtroVertice(u).n] 
+			if (arrVertices[p.n].color == Color.BLANCO)
+				p.pred = v 
+				arrVertices[p.n].pred = v 
+				dfsVisitTopologico(g, p.n)
+			
+		}
+
+		tiempo++
+
+		v.f = tiempo
+		v.color = Color.NEGRO
+
+		arrVertices[u].color = Color.NEGRO
+		arrVertices[u].f = tiempo
+
+		ordenTopologico.addFirst(u)
+	}
+
     /* 
 		Determina si el grafo dirigido es un DAG, esto es, determina si el grafo tiene un ciclo.
 
@@ -33,48 +77,6 @@ public class OrdenamientoTopologico(val g: GrafoDirigido) {
     // Retorna el ordenamiento topológico del grafo g. Si el grafo G no es DAG,
     // entonces se lanza una RuntineException()
     fun obtenerOrdenTopologico() : Iterable<Int> { 
-        if (this.esDAG()) {
-            throw RuntimeException("Ordenamiento Topologico: El grafo no es un DAG")
-        }
-
-		tiempo = 0
-		for (v in arrVertices) {
-			if (v.color == Color.BLANCO) {
-				dfsVisitTopologico(g, v.n)
-			}
-		}
-
 		return ordenTopologico.asIterable()
     }
-
-	private fun dfsVisitTopologico(g: GrafoDirigido, u: Int) {
-		tiempo++
-		var v = arrVertices[u]
-
-		v.d = tiempo
-		v.color = Color.GRIS
-
-		arrVertices[u].d = tiempo
-		arrVertices[u].color = Color.GRIS
-
-		var ady = g.adyacentes(u)
-		for (i in ady) {
-			var p = arrVertices[i.elOtroVertice(u).n] {
-				p.pred = v 
-				arrVertices[p.n].pred = v 
-				dfsVisitTopologico(g, p.n)
-			}
-		}
-
-		tiempo++
-
-		v.f = tiempo
-		v.color = color.NEGRO
-
-		arrVerties[u].color = Color.NEGRO
-		arrVertices[u].f = tiempo
-
-		ordenTopologico.addFirst(u.n)
-		
-	}
 }
