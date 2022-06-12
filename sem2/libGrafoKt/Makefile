@@ -79,11 +79,11 @@ $(GLIB)/DFS.class: $(GLIB)/DFS.kt
 $(GLIB)/Utilidades.class: $(GLIB)/Utilidades.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Utilidades.kt
 
-$(GLIB)/CFC.class: $(GLIB)/CFC.kt
-	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CFC.kt
-
 $(GLIB)/OrdenamientoTopologico.class: $(GLIB)/OrdenamientoTopologico.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologico.kt
+
+$(GLIB)/CFC.class: $(GLIB)/CFC.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologico.kt $(GLIB)/CFC.kt
 
 $(GLIB)/ParticionNiveles.class: $(GLIB)/ParticionNiveles.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ParticionNiveles.kt

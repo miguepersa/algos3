@@ -37,6 +37,10 @@ public class ParticionNiveles(val g: GrafoDirigido) {
             }
             nivel++
         }
+
+        if (nvert < g.obtenerNumeroDeVertices()) {
+            println("El grafo dado no es un DAG, no se tienen particiones de nivel")
+        }
     }
 
     // Retorna las particiones de niveles de los vértices del grafo de entrada
