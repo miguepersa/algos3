@@ -17,7 +17,15 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/GrafoDirigido.class\
 		$(GLIB)/GrafoDirigidoCosto.class\
 		$(GLIB)/GrafoNoDirigido.class\
-		$(GLIB)/GrafoNoDirigidoCosto.class
+		$(GLIB)/GrafoNoDirigidoCosto.class\
+		$(GLIB)/BFS.class\
+		$(GLIB)/DFS.class\
+		$(GLIB)/Utilidades.class\
+		$(GLIB)/CFC.class\
+		$(GLIB)/OrdenamientoTopologico.class\
+		$(GLIB)/ParticionNiveles.class\
+		$(GLIB)/CicloDigrafo.class
+
 	jar -cvf $@ $(GLIB)/*.class 
 
 $(GLIB)/Color.class: $(GLIB)/Color.kt
@@ -67,5 +75,20 @@ $(GLIB)/BFS.class: $(GLIB)/BFS.kt
 
 $(GLIB)/DFS.class: $(GLIB)/DFS.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/DFS.kt
+
+$(GLIB)/Utilidades.class: $(GLIB)/Utilidades.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Utilidades.kt
+
+$(GLIB)/OrdenamientoTopologico.class: $(GLIB)/OrdenamientoTopologico.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologico.kt
+
+$(GLIB)/CFC.class: $(GLIB)/CFC.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologico.kt $(GLIB)/CFC.kt
+
+$(GLIB)/ParticionNiveles.class: $(GLIB)/ParticionNiveles.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ParticionNiveles.kt
+
+$(GLIB)/CicloDigrafo.class: $(GLIB)/CicloDigrafo.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CicloDigrafo.kt
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class

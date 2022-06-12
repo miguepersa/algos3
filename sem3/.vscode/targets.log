@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 00:22:35 2022
+# Make data base, printed on Sun Jun 12 15:14:56 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a78cd970-0463-4cfd-95cc-fe98a09e63fb.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6ac2e68c-f0cd-4d28-8857-d7f8567e4244.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
@@ -41,7 +41,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/miguelp/algos3/sem1/pruebaEstructuraGrafo
+PWD = /home/miguelp/algos3/sem3
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -67,11 +67,11 @@ XAUTHORITY = /home/miguelp/.Xauthority
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/miguelp/algos3/sem1/pruebaEstructuraGrafo
+CURDIR := /home/miguelp/algos3/sem3
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -83,6 +83,7 @@ MFLAGS = -pqrR
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # default
+ 
 .SHELLFLAGS := -c
 # environment
 QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
@@ -99,7 +100,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 22505
+VSCODE_PID = 14904
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -203,7 +204,7 @@ LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 22505
+GIO_LAUNCHED_DESKTOP_FILE_PID = 14904
 # environment
 _ = /usr/share/code/code
 # environment
@@ -251,9 +252,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2053, inode 1185635): 8 files, no impossibilities.
+# . (device 2053, inode 1197264): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -296,7 +297,6 @@ all: jarlib MainKt.class
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 # Not a target:
@@ -346,12 +346,12 @@ jarlib:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 151 B / avg = 9 B
-# current buf: size = 8162 B / used = 151 B / count = 16 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 203 B / avg = 11 B
+# current buf: size = 8162 B / used = 203 B / count = 17 / avg = 11 B
 
-# strcache performance: lookups = 29 / hit rate = 44%
+# strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Fri Jun  3 00:22:35 2022
+# Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
+# Finished Make data base on Sun Jun 12 15:14:56 2022
 
  

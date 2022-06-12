@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun  5 16:39:30 2022
+# Make data base, printed on Sat Jun 11 14:22:09 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e717fb1f-57d9-4f4d-b639-374964fd2015.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-36740558-18fe-4e51-be71-356de3f7ded6.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
@@ -99,7 +99,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 16166
+VSCODE_PID = 41251
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -203,7 +203,7 @@ LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 16166
+GIO_LAUNCHED_DESKTOP_FILE_PID = 41251
 # environment
 _ = /usr/share/code/code
 # environment
@@ -283,6 +283,7 @@ clean:
 	(cd $(LIBGRAPH); make clean)
 	rm -rf *.class META-INF
 
+ 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
@@ -294,7 +295,6 @@ all: jarlib MainKt.class
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
- 
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
@@ -352,6 +352,6 @@ jarlib:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Sun Jun  5 16:39:30 2022
+# Finished Make data base on Sat Jun 11 14:22:09 2022
 
  

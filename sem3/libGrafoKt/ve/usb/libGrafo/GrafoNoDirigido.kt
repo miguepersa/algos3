@@ -116,13 +116,10 @@ public class GrafoNoDirigido: Grafo {
         var ady: LinkedList<Arista> = LinkedList<Arista>()
         for (i in listaLados){
             if (i.v.n == v || i.u.n == v) {
-                if (i.u.n == v) {
-                    ady.add(Arista(i.u, i.v))
-                } else {
-                    ady.add(i)
-                }
+                ady.add(i)
             }
         }
+        
         return ady.asIterable()
     }
 
