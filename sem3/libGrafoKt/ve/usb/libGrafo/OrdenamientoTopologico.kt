@@ -35,11 +35,11 @@ public class OrdenamientoTopologico(val g: GrafoDirigido) {
 		var ady = g.adyacentes(u)
 		for (i in ady) {
 			var p = arrVertices[i.elOtroVertice(u).n] 
-			if (arrVertices[p.n].color == Color.BLANCO)
+			if (arrVertices[p.n].color == Color.BLANCO){
 				p.pred = v 
 				arrVertices[p.n].pred = v 
 				dfsVisitTopologico(g, p.n)
-			
+			}
 		}
 
 		tiempo++

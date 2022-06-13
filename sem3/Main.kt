@@ -10,22 +10,9 @@ fun main(args: Array<String>) {
         println("$i : " + bfs.obtenerDistancia(i).toString())
     }*/
     println(g)
-    var dfs = DFS(g)
-    println("Bosque: ${dfs.hayLadosDeBosque()}")
-    var lados = dfs.ladosDeBosque()
-    for (l in lados) {
-        print(l.toString() + " ")
+    
+    var cfc = ParticionNiveles(g)
+    for (i in cfc.obtenerParticiones().asIterable()) {
+        println(i)
     }
-
-    println("\n Ida: ${dfs.hayLadosDeIda()}")
-    lados = dfs.ladosDeIda()
-    for (l in lados) {
-        print(l.toString() + " ")
-    }
-    println("\n Vuelta: ${dfs.hayLadosDeVuelta()}")
-    lados = dfs.ladosDeVuelta()
-    for (l in lados) {
-        print(l.toString() + " ")
-    }
-    println("\n Cruzados: ${dfs.hayLadosCruzados()}")
 }

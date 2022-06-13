@@ -18,37 +18,37 @@ public class CFC(val g: GrafoDirigido) {
 		
 		tiempo = 0
 		cfc = Array<LinkedList<Int>>(g.obtenerNumeroDeVertices(), {LinkedList<Int>()}) 
-		cfcCont = -1
+		cfcCont = 0
 
 		// ejecutamos dfs tal que el ciclo principal siga los vertices en el orden
 		for (v in orden) {
-			if (g.arrVertices[v].color == Color.BLANCO) {
-				cfcCont++
+			if (gInv.arrVertices[v].color == Color.BLANCO) {
 				cfc[cfcCont].add(v)
 				dfsVisitCFC(gInv, v)
+				cfcCont++
 			}
 		}
 	}
 
-	private fun dfsVisitCFC(g: GrafoDirigido, u: Int) {
+	private fun dfsVisitCFC(gi: GrafoDirigido, u: Int) {
 		tiempo++
-		var v = g.arrVertices[u]
+		var v = gi.arrVertices[u]
 
 		v.d = tiempo
 		v.color = Color.GRIS
 
-		g.arrVertices[u].d = tiempo
-		g.arrVertices[u].color = Color.GRIS
+		gi.arrVertices[u].d = tiempo
+		gi.arrVertices[u].color = Color.GRIS
 
-		var ady: Iterable<Lado> = g.adyacentes(u)
+		var ady: Iterable<Lado> = gi.adyacentes(u)
 
 		for (i in ady) {
-			var p = g.arrVertices[i.elOtroVertice(u).n]
-			if (g.arrVertices[p.n].color == Color.BLANCO) {
+			var p = gi.arrVertices[i.elOtroVertice(u).n]
+			if (gi.arrVertices[p.n].color == Color.BLANCO) {
 				cfc[cfcCont].add(p.n)
 				p.pred = v 
-				g.arrVertices[p.n].pred = v 
-				dfsVisitCFC(g, p.n)
+				gi.arrVertices[p.n].pred = v 
+				dfsVisitCFC(gi, p.n)
 			}
 		}
 
@@ -57,8 +57,8 @@ public class CFC(val g: GrafoDirigido) {
 		v.f = tiempo
 		v.color = Color.NEGRO
 
-		g.arrVertices[u].color = Color.NEGRO
-		g.arrVertices[u].f = tiempo
+		gi.arrVertices[u].color = Color.NEGRO
+		gi.arrVertices[u].f = tiempo
 	}
     
     /*
@@ -100,7 +100,7 @@ public class CFC(val g: GrafoDirigido) {
 
 	*/
     fun obtenerIdentificadorCFC(v: Int) : Int {
-		if (0 < v || v >= g.obtenerNumeroDeVertices()) {
+		if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
 			throw RuntimeException("CFC.obtenerIdentificadorCFC: El vertice dado no pertenece al grafo")
 		}
 
@@ -149,21 +149,18 @@ public class CFC(val g: GrafoDirigido) {
      */
     fun obtenerGrafoComponente() : GrafoDirigido {
 		var grafoComponente: GrafoDirigido = GrafoDirigido(cfcCont)
-		var cfcActual = 0
 		for (i in cfc) {
 			for (j in i) {
 				var adyacentes = g.adyacentes(j)
 				for (k in adyacentes) {
-					var u = grafoComponente.arrVertices[this.obtenerIdentificadorCFC(cfcActual)]
+					var u = grafoComponente.arrVertices[this.obtenerIdentificadorCFC(j)]
 					var v = grafoComponente.arrVertices[this.obtenerIdentificadorCFC(k.elOtroVertice(j).n)]
 					if (u != v) {
 						grafoComponente.agregarArco(Arco(u,v))
 					}
 				}
 			}
-			cfcActual++
 		}
 		return grafoComponente
     }
-
 }

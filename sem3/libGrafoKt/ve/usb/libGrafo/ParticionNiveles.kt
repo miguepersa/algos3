@@ -13,7 +13,7 @@ public class ParticionNiveles(val g: GrafoDirigido) {
     var nivel: Int
 
     init {
-        particiones = Array<MutableSet<Int>>(g.obtenerNumeroDeVertices(), {i -> mutableSetOf<Int>()})
+        particiones = Array<MutableSet<Int>>(g.obtenerNumeroDeVertices(), {mutableSetOf<Int>()})
         gradoInterior = Array<Int>(g.obtenerNumeroDeVertices(), {i -> g.gradoInterior(i)})
         nvert = 0
         nivel = 0
