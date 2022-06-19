@@ -35,11 +35,11 @@ public class OrdenamientoTopologico(val g: GrafoDirigido) {
 		var ady = g.adyacentes(u)
 		for (i in ady) {
 			var p = arrVertices[i.elOtroVertice(u).n] 
-			if (arrVertices[p.n].color == Color.BLANCO)
+			if (arrVertices[p.n].color == Color.BLANCO) {
 				p.pred = v 
 				arrVertices[p.n].pred = v 
 				dfsVisitTopologico(g, p.n)
-			
+			}
 		}
 
 		tiempo++
@@ -66,7 +66,7 @@ public class OrdenamientoTopologico(val g: GrafoDirigido) {
 		Output: true -> Si el grafo es un DAG, es decir, si no tiene un ciclo
 				false -> Caso contrario
 
-		Tiempo de ejecucion O(|V| + 2|E|)
+		Tiempo de ejecucion O(|V| + |E|)
     */
     fun esDAG() : Boolean { 
         var gDFS = DFS(g)
