@@ -24,7 +24,9 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/CFC.class\
 		$(GLIB)/OrdenamientoTopologico.class\
 		$(GLIB)/ParticionNiveles.class\
-		$(GLIB)/CicloDigrafo.class
+		$(GLIB)/CicloDigrafo.class\
+		$(GLIB)/ConjuntosDisjuntos.class\
+		$(GLIB)/ComponentesConexasCD.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -90,5 +92,11 @@ $(GLIB)/ParticionNiveles.class: $(GLIB)/ParticionNiveles.kt
 
 $(GLIB)/CicloDigrafo.class: $(GLIB)/CicloDigrafo.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CicloDigrafo.kt
+
+$(GLIB)/ConjuntosDisjuntos.class: $(GLIB)/ConjuntosDisjuntos.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ConjuntosDisjuntos.kt
+
+$(GLIB)/ComponentesConexasCD.class: $(GLIB)/ComponentesConexasCD.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ComponentesConexasCD.kt
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class
