@@ -7,6 +7,7 @@ public open class Vertice(val n: Int) {
     var pred: Vertice? = null
     var d: Int = 0
     var f: Int = 0
+    var cc: Int = 0
 
     override fun toString(): String {
         return n.toString()

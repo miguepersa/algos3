@@ -14,7 +14,7 @@ public class ComponentesConexasCD(val g: GrafoNoDirigido) {
     init {
         for (i in g.iterator()) {
             if (componentesConexas.encontrarConjunto(i.v.n) != componentesConexas.encontrarConjunto(i.u.n)) {
-                var flag: Boolean = componentesConexas.union(i.v.n, i.u.n)
+                componentesConexas.union(i.v.n, i.u.n)
             }
         }
     }

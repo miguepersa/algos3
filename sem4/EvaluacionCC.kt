@@ -10,17 +10,23 @@ fun pruebaComponenteConexaCD(g: GrafoNoDirigido): Pair<Double, Int> {
 
     val tiempoFinal: Long = System.nanoTime()
 
-    return Pair(nanoSegundosASegundos((tiempoFinal - tiempoInicial).toDouble()), gComponentes.nCC())
+    return Pair((tiempoFinal - tiempoInicial) / 1000000.0, gComponentes.nCC())
 }
 
-fun nanoSegundosASegundos(tiempo: Double): Double = tiempo / (10.0).pow(9)
+fun pruebaCCDFS(archivo: String) {
+    var grafo = GrafoNoDirigido(archivo)
+    var tiempoInicial: Long = System.nanoTime()
+    var ccDFS = ComponentesConexasDFS(grafo)
+    var tiempo = (System.nanoTime() - tiempoInicial) / 1000000.0
+    println("Tiempo de ejecucion: " + tiempo.toString() + "ms -- Componentes conexas: " + ccDFS.nCC().toString() + "\n\n")
+}
 
 fun main(args: Array<String>) {
     try {
         println(".: Cliente de pruebas de deteccion de componentes conexas en grafos no dirigidos :.")
 
         if (!verificarInputTamano(args)) {
-            throw RuntimeException("main: Cantidad de aprametros en el comando incorrecta. Se esperan 1 solo parametro, se recibieron ${args.size}")
+            throw RuntimeException("main: Cantidad de parámetros en el comando incorrecta. Se esperan 1 solo parametro, se recibieron ${args.size}")
         }
 
         // creamos el grafo
@@ -29,7 +35,10 @@ fun main(args: Array<String>) {
 
         println("------------------------------------------------------------------")
         println(".: Resultados para las componentes conexas usando conjuntos disjuntos :.")
-        println("Tiempo de ejecucion: ${resCD.first} segundos. Cantidad de componentes conexas: ${resCD.second}")
+        println("Tiempo de ejecucion: ${resCD.first}ms -- Componentes conexas: ${resCD.second}")
+        println("------------------------------------------------------------------")
+        println(".: Resultados para las componentes conexas usando DFS :.")
+        pruebaCCDFS(args[0])
 
     } catch (e: RuntimeException) {
         println(e)
