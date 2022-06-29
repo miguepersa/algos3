@@ -27,7 +27,13 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/CicloDigrafo.class\
 		$(GLIB)/ConjuntosDisjuntos.class\
 		$(GLIB)/ComponentesConexasCD.class\
-		$(GLIB)/ComponentesConexasDFS.class
+		$(GLIB)/ComponentesConexasDFS.class\
+		$(GLIB)/ColaDePrioridad.class\
+		$(GLIB)/ComponentesConexasCostoDFS.class\
+		$(GLIB)/KruskalAMC.class\
+		$(GLIB)/PrimAMC.class\
+		$(GLIB)/TablaGrafoDirigido.class\
+		$(GLIB)/TablaGrafoNoDirigido.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -102,6 +108,23 @@ $(GLIB)/ComponentesConexasCD.class: $(GLIB)/ComponentesConexasCD.kt
 
 $(GLIB)/ComponentesConexasDFS.class: $(GLIB)/ComponentesConexasDFS.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ComponentesConexasDFS.kt
-	
+
+$(GLIB)/ColaDePrioridad.class: $(GLIB)/ColaDePrioridad.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ColaDePrioridad.kt
+
+$(GLIB)/ComponentesConexasCostoDFS.class: $(GLIB)/ComponentesConexasCostoDFS.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ComponentesConexasCostoDFS.kt
+
+$(GLIB)/KruskalAMC.class: $(GLIB)/KruskalAMC.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Utilidades.kt $(GLIB)/KruskalAMC.kt
+
+$(GLIB)/PrimAMC.class: $(GLIB)/PrimAMC.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ColaDePrioridad.kt $(GLIB)/PrimAMC.kt
+
+$(GLIB)/TablaGrafoDirigido.class: $(GLIB)/TablaGrafoDirigido.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/TablaGrafoDirigido.kt
+
+$(GLIB)/TablaGrafoNoDirigido.class: $(GLIB)/TablaGrafoNoDirigido.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/TablaGrafoNoDirigido.kt
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class

@@ -1,7 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/miguelp/algos3/sem4'
+make: Entering directory '/home/miguelp/algos3/sem5'
 (cd libGrafoKt/; make)  
- 
 kotlinc -cp libGrafoKt/libGrafoKt.jar EvaluacionCC.kt
-make: Leaving directory '/home/miguelp/algos3/sem4'
+make: Leaving directory '/home/miguelp/algos3/sem5'
  

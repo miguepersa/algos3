@@ -3,13 +3,13 @@ KFLAG=		-cp
 LIBGRAPH=	libGrafoKt/
 LIBJAR=		libGrafoKt/libGrafoKt.jar
 
-all:	jarlib EvaluacionCC.class
+all:	jarlib Main.class
 
 jarlib:
 	(cd $(LIBGRAPH); make)  
 
-EvaluacionCC.class: EvaluacionCC.kt 
-	$(KC) $(KFLAG) $(LIBJAR) EvaluacionCC.kt
+Main.class: Main.kt 
+	$(KC) $(KFLAG) $(LIBJAR) Main.kt
 clean:
 	(cd $(LIBGRAPH); make clean)
 	rm -rf *.class META-INF

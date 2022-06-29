@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sun Jun 26 11:05:31 2022
+# Make data base, printed on Sun Jun 26 11:06:03 2022
 
 # Variables
 
@@ -18,7 +17,7 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bf87a7b-86cf-4122-9177-f5854795c6cd.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-979891f0-89ec-428b-a422-5a0e1654af9a.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
@@ -42,7 +41,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/miguelp/algos3/sem4
+PWD = /home/miguelp/algos3/sem5
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -68,7 +67,7 @@ XAUTHORITY = /home/miguelp/.Xauthority
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/miguelp/algos3/sem4
+CURDIR := /home/miguelp/algos3/sem5
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -159,7 +158,6 @@ LC_TELEPHONE = es_VE.UTF-8
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # automatic
 ?F = $(notdir $?)
- 
 # environment
 XDG_SEAT = seat0
 # environment
@@ -228,7 +226,6 @@ ELECTRON_RUN_AS_NODE = 1
 VSCODE_IPC_HOOK = /run/user/1000/vscode-81c75eec-1.67.2-main.sock
 # environment
 XDG_SESSION_ID = c3
- 
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -254,7 +251,7 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2053, inode 1197265): 9 files, no impossibilities.
+# . (device 2053, inode 1197266): 9 files, no impossibilities.
 
 # 9 files, no impossibilities in 1 directories.
 
@@ -274,7 +271,7 @@ EvaluacionCC.class: EvaluacionCC.kt
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 20:27:41.510096327
+#  Last modified 2022-06-26 02:02:56
 #  File has been updated.
 #  Successfully updated.
 
@@ -285,6 +282,7 @@ clean:
 #  recipe to execute (from 'Makefile', line 14):
 	(cd $(LIBGRAPH); make clean)
 	rm -rf *.class META-INF
+ 
 
 # Not a target:
 .DEFAULT:
@@ -327,7 +325,6 @@ jarlib:
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
 #  recipe to execute (from 'Makefile', line 9):
 	(cd $(LIBGRAPH); make)  
- 
 
 # Not a target:
 EvaluacionCC.kt:
@@ -355,6 +352,6 @@ EvaluacionCC.kt:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Sun Jun 26 11:05:31 2022
+# Finished Make data base on Sun Jun 26 11:06:03 2022
 
  
