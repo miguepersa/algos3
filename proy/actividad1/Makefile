@@ -3,13 +3,13 @@ KFLAG=		-cp
 LIBGRAPH=	libGrafoKt/
 LIBJAR=		libGrafoKt/libGrafoKt.jar
 
-all:	jarlib pruebaGrafoBipartito.class
+all:	jarlib GradosDeSeparacion.class
 
 jarlib:
 	(cd $(LIBGRAPH); make)  
 
-pruebaGrafoBipartito.class: pruebaGrafoBipartito.kt 
-	$(KC) $(KFLAG) $(LIBJAR) pruebaGrafoBipartito.kt
+GradosDeSeparacion.class: GradosDeSeparacion.kt 
+	$(KC) $(KFLAG) $(LIBJAR) GradosDeSeparacion.kt
 clean:
 	(cd $(LIBGRAPH); make clean)
 	rm -rf *.class META-INF

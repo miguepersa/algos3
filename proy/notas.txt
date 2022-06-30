@@ -1,0 +1,27 @@
+Sobre la actividad 1
+    Tenemos un grafo no dirigido en donde cada vertice es un string y sus conexiones. 
+    De este grafo sacamos su representacion en donde cada vertice es un string.
+    Luego el grado de separacion de dos entes, ent1 y ent2 es el camino mas corto
+    entre ent1 y ent2. Para hallar este camino usamos BFS y ent2.d es el grado 
+    de separacion
+
+    Para verificar si un grafo es bipartito usamos el arlgoritmo que permite saber si un grafo
+    es 2-coloreable. Luego, de igual manera aplicamos BFS a diferencia que el grado de 
+    separacion seria ent2.d / 2 pues nada mas contamos lo de un conjunto de vertices.
+
+    Para verificar que ambos entes esten en el mismo conjuntos de vertices en el grafo
+    bipartito calculamos las componentes conexas del grafo y vemos que ambos vertices tengan el
+    el mismo color
+
+Sobre la actividad 2
+    Ahorita no se me ocurre como representar el problema como un grafo.
+    Me imagino que se soluciona con DFS pues estamos buscando el camino mas largo.
+    Me imagino que la idea es modelar las palabras viendo si fue un caso de eliminacion o adicion
+    de letras. Con este modelo podemos creamos los lados (w_i, w_(i+1)) y luego, ejecutamos DFS.
+
+    No estoy seguro pero por los momentos esto es lo que se me ocurre.
+
+Sobre la actividad 3.
+    Se ve bastante directa de implementar
+
+    No estoy claro de como es el formato del grafo. Seria bueno preguntarle a palma
