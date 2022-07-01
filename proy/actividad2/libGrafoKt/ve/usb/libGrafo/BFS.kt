@@ -151,6 +151,41 @@ public class BFS(val g: Grafo, val s: Int) {
         return camino.asIterable()
     }
 
+    /* 
+        Obtiene el indice cuya distancia desde la raiz sea la mayor
+
+
+        {P: true}
+        {Q: sea v el vertice que devuelve v.d >= u.d para todo u en V}
+
+        Input:~~
+        Output: Entero -> representa el vertice con mayor distancia desde la raiz
+
+        Tiempo de ejecucion O(|V|)
+    */
+    fun obtenerMayorVerticeDistancia(): Int {
+        var mayorVerticeDistancia: Int = 0
+
+        for (i in 0 until g.obtenerNumeroDeVertices()) {
+            if (arrVertices[mayorVerticeDistancia].d < arrVertices[i].d) mayorVerticeDistancia = i
+        }
+
+        return mayorVerticeDistancia
+    }
+
+    /* 
+        Se devuelve la mayor distancia que hay desde la raiz a algun vertice del grafo
+
+        {P: true}
+        {Output: se devuelve la mayor distancia de un vertice desde la raiz}
+
+        Input: ~~
+        Output: Entero -> La mayor distancia desde un vertice desde la raiz
+
+        Tiempo de ejecucion O(1)    
+    */
+    fun obtenerMayorDistancia(): Int = this.obtenerDistancia(this.obtenerMayorVerticeDistancia())
+
     // Imprime por la salida estándar el breadth-first tree
     fun mostrarArbolBFS() {
         for (i in 0 until g.obtenerNumeroDeVertices()) {
