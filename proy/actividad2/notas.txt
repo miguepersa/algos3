@@ -1,0 +1,8 @@
+Modificar la obtencion de los caminos con BFS hay
+casos en los que no obtenemos el mejor camino por el tipo
+de busqueda que se hace
+
+La idea es usar DFS para obtener todos los caminos posibles y 
+quedarnos con el mas largo
+
+Luego se realiza la comparacion usual

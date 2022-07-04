@@ -167,7 +167,7 @@ public class BFS(val g: Grafo, val s: Int) {
         var mayorVerticeDistancia: Int = 0
 
         for (i in 0 until g.obtenerNumeroDeVertices()) {
-            if (arrVertices[mayorVerticeDistancia].d < arrVertices[i].d) mayorVerticeDistancia = i
+            if (this.obtenerDistancia(mayorVerticeDistancia) < this.obtenerDistancia(i)) mayorVerticeDistancia = i
         }
 
         return mayorVerticeDistancia

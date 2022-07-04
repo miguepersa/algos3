@@ -21,14 +21,16 @@ import java.util.LinkedList
     de edicion entre u y v, tenemos que hallar el camino mas largo de 
     ediciones consecutivas.
 
-    Para esto ejecutamos BFS desde cada vertice y obtnermos el vertice 
-    que haya terminado con mayor distancia desde el raiz. A medida
-    que calculamos esto guardamos el valor del camino mas largo y cual fue 
-    el vertice raiz con el cual se obtuvo.
+    Para esto ejecutamos una version de DFS que nos permita obtener
+    todos los caminos desde un vertice raiz
 
-    Luego, obtenemos el camino desde el vertice raiz guardado y el vertice cuyo
-    camino sea el mas largo. Luego, ordenamos lexicograficamente el camino.
+    Luego, entre todos esos caminos nos quedamos con el mas largo.
 
+    Repitiendo este proceso con todos los vertices nos queda que guardamos
+    el camino mas largo desde todos los vertices.
+
+    Con eso, queda seleccionar el mas largo el cual es la solucion al problema
+    
     Sobre el tiempo de ejecucion
         Cargar todos los lados al grafo toma O(|V^2|), pues recorremos cada par de palabras
         del diccionario
@@ -40,6 +42,7 @@ import java.util.LinkedList
         Comparar y determinar el vertice cuya distancia se la mayor O(|V|)
         Obtener el camino correspondiente O(|V|)
 
+        En conclusion, el programa tiene un tiempo de ejecucion O(|V|^2 + |E||V|)
 */
 
 fun main(args: Array<String>) {
@@ -54,7 +57,7 @@ fun main(args: Array<String>) {
         val diccionario: List<String> = File(args[0]).readLines()
         
         // Creamos un grafo con tantos vertices como palabras tengamos
-        val grafoDiccionario: GrafoNoDirigido = GrafoNoDirigido(diccionario.size)
+        val grafoDiccionario: GrafoDirigido = GrafoDirigido(diccionario.size)
         llenarGrafoDiccionario(grafoDiccionario, diccionario) // Agregamos los lados al grafo
 
         // Con el grafo lleno, procedemos a ejecutar BFS sobre cada vertice
@@ -67,7 +70,7 @@ fun main(args: Array<String>) {
         val cadenaDeEdicion: String = obtenerCadenaDeEdicion(caminoMayorDistancia, diccionario)
 
         println(cadenaDeEdicion)
-        println(arrBFS[mayorVerticeRaiz].obtenerMayorDistancia())
+        println(arrBFS[mayorVerticeRaiz].obtenerMayorDistancia() + 1)
 
     } catch (e: RuntimeException) {
         println(e)
@@ -114,12 +117,12 @@ fun entradaCorrecta(args: Array<String>): Boolean = args.size == 1
 
     Tiempo de ejecucion O(|V|^2)
 */
-fun llenarGrafoDiccionario(g: GrafoNoDirigido, dic: List<String>) {
+fun llenarGrafoDiccionario(g: GrafoDirigido, dic: List<String>) {
     // Recorremos cada par de palabras en la lista
     for (i in 0 until dic.size) {
-        for (j in i until dic.size) {
+        for (j in i + 1 until dic.size) {
             if (hayUnPasoDeEdicion(dic[i], dic[j])) {
-                g.agregarArista(Arista(Vertice(i), Vertice(j)))
+                g.agregarArco(Arco(Vertice(i), Vertice(j)))
             }
         }
     }
@@ -218,19 +221,12 @@ fun agregar(s1: String, s2: String): Boolean  = s1.length == s2.length - 1 && es
 fun eliminar(s1: String, s2: String): Boolean = s1.length == s2.length + 1 && estaContenido(s2, s1)
 
 /* 
-    Determina si un un string esta contenido en otro
+    Determina si un un string s1 esta contenido en un string s2.
 
-    Sea s2 = [l1, l2, l3, l4, l5]
+    s1 esta contenido en s2 si eliminando una letra de s2 obtenemos s1
 
-    Tenemos dos casos para ver si s1 esta contenido en s2.
-    s1 esta contenido a izq o s1 esta contenido a derecha
+    Ademas se verifica si s1 esta contenido a derecha o a izq de s2
 
-    En caso de que s1 este contenido a izq
-    entonces se cumple que s1 = [l1, l2, l3, l4]
-
-    En caso de que s1 este contenido a derecha
-    entonces se cumple que s1 = [l2, l3, l4, l5]
- 
     {P: s1.length  < s2.length}
     {Q: s1 esta contenido a derecha o a izq de s2}
 
@@ -240,19 +236,25 @@ fun eliminar(s1: String, s2: String): Boolean = s1.length == s2.length + 1 && es
     
     Tiempo de ejecucion O(s2.length)
 */
-fun estaContenido(s1: String, s2: String): Boolean = estaContenidoIzq(s1, s2) || estaContenidoDerecha(s1, s2)
+fun estaContenido(s1: String, s2: String): Boolean {
+    // Determinamos cual es la letra de s2 que no este en s1
+    val letraS2: String = obtenerLetraExtra(s1, s2)
+    val nuevoS2: String = s2.replaceFirst(letraS2, "")
+
+    return s1 == nuevoS2 || estaContenidoIzq(s1, s2) || estaContenidoDerecha(s1, s2)
+}
 
 /* 
-    Determina si un string s1 esta contenido en la izquierda de otro s2
+    Se determina si s1 esta contenido a izq en s2
 
-    Sea s2 = [l1, l2, l3, l4, l5]
-    s1 debe ser de la forma s1 = [l1, l2, l3, l4]
+    Por ejemplo: Sea s1 = [l1, l2, l3, l4], s2 debe ser 
+    de la forma s2 = [l1, l2, l3, l4, l5]
 
-    {P: s1.length < s2.lenth}
-    {Q: s1[i] == s2[i] para todo i en [0, s1.length)}
+    {P: s1.length < s2.length}
+    {Q: Devuelve si s1[i] == s2[i] para todo i en s1.length}
 
     Input: s1 y s2 -> Strings
-    Output: true -> Si s1 esta contenido a izq de s2
+    Output: true -> s1 esta contenido a derecha de s2
             false -> caso contrario
 
     Tiempo de ejecucion O(s1.length)
@@ -266,16 +268,16 @@ fun estaContenidoIzq(s1: String, s2: String): Boolean {
 }
 
 /* 
-    Determina si un string s1 esta contenido en la derecha de otro s2
-    
-    Sea s2 = [l1, l2, l3, l4, l5]
-    s1 debe ser de la forma s1 = [l2, l3, l4, l5]
+    Se determina si s2 esta contenido a derecha en s2
+
+    Por ejemplo: Sea s1 = [l1, l2, l3, l4], s2 debe ser
+    de la forma s2 = [l0, l1, l2, l3, l4]
 
     {P: s1.length < s2.length}
-    {Q: s1[i] == s2[i+1] para todo i en [0, s1.length)}
+    {Q: Devuelve si s1[i] == s2[i+1] para todo i en s1.length}
 
     Input: s1 y s2 -> Strings
-    Output: true -> Si s1 esta contenido a derecha de s2
+    Output: true -> s1 esta contenido a derecha en s2
             false -> caso contrario
 
     Tiempo de ejecucion O(s1.length)
@@ -284,8 +286,38 @@ fun estaContenidoDerecha(s1: String, s2: String): Boolean {
     for (i in 0 until s1.length) {
         if (s1[i] != s2[i + 1]) return false
     }
-
     return true
+}
+/* 
+    Dado dos strings, s1 y s2, obtener la letra en s2 que no
+    este en s1
+
+    Para esto recorremos s1 y cada vez que una letra de s1 aparezca en
+    s2, eliminamos esa letra de s2
+
+    Asi hasta que hayamos recorrido s1 completamente
+
+    {P: s1.length < s2.lenght}
+    {Q: se devuelve la primera letra de s1 que no aparezca en s2 o que aparezca repetida}
+
+    Input: s1 y s2 -> Strings
+    Output: Char que es la letra en s2 que no esta en s1
+
+    Tiempo de ejecucion O(s1*s2)
+*/
+fun obtenerLetraExtra(s1: String, s2: String): String {
+    var s2Aux: String = s2 
+
+    for (l in s1) {
+        var i = 0
+        while (i < s2Aux.length && l != s2Aux[i].toChar()) {
+            i++
+        }
+
+        s2Aux = s2Aux.replaceFirst(l.toString(), "")
+    }
+
+    return s2Aux
 }
 
 /* 
@@ -338,7 +370,6 @@ fun obtenerCadenaDeEdicion(camino: Iterable<Int>, dic: List<String>): String {
     }
 
     val arrCaminoDic = caminoDic.toArray()
-    //arrCaminoDic.sort() // Ordenamos el arr lexicograficamente
 
     var caminoString: String = ""
 

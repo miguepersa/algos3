@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul  1 01:03:31 2022
+# Make data base, printed on Sun Jul  3 20:01:09 2022
 
 # Variables
 
@@ -14,7 +14,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 KFLAG = -cp
 # environment
 GDK_BACKEND = x11
- 
 # environment
 LC_ALL = C
 # environment
@@ -22,15 +21,13 @@ GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
-GJS_DEBUG_OUTPUT = stderr
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-50ea7655-7524-4c9f-8db3-584b3a91bb20.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4940ba0d-0aa4-4f26-8bd5-d058b4a3b01f.sock
 # environment
 LC_NAME = es_VE.UTF-8
 # environment
 LC_NUMERIC = es_VE.UTF-8
 # environment
-VSCODE_CWD = /home/daniel
+VSCODE_CWD = /home/daniel/Documents/GitHub/algos3/proy/actividad2
 # environment
 LC_ADDRESS = es_VE.UTF-8
 # default
@@ -49,6 +46,8 @@ PWD = /home/daniel/Documents/GitHub/algos3/proy/actividad2
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/daniel/Documents/GitHub/algos3/proy
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
@@ -60,11 +59,13 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc58
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.Y677N1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.KGNUO1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# environment
+GNOME_TERMINAL_SERVICE = :1.139
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -100,13 +101,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 36743
+VSCODE_PID = 48892
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1740,unix/daniel-X441UA:/tmp/.ICE-unix/1740
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1472,unix/daniel-X441UA:/tmp/.ICE-unix/1472
 # automatic
 *F = $(notdir $*)
 # environment
@@ -128,13 +129,11 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+SHLVL = 1
 # environment
-SHLVL = 0
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/3486b6ac_b81e_402a_a433_d89afb094ff5
 # environment
 MAKELEVEL := 0
-# environment
-IM_CONFIG_CHECK_ENV = 1
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
@@ -147,8 +146,6 @@ LC_MONETARY = es_VE.UTF-8
 ^F = $(notdir $^)
 # environment
 LC_TIME = es_VE.UTF-8
-# environment
-INVOCATION_ID = e9553d259d7b4c1abb3f08e02d94271f
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -166,7 +163,7 @@ LIBGRAPH = libGrafoKt/
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
 +F = $(notdir $+)
 # environment
@@ -177,37 +174,30 @@ ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = daniel
-# environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1774
+SYSTEMD_EXEC_PID = 1684
 # environment
 DISPLAY = :0
 # environment
 USER = daniel
 # environment
 GTK_MODULES = gail:atk-bridge
- 
 # default
 MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 4)
 LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
-MANAGERPID = 1599
-# environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 36743
-# environment
-_ = /usr/share/code/code
+_ = /usr/bin/code
 # environment
 LC_PAPER = es_VE.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-JOURNAL_STREAM = 8:33055
+COLORTERM = truecolor
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -221,6 +211,8 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-419f9acc-1.68.1-main.sock
 # environment
+TERM = xterm-256color
+# environment
 IM_CONFIG_PHASE = 1
 # default
 .RECIPEPREFIX := 
@@ -228,6 +220,12 @@ IM_CONFIG_PHASE = 1
 <F = $(notdir $<)
 # default
 SUFFIXES := 
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+VTE_VERSION = 6800
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
@@ -237,7 +235,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = es_VE.UTF-8
 # variable set hash-table stats:
-# Load=112/1024=11%, Rehash=0, Collisions=4/146=3%
+# Load=112/1024=11%, Rehash=0, Collisions=11/146=8%
 
 # Pattern-specific Variable Values
 
@@ -245,9 +243,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15597702): 8 files, no impossibilities.
+# . (device 2050, inode 15597702): 12 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -276,7 +274,6 @@ EscaleraDeEdicion.class: EscaleraDeEdicion.kt
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 12):
 	$(KC) $(KFLAG) $(LIBJAR) EscaleraDeEdicion.kt
- 
 
 # Not a target:
 .DEFAULT:
@@ -340,12 +337,13 @@ EscaleraDeEdicion.kt:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 185 B / avg = 11 B
-# current buf: size = 8162 B / used = 185 B / count = 16 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 241 B / avg = 12 B
+# current buf: size = 8162 B / used = 241 B / count = 20 / avg = 12 B
 
-# strcache performance: lookups = 29 / hit rate = 44%
+# strcache performance: lookups = 33 / hit rate = 39%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Fri Jul  1 01:03:31 2022
+ 
+# Load=20/8192=0%, Rehash=0, Collisions=0/33=0%
+# Finished Make data base on Sun Jul  3 20:01:09 2022
 
  
