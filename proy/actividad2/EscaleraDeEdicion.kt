@@ -60,17 +60,17 @@ fun main(args: Array<String>) {
         val grafoDiccionario: GrafoDirigido = GrafoDirigido(diccionario.size)
         llenarGrafoDiccionario(grafoDiccionario, diccionario) // Agregamos los lados al grafo
 
-        // Con el grafo lleno, procedemos a ejecutar BFS sobre cada vertice
-        val arrBFS: Array<BFS> = Array<BFS>(grafoDiccionario.obtenerNumeroDeVertices(), {i -> BFS(grafoDiccionario, i)})
-        val mayorVerticeRaiz: Int = obtenerMayorVerticeRaiz(arrBFS) // Obtenemos el indice del grafo que tenga la mayor distancia
+        // Con el grafo lleno, procedemos a ejecutar DFSCaminos usando como raiz
+        // cada vertice del grafo
+        val arrDFSCaminos: Array<DFSCaminos> = Array<DFSCaminos>(grafoDiccionario.obtenerNumeroDeVertices(), {i -> DFSCaminos(grafoDiccionario, i)})
+        
+        // Obtenemos la cadena de edicion mas larga
+        // Esto es obtener el camino mas largo entre todos los caminos mas largos
+        val cadenaDeEdicion: LinkedList<Int> = obtenerCadenaDeEdicion(arrDFSCaminos)
 
-        // Obtenemos el camino desde la raiz desde el vertice raiz hasta el vertice con mayor 
-        // distancia del grafo en el cual esta distancia sea la mayor
-        val caminoMayorDistancia: Iterable<Int> = arrBFS[mayorVerticeRaiz].caminoHasta(arrBFS[mayorVerticeRaiz].obtenerMayorVerticeDistancia())
-        val cadenaDeEdicion: String = obtenerCadenaDeEdicion(caminoMayorDistancia, diccionario)
-
-        println(cadenaDeEdicion)
-        println(arrBFS[mayorVerticeRaiz].obtenerMayorDistancia() + 1)
+        // Mostramos la cadena de edicion mas larga y su tama;o
+        println(cadenaDeEdicionDiccionario(cadenaDeEdicion, diccionario))
+        println(cadenaDeEdicion.count())
 
     } catch (e: RuntimeException) {
         println(e)
@@ -89,7 +89,7 @@ fun main(args: Array<String>) {
     Esto es que solo se hayan pasado un solo parametro de entrada
 
     {P: args contiene los parametros con los cuales se ejecuto el programa}
-    {Q: true si args.size == 0, false caso contrario}
+    {Q: true si args.size == 1, false caso contrario}
 
     Input: args -> Array<String> cada args[i] contiene el parametro i con los cuales
                     se ejecuto el programa
@@ -321,61 +321,44 @@ fun obtenerLetraExtra(s1: String, s2: String): String {
 }
 
 /* 
-    Dado un arreglo de grafos en donde se ejecuto BFS
-    se desea obtener el indice del grafo que tenga la mayor
-    distancia desde el vertice raiz desde el cual se ejecuto BFS
+    Dado un arreglo de grafos a los cuales se le aplico DFSCaminos
+    obtener el caminos mas largo entre todos los caminos.
 
-    {P: arrGrafo es un arreglo que conteien ejecuciones de BFS
-        sobre el mismo grafo pero usando como raiz cada vertice}
-    {Q: El indice del arreglo tal que 
-        arrGrafo[i].obtenerMayorDistancia() <= arrGrafo[max].obtenerMayorDistancia()}
+    Para esto obtenemos el camino mas largo de cada grafo.
 
-    Input: arrGrafo -> Arreglo de grafos sobre los cuales se ejecuto BFS
-    Output: El indice del arreglo cuyo grafo tenga la mayor distancia
+    Luego, seleccionamos el camino mas largo entre estos caminos.
 
-    Tiempo de ejecucion O(|V|^2)
+    {P: arrGrafo.size > 0}
+    {Q: Un camino c tal que c.count() >= arrGrafo[i].obtenerCaminoMasLargo.count()
+        para i en [0, arrGrafo.size)}
+
+    Input: Array<DFSCaminos> -> Array de elementos de DFSCaminos,
+            arrGrafo[i] representa la ejecucion de DFSCaminos sobre 
+            un grafo con raiz en el vertice i
+    Output: El camino mas largo entre todos los caminos
+
+    Tiempo de ejecucion O()
 */
-fun obtenerMayorVerticeRaiz(arrGrafo: Array<BFS>): Int {
-    var maxIndice: Int = 0
+fun obtenerCadenaDeEdicion(arrGrafo: Array<DFSCaminos>): LinkedList<Int> {
+    var cadenaDeEdicion: LinkedList<Int> = arrGrafo[0].obtenerCaminoMasLargo()
 
-    for (i in 1 until arrGrafo.size) {
-        if (arrGrafo[maxIndice].obtenerMayorDistancia() < arrGrafo[i].obtenerMayorDistancia()) {
-            maxIndice = i
-        }
+    for (g in arrGrafo) {
+        if (cadenaDeEdicion.count() < g.obtenerCaminoMasLargo().count()) cadenaDeEdicion = g.obtenerCaminoMasLargo()
     }
 
-    return maxIndice
+    return cadenaDeEdicion
 }
 
 /* 
-    La idea es que dado un camion de un grafo, devoler el mismo camino
-    pero con su representacion como string ordenado lexicograficamente
-
-    {P: camino es un camino simple y dic es un diccionario que se subio 
-        desde un archivo}
-    {Q: String es la representacion del camino en string usando
-        las palabras del diccionario}
-
-    Input: camino -> iterable de entero que representa un camino en un grafo
-            dic -> diccionario que contiene la palabra de cada entero
-    Output: String que es la representacion del camino ordenado lexicografimante
-
-    Tiempo de ejecucion O(camino.size * ln(camino.size))
+    Dado una cadena de edicion, se devuelve un string con la representacion
+    de la cadena en donde cada posicion de la cadena, 
 */
-fun obtenerCadenaDeEdicion(camino: Iterable<Int>, dic: List<String>): String {
-    var caminoDic: LinkedList<String> = LinkedList<String>()
+fun cadenaDeEdicionDiccionario(cadena: LinkedList<Int>, dic: List<String>): String {
+    var cadenaString: String = ""
 
-    for (c in camino) {
-        caminoDic.add(dic[c])
+    for (i in cadena) {
+        cadenaString += dic[i] + " "
     }
 
-    val arrCaminoDic = caminoDic.toArray()
-
-    var caminoString: String = ""
-
-    for (i in 0 until arrCaminoDic.size) {
-        caminoString += "${arrCaminoDic[i]} "
-    }
-
-    return caminoString
+    return cadenaString
 }

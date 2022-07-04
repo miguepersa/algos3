@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul  3 20:01:09 2022
+# Make data base, printed on Mon Jul  4 15:37:14 2022
 
 # Variables
 
@@ -20,8 +20,9 @@ LC_ALL = C
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
+ 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4940ba0d-0aa4-4f26-8bd5-d058b4a3b01f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-00a73e99-f1c1-4d47-b6cc-1622619de2e4.sock
 # environment
 LC_NAME = es_VE.UTF-8
 # environment
@@ -47,7 +48,7 @@ PWD = /home/daniel/Documents/GitHub/algos3/proy/actividad2
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-OLDPWD = /home/daniel/Documents/GitHub/algos3/proy
+OLDPWD = /home/daniel
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
@@ -59,13 +60,13 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc58
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.KGNUO1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.UNU1O1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.139
+GNOME_TERMINAL_SERVICE = :1.118
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -101,13 +102,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 48892
+VSCODE_PID = 3047
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1472,unix/daniel-X441UA:/tmp/.ICE-unix/1472
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1792,unix/daniel-X441UA:/tmp/.ICE-unix/1792
 # automatic
 *F = $(notdir $*)
 # environment
@@ -131,7 +132,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/3486b6ac_b81e_402a_a433_d89afb094ff5
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4f90b07c_2cb5_483b_ba23_ff71a2f826e8
 # environment
 MAKELEVEL := 0
 # default
@@ -177,7 +178,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1684
+SYSTEMD_EXEC_PID = 2101
 # environment
 DISPLAY = :0
 # environment
@@ -243,9 +244,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15597702): 12 files, no impossibilities.
+# . (device 2050, inode 15597702): 10 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -313,6 +314,7 @@ jarlib:
 # automatic
 # | := 
 # variable set hash-table stats:
+ 
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
 #  recipe to execute (from 'Makefile', line 9):
 	(cd $(LIBGRAPH); make)  
@@ -337,13 +339,12 @@ EscaleraDeEdicion.kt:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 241 B / avg = 12 B
-# current buf: size = 8162 B / used = 241 B / count = 20 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 206 B / avg = 11 B
+# current buf: size = 8162 B / used = 206 B / count = 18 / avg = 11 B
 
-# strcache performance: lookups = 33 / hit rate = 39%
+# strcache performance: lookups = 31 / hit rate = 41%
 # hash-table stats:
- 
-# Load=20/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Sun Jul  3 20:01:09 2022
+# Load=18/8192=0%, Rehash=0, Collisions=0/31=0%
+# Finished Make data base on Mon Jul  4 15:37:14 2022
 
  

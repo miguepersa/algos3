@@ -1,2 +1,2 @@
-a am amo aro caro carro cerro 
-7
+a am ama amo ano aro caro carro cerro perro 
+10

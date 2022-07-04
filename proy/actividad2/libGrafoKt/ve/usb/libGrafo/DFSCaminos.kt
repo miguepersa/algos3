@@ -1,5 +1,6 @@
 package ve.usb.libGrafo
 import java.util.LinkedList
+
 /* 
     Dado un grafo dirigido y un vertice raiz
 
@@ -32,7 +33,9 @@ public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
 
         if (g.gradoExterior(ver) == 0) { // Si su grado exterior es 0, no tiene ady
             // Obtenemos el camino desde inicio, ver
-            listaCaminos.add(obtenerCamino(inicio, ver))  
+            println(ver)
+            listaCaminos.add(obtenerCamino(inicio, ver))
+            listaVerticesDFSCaminos[ver].color = Color.NEGRO
         } else {
             for (u in g.adyacentes(ver)) {
                 if (listaVerticesDFSCaminos[u.b.n].color == Color.BLANCO) {
@@ -40,9 +43,10 @@ public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
                     dfsVisitCaminos(g, u.b.n)
                 }
             }
+            
+            listaVerticesDFSCaminos[ver].color = Color.BLANCO
         }
-
-        listaVerticesDFSCaminos[ver].color = Color.BLANCO
+        
     }
 
     private fun obtenerCamino(u: Int, v: Int): LinkedList<Int> {
@@ -62,6 +66,13 @@ public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
     fun obtenerTodosLosCaminos(): Iterable<LinkedList<Int>> = listaCaminos.asIterable()
 
     fun obtenerCaminoMasLargo(): LinkedList<Int> {
-        
+        val caminos: Iterable<LinkedList<Int>> = this.obtenerTodosLosCaminos()
+        var caminoMasLargo: LinkedList<Int> = caminos.last()
+
+        for (c in caminos) {
+            if (caminoMasLargo.count() < c.count()) caminoMasLargo = c
+        }
+
+        return caminoMasLargo
     }
 }
