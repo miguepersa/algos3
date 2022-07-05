@@ -17,32 +17,32 @@ import java.util.LinkedList
     cada par de palabras. Sean 2 palabras w1 y w2, se le a;aden al grafo el 
     lado (w1, w2) si y solo si hay un paso de edicion entre w1 y w2.
 
-    Ahora que tenemos el grafo en donde cada lado (u, v) representa un paso
-    de edicion entre u y v, tenemos que hallar el camino mas largo de 
-    ediciones consecutivas.
+    Utilizaremos un grafo dirigido para mantener el orden lexicografico
+    del diccionario. El orden lexicografico del diccionario se mantiene porque
+    en el lado (w1, w2), w1 precede a w2 en el diccionario.
 
-    Para esto ejecutamos una version de DFS que nos permita obtener
-    todos los caminos desde un vertice raiz
+    Luego, basta escoger la cadena de edicion mas larga. Para esto ejecutamos 
+    una version de DFS que nos permita obtener todos los caminos desde un vertice raiz
 
     Luego, entre todos esos caminos nos quedamos con el mas largo.
 
-    Repitiendo este proceso con todos los vertices nos queda que guardamos
-    el camino mas largo desde todos los vertices.
+    Repitiendo este proceso desde cada vertice del grafo, bastaria seleccionar
+    el camino mas largo entre todos los caminos.
 
-    Con eso, queda seleccionar el mas largo el cual es la solucion al problema
-    
+    Este camino, es la solucion del problema
+
     Sobre el tiempo de ejecucion
-        Cargar todos los lados al grafo toma O(|V^2|), pues recorremos cada par de palabras
-        del diccionario
+        Se crea un grafo de tantos vertices como palabras tenga el diccionario.
+        Llenar este grafo toma O(|V|^2)
 
-        Ejecutar BFS es O(|E| + |V|)
-            Ejecutar BFS sobre cada vertice O(|V|(|V| + |E|))
-            Determinar cual tiene la mayor distancia en cada ejecucin de BFS O(|V|)
+        Ahora, ejecutar DFSCaminos desde un vertice toma O(|E|). Ejecutarlo sobre
+        todos los vertices del grafo toma O(|V||E|)
 
-        Comparar y determinar el vertice cuya distancia se la mayor O(|V|)
-        Obtener el camino correspondiente O(|V|)
+        Obtener la cadena de edicion mas larga toma O(|V|*cantidad de caminos obtenidos)
+        
+        Transformar esta cadena como string toma O(largo de la cadena)
 
-        En conclusion, el programa tiene un tiempo de ejecucion O(|V|^2 + |E||V|)
+        En conclusion el tiempo de ejecucion del programa es: O(|V|^2 + |V||E| + |V|*cantidad de caminos).
 */
 
 fun main(args: Array<String>) {
@@ -60,6 +60,12 @@ fun main(args: Array<String>) {
         val grafoDiccionario: GrafoDirigido = GrafoDirigido(diccionario.size)
         llenarGrafoDiccionario(grafoDiccionario, diccionario) // Agregamos los lados al grafo
 
+        println(grafoDiccionario.obtenerNumeroDeVertices())
+        println(grafoDiccionario.obtenerNumeroDeLados())
+        for (l in grafoDiccionario.iterator()) {
+            println(l)
+        }
+        /* 
         // Con el grafo lleno, procedemos a ejecutar DFSCaminos usando como raiz
         // cada vertice del grafo
         val arrDFSCaminos: Array<DFSCaminos> = Array<DFSCaminos>(grafoDiccionario.obtenerNumeroDeVertices(), {i -> DFSCaminos(grafoDiccionario, i)})
@@ -71,7 +77,7 @@ fun main(args: Array<String>) {
         // Mostramos la cadena de edicion mas larga y su tama;o
         println(cadenaDeEdicionDiccionario(cadenaDeEdicion, diccionario))
         println(cadenaDeEdicion.count())
-
+        */
     } catch (e: RuntimeException) {
         println(e)
     } catch (e: java.io.FileNotFoundException) {
@@ -303,7 +309,7 @@ fun estaContenidoDerecha(s1: String, s2: String): Boolean {
     Input: s1 y s2 -> Strings
     Output: Char que es la letra en s2 que no esta en s1
 
-    Tiempo de ejecucion O(s1*s2)
+    Tiempo de ejecucion O(s1.length*s2.length)
 */
 fun obtenerLetraExtra(s1: String, s2: String): String {
     var s2Aux: String = s2 
@@ -337,7 +343,11 @@ fun obtenerLetraExtra(s1: String, s2: String): String {
             un grafo con raiz en el vertice i
     Output: El camino mas largo entre todos los caminos
 
-    Tiempo de ejecucion O()
+    Sobre el tiempo de ejecucion
+        Obtener el caminos mas largo O(cantidad de caminos obtenidos)
+        Esto se repite con todos los grafos
+
+        En conclusion, esta funciona toma O(arrGrafo.size * cantidad de caminos obtenidos en cada grafo)
 */
 fun obtenerCadenaDeEdicion(arrGrafo: Array<DFSCaminos>): LinkedList<Int> {
     var cadenaDeEdicion: LinkedList<Int> = arrGrafo[0].obtenerCaminoMasLargo()
@@ -351,7 +361,18 @@ fun obtenerCadenaDeEdicion(arrGrafo: Array<DFSCaminos>): LinkedList<Int> {
 
 /* 
     Dado una cadena de edicion, se devuelve un string con la representacion
-    de la cadena en donde cada posicion de la cadena, 
+    de la cadena en donde cada posicion de la cadena. Esto es que 
+    cadena = <v0, v1, v2, ... , vk> se devuelve 
+    "dic[v0] dic[v1] dic[v2] ... dic[vk]"
+
+    {P: cadena es un camino simple en un grafo y dic contiene la representacion
+        como string de cada vertice del camino}
+    {Q: Se devuelve un string con la palabra asociada a cada vertice del camino}
+
+    Input: cadena -> LinkedList<Int> Representa un camino simple en un grafo
+    Output: Representacion como string de la cadena
+
+    Tiempo de ejecucion O(cadena.count())
 */
 fun cadenaDeEdicionDiccionario(cadena: LinkedList<Int>, dic: List<String>): String {
     var cadenaString: String = ""

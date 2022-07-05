@@ -2,18 +2,29 @@ package ve.usb.libGrafo
 import java.util.LinkedList
 
 /* 
-    Dado un grafo dirigido y un vertice raiz
-
-    Aplicar una busqueda como DFS para obtener
-    todos los caminos desde ese vertice hasta los demas
-
-    Los caminos se obtienen al momento de creacion de una clase
+    Tipo de vertice usado en DFSCaminos
 */
 data class VerticeDFSCaminos(val n: Int) {
     var pred: VerticeDFSCaminos? = null
     var color: Color = Color.BLANCO
 }
 
+/* 
+    Dado un grafo dirigido y un vertice raiz
+
+    Aplicar una busqueda como DFS para obtener todos los caminos 
+    desde el vertice raiz todos los vertice sumideros del grafo
+
+    {P: g es un grafo dirigido y el vertice inicio pertenece al grafo}
+    {Q: Se determinan todos los caminos desde el vertice raiz
+        hasta todos los vertices sumidos del grafo}
+
+    Input: g -> GrafoDirigido
+            inicio -> Entero, vertice que pertenece al grafo
+                      es el vertice raiz de todos los caminos
+    
+    Tiempo de ejecucion O(|E|)
+*/
 public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
     var listaVerticesDFSCaminos: MutableList<VerticeDFSCaminos>
     var listaCaminos: MutableList<LinkedList<Int>>
@@ -25,46 +36,80 @@ public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
             listaVerticesDFSCaminos.add(VerticeDFSCaminos(i))
         }
 
+        listaVerticesDFSCaminos[inicio].color = Color.NEGRO
         dfsVisitCaminos(g, inicio)
     }
 
     private fun dfsVisitCaminos(g: GrafoDirigido, ver: Int) {
         listaVerticesDFSCaminos[ver].color = Color.GRIS
 
-        if (g.gradoExterior(ver) == 0) { // Si su grado exterior es 0, no tiene ady
-            // Obtenemos el camino desde inicio, ver
-            println(ver)
-            listaCaminos.add(obtenerCamino(inicio, ver))
-            listaVerticesDFSCaminos[ver].color = Color.NEGRO
-        } else {
-            for (u in g.adyacentes(ver)) {
-                if (listaVerticesDFSCaminos[u.b.n].color == Color.BLANCO) {
-                    listaVerticesDFSCaminos[u.b.n].pred = listaVerticesDFSCaminos[ver]
-                    dfsVisitCaminos(g, u.b.n)
-                }
+        for (u in g.adyacentes(ver)) {
+            val currVer: Int = u.b.n
+            if (listaVerticesDFSCaminos[currVer].color == Color.BLANCO) {
+                listaVerticesDFSCaminos[currVer].pred = listaVerticesDFSCaminos[ver]
+                dfsVisitCaminos(g, currVer)
             }
-            
-            listaVerticesDFSCaminos[ver].color = Color.BLANCO
         }
+            
+        // cuando ver no tiene adyacentes a;adimos el camino desde  el
+        // vertice inicial hasta ver
+        listaCaminos.add(caminoHasta(ver))
+        listaVerticesDFSCaminos[ver].color = Color.BLANCO
         
     }
+    
+    /* 
+        Obtenemos el camino desde el vertice inicio hasta el vertice u
 
-    private fun obtenerCamino(u: Int, v: Int): LinkedList<Int> {
+        {P: u es un vertice que pertenece al grafo y
+            existe un camino desde inicio hasta u}
+        {Q: un camino simple desde el vertice inicio hasta u}
+
+        Input: u -> Entero que es un vertice del grafo
+        Output: Una lista enlazada que representa un camino simple
+                desde el vertice inicio hasta u
+
+        Tiempo de ejecucion O(|E|)
+    */
+    private fun caminoHasta(u: Int): LinkedList<Int> {
         var camino: LinkedList<Int> = LinkedList<Int>()
-        var ver: Int = v
+        var verAux: Int = u
 
-        while (listaVerticesDFSCaminos[ver].n != u) {
-            camino.addFirst(ver)
-            ver = listaVerticesDFSCaminos[ver].pred!!.n
+        while (verAux != inicio) {
+            camino.addFirst(verAux)
+            verAux = listaVerticesDFSCaminos[verAux].pred!!.n
         }
 
-        camino.addFirst(u)
+        camino.addFirst(inicio)
 
         return camino
     }
 
+    /* 
+        Se devuelven todos los caminos que se obtuvieron desde el vertice raiz
+        hasta los demas vertices sumideros del grafo
+
+        Se devuelve un iterable de caminos y cada caminos esta representado
+        como una lista enlazada
+
+        {P: true}
+        {Q: Se devuelven todos los caminos desde la raiz hasta los vertices
+            sumideros del grafo}
+    
+        Tiempo de ejecucion O(1)
+    */
     fun obtenerTodosLosCaminos(): Iterable<LinkedList<Int>> = listaCaminos.asIterable()
 
+
+    /* 
+        Se recorren todos los caminos obtenidos en la creacion de la clase
+        y se devuelve el camino mas largo
+
+        {P: true}
+        {Q: se devuelve el camino con mas vertices desde la raiz}
+
+        Tiempo de ejecucion O(cantidad de caminos obtenidos)
+    */
     fun obtenerCaminoMasLargo(): LinkedList<Int> {
         val caminos: Iterable<LinkedList<Int>> = this.obtenerTodosLosCaminos()
         var caminoMasLargo: LinkedList<Int> = caminos.last()

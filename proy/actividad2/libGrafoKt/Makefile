@@ -14,13 +14,7 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/AristaCosto.class\
 		$(GLIB)/FuncionesExtras.class\
 		$(GLIB)/Grafo.class\
-		$(GLIB)/GrafoNoDirigido.class\
 		$(GLIB)/GrafoDirigido.class\
-		$(GLIB)/BFS.class\
-		$(GLIB)/DFS.class\
-		$(GLIB)/TablaGrafoNoDirigido.class\
-		$(GLIB)/VerticeBipartito.class\
-		$(GLIB)/GrafoBipartito.class\
 		$(GLIB)/DFSCaminos.class
 
 	jar -cvf $@ $(GLIB)/*.class 
