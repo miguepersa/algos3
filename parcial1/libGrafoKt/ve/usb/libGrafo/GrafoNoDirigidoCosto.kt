@@ -3,91 +3,89 @@ package ve.usb.libGrafo
 import java.io.File
 import java.util.LinkedList
 
-public class GrafoNoDirigido: Grafo {
-    // Atribuos de la clase
+public class GrafoNoDirigidoCosto: Grafo {
+    // Atributos de la clase
     val nVertices: Int
     val repGrafo: Array<LinkedList<Vertice>>
-    var listaLados: LinkedList<Arista>
+    var listaLados: LinkedList<AristaCosto>
     var arrVertices: Array<Vertice>
     var nLados: Int
 
-    /* 
-        Crea un instancia de GrafoNoDirigido
+    /* :
+        Crea una instancia de GrafoNoDirigidoCosto
 
         {P: numDeVertices >= 1}
-        {Q: nVertices == numDeVertices && repGrafo contiene la representacion 
-            de un grafo sin lados.}
+        {Q: nVertices == numDeVertices && repGrafo contiene la representacion
+            de un grafo sin ladoso && listaLados.head == null}
 
-        Input: numDeVertces -> Entero que indica la cantidad de vertices del grafo
+        Input: numDeVertices -> Entero que indica la cantidad de vertices del grafo
         Output: ~~
 
-        Tiempo de ejecicion O(numDeVertices)
+        Tiempo de ejecucion O(numDeVertices)
     */
     constructor(numDeVertices: Int) {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
-        listaLados = LinkedList<Arista>()
+        listaLados = LinkedList<AristaCosto>()
         arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
         nLados = 0
     }
 
     /*
-        Se crea un instancia de GrafoNoDirigio desde un archivo
-        Se asuma que el contenido del archivo esta correcto, no es necesario verificarlo 
+        Se crea una instanca de GrafoNoDirigidoCosto desde un archivo
+        Se asume que el contenido del archivo esta correcto, no es necesario verificarlo
 
-        {P: nombreArchivo es un archivo que contiene informacion de un grafo}
-        {Q: numDeVertices y repGrafo contienen la informacion que esta en el archivo}
+        {P: nombreArchivo es un archivo existente que tiene informacin de un grafo}
+        {Q: nVertices, repGrafo y listaLados contienen la informacin del archivo dado}
 
-        Input: nombreArchivo -> String que contiene la direccion de un archivo
+        Input: nombreArchivo -> String que contiene la direccion a un archivo
         Output: ~~
 
         Tiempo de ejecucion O(lineas del archivo)
-     
-    */  
+    */ 
     constructor(nombreArchivo: String) {
         val fileContent: List<String> = File(nombreArchivo).readLines()
         nVertices = fileContent[0].toInt()
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
+        listaLados = LinkedList<AristaCosto>()
         nLados = 0
-        listaLados = LinkedList<Arista>()
-        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})        
+        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
 
         for (i in 2 until fileContent.size) {
-            val arista: Arista = obtenerArista(fileContent[i], arrVertices)
-
-            this.agregarArista(arista)
+            val arista: AristaCosto = obtenerAristaCosto(fileContent[i], arrVertices)
+            this.agregarAristaCosto(arista)
         }
-
+        
+        
     }
 
     /* 
-        Agregamos un lado al grafo. Si el  lado tiene extremos invalidos se termina el
-        programa.
+        Agregamos un lado al grafo. Si el lado tiene extremos iguales o invalidos
+        se termina el prorama
 
-        {P: Arista cuyos extremos sean vertices validos y no se encuentre en el grafo}
-        {Q: repGrafo[a.v.n].busqueda(a.u.n) && repGrafo[a.u.n].busqueda(a.v.n)
+        {P: Arsita cuyos extremos sean validos y no sean iguales}
+        {Q: repGrafo[a.y.n].contains(a.x.n) && repGrafo[a.x.n].contains(a.y.n) && listaLados.contains(a)}
 
-        Input: a -> Arista valida.
-        Output: true -> Si la arista se pudo agregar al grafo
-                false -> Si la arista no se pudo agregar al grafo
+        Input: a -> Arista valida
+        Output: true -> Si la arista se puedo agregar al grafo
+                false -> Si la arista no se pudo añadir al grafo
 
-        Tiempo de ejecucion O(|vertices adyacentes de a.u.n|)
-     */
-    fun agregarArista(a: Arista) : Boolean {
-        if (a.v.n < 0 || a.v.n >= nVertices || a.u.n < 0 || a.u.n >= nVertices) { // verificamos que los vertices sean validos
+        Tiempo de ejecucion O(|vertices adyacentes de a.x.n|)
+    */
+    fun agregarAristaCosto(a: AristaCosto) : Boolean {
+        if (a.x.n < 0 || a.x.n >= nVertices || a.y.n < 0 || a.y.n >= nVertices) {
             throw RuntimeException("La arista a agregar tiene vertices invalidos")
         }
-        
-        if (a.v.n == a.u.n) { // en los grafos no dirigidos no se permiten los lados (a, a)
+
+        if (a.x.n == a.y.n) {
             throw RuntimeException("La arista a agregar tiene vertices iguales")
         }
 
-        if (aristaEnGrafoNoDirigido(repGrafo, a)) { // no podemos añadir el mismo lado dos veces
+        if (aristaEnGrafoNoDirigido(repGrafo, a)) {
             return false
         }
-
-        repGrafo[a.u.n].add(a.v)
-        repGrafo[a.v.n].add(a.u)
+        repGrafo[a.x.n].add(a.y)
+        repGrafo[a.y.n].add(a.x)
         listaLados.add(a)
         nLados++
 
@@ -112,32 +110,14 @@ public class GrafoNoDirigido: Grafo {
 
         O(nLados)
      */
-    override fun adyacentes(v: Int) : Iterable<Arista> {
-        var ady: LinkedList<Arista> = LinkedList<Arista>()
+    override fun adyacentes(v: Int) : Iterable<AristaCosto> {
+        var ady: LinkedList<AristaCosto> = LinkedList<AristaCosto>()
         for (i in listaLados){
-            if (i.v.n == v || i.u.n == v) {
+            if (i.x.n == v || i.y.n == v) {
                 ady.add(i)
             }
         }
-        
         return ady.asIterable()
-    }
-
-    /* 
-        Calcula el grado de un vertice dado del grafo
-
-        {P: v es un vertice que pertenece al lado}
-        {Q: devuelve el numero de lados incidentes del vertice}
-
-        Input: v -> Entero, numero del vertice del cual se obtendra el vertice
-        Output: grado del vertce
-    */
-    override fun grado(v: Int) : Int {
-        if (v < 0 || v >= nVertices || v < 0 || v >= nVertices) {
-            throw RuntimeException("El arco a agregar tiene extremos invalidos")
-        }
-
-        return repGrafo[v].count()
     }
 
     /* 
@@ -153,21 +133,21 @@ public class GrafoNoDirigido: Grafo {
 
         O(nLados)
      */
-    fun ladosAdyacentes(l: Arista) : Iterable<Arista> {
+    fun ladosAdyacentes(l: AristaCosto) : Iterable<AristaCosto> {
         if (!aristaEnGrafoNoDirigido(repGrafo, l)) {
             throw RuntimeException("La arista no pertenece al grafo")
         }
-        var ady: LinkedList<Arista> = LinkedList<Arista>()
+        var ady: LinkedList<AristaCosto> = LinkedList<AristaCosto>()
         for (i in listaLados) {
-            if (!aristaEnLista(ady, i) && !aristaEnLista(ady, Arista(i.u, i.v))) {
-                if (i.v.n == l.v.n || i.v.n == l.u.n || i.u.n == l.v.n || i.u.n == l.u.n) {
+            if (!aristaCostoEnLista(ady, i) && (i.y.n != l.y.n && i.x.n != l.x.n)) {
+                if (i.y.n == l.y.n || i.y.n == l.x.n || i.x.n == l.y.n || i.x.n == l.x.n) {
                     ady.add(i)
                 }
             }
         }
         return ady.asIterable()
     }
-    
+
     /*
         Retorna todos los lados del grafo en un iterador
 
@@ -179,8 +159,25 @@ public class GrafoNoDirigido: Grafo {
 
         O(nLados)
     */
-    override operator fun iterator() : Iterator<Arista> {
+    override operator fun iterator() : Iterator<AristaCosto> {
         return listaLados.iterator()
+     }
+    
+    /* 
+        Calcula el grado de un vertice dado del grafo
+
+        {P: v es un vertice que pertenece al lado}
+        {Q: devuelve el numero de lados incidentes del vertice}
+
+        Input: v -> Entero, numero del vertice del cual se obtendra el vertice
+        Output: grado del vertce
+    */
+    override fun grado(v: Int) : Int {
+        if (v < 0 || v >= nVertices) {
+            throw RuntimeException("El vertice dado es invalido")
+        }
+
+        return repGrafo[v].count()
     }
 
     /*

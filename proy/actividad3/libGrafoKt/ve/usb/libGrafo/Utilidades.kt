@@ -18,7 +18,7 @@ fun digrafoInverso(g: GrafoDirigido) : GrafoDirigido {
     return gInverso
 }
 
-fun merge(l: Array<AristaCosto>, inicio: Int, mid: Int, fin: Int) {
+/* fun merge(l: Array<AristaCosto>, inicio: Int, mid: Int, fin: Int) {
     var n1 = mid - inicio + 1
     var n2 = fin - mid
 
@@ -67,4 +67,4 @@ fun mergeSortAristaCosto(l: Array<AristaCosto>, inicio: Int, fin: Int) {
     mergeSortAristaCosto(l, inicio, mid)
     mergeSortAristaCosto(l, mid + 1, fin)
     merge(l, inicio, mid, fin)
-}
+} */

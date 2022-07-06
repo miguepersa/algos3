@@ -5,37 +5,35 @@ import java.util.LinkedList
     Determina el árbol mínimo cobertor de un grafo no dirigido usando el algoritmo de Prim.
     Si el grafo de entrada no es conexo, entonces se lanza un RuntineException.
 */
-public class PrimAMC(val g: GrafoNoDirigidoCosto) {
-    var arrVertices: Array<Vertice>
+public class PrimUSB(val g: GrafoNoDirigidoCosto, v: Int) {
     var costo: Double
     
-    init {  // ejecutamos el algoritmo de prim desde el vertice 0
+    init {  // ejecutamos el algoritmo de prim desde el vertice v
         costo = 0.0
         val compConexas: ComponentesConexasCostoDFS = ComponentesConexasCostoDFS(g)
         if (compConexas.nCC() != 1) {
-            throw RuntimeException("PrimAMC.init: El grafo no es conexo")
+            throw RuntimeException("PrimUSB.init: El grafo no es conexo")
         }
 
         var inQueue: Array<Boolean> = Array<Boolean>(g.obtenerNumeroDeVertices(), {true})
 
-        arrVertices = Array<Vertice>(g.obtenerNumeroDeVertices(), {i -> Vertice(i)})
-        arrVertices[0].key = 0.0
+        g.arrVertices[v].key = 0.0
 
         var q: ColaDePrioridad = ColaDePrioridad(g.obtenerNumeroDeVertices())
 
         for (i in 0 until g.obtenerNumeroDeVertices()) {
-            q.add(arrVertices[i])
+            q.add(g.arrVertices[i])
         }
 
         while (!q.vacia()) {
             var u: Vertice = q.extrearMinimo()
             costo += u.key
             inQueue[u.n] = false
-            for (v in g.adyacentes(u.n)) {
-                if (inQueue[v.b.n] && v.obtenerCosto() < arrVertices[v.b.n].key) {
-                    arrVertices[v.b.n].pred = u
-                    arrVertices[v.b.n].key = v.obtenerCosto()
-                    q.decreaseKey(v.b.n, v.obtenerCosto())
+            for (a in g.adyacentes(u.n)) {
+                if (inQueue[a.b.n] && a.obtenerCosto() <= g.arrVertices[a.b.n].key) {
+                    g.arrVertices[a.b.n].pred = u
+                    g.arrVertices[a.b.n].key = a.obtenerCosto()
+                    q.decreaseKey(a.b.n, a.obtenerCosto())
                 }
             }
         }
@@ -55,7 +53,7 @@ public class PrimAMC(val g: GrafoNoDirigidoCosto) {
     fun obtenerLados() : Iterable<Arista> {
         var ladosArbol: LinkedList<Arista> = LinkedList<Arista>()
 
-        for (v in arrVertices){
+        for (v in g.arrVertices){
             val ver: Vertice? = v.pred
             if (ver != null) {
                 var lado: Arista = Arista(ver, v)

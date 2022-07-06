@@ -1,24 +1,43 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
+ 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Jul  1 09:29:00 2022
+ 
+# Make data base, printed on Sun Jul  3 21:34:30 2022
+ 
 
 # Variables
+ 
 
+ 
 # makefile (from 'Makefile', line 2)
+ 
 KFLAG = -cp
+ 
 # environment
+ 
 GDK_BACKEND = x11
+ 
 # environment
+ 
 LC_ALL = C
+ 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9545adbc-7fba-4c40-87b0-9b1999495cf7.sock
+ 
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-079e51e7-a8ce-44d5-948d-5f5317eebe32.sock
+ 
 # environment
+ 
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
 LC_NAME = es_VE.UTF-8
@@ -41,7 +60,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/miguelp/algos3/sem5
+PWD = /home/miguelp/algos3/parcial1
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -67,11 +86,11 @@ XAUTHORITY = /home/miguelp/.Xauthority
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/miguelp/algos3/sem5
+CURDIR := /home/miguelp/algos3/parcial1
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -99,7 +118,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 48811
+VSCODE_PID = 15705
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -115,7 +134,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"125a9a608456aa5e8a25d0a18c7b1d68.es","_translationsConfigFile":"/home/miguelp/.config/Code/clp/125a9a608456aa5e8a25d0a18c7b1d68.es/tcf.json","_cacheRoot":"/home/miguelp/.config/Code/clp/125a9a608456aa5e8a25d0a18c7b1d68.es","_resolvedLanguagePackCoreLocation":"/home/miguelp/.config/Code/clp/125a9a608456aa5e8a25d0a18c7b1d68.es/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/home/miguelp/.config/Code/clp/125a9a608456aa5e8a25d0a18c7b1d68.es/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"eae11d900af9c06c6da7ac60cedf8cf9.es","_translationsConfigFile":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es/tcf.json","_cacheRoot":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es","_resolvedLanguagePackCoreLocation":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es/corrupted.info","_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -203,7 +222,7 @@ LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 48811
+GIO_LAUNCHED_DESKTOP_FILE_PID = 15705
 # environment
 _ = /usr/share/code/code
 # environment
@@ -251,9 +270,10 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2053, inode 1197266): 10 files, no impossibilities.
+# . (device 2053, inode 656810): 7 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
+ 
 
 # Implicit Rules
 
@@ -271,14 +291,13 @@ Main.class: Main.kt
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-26 18:59:42.046262805
+#  Last modified 2022-06-26 18:59:42
 #  File has been updated.
 #  Successfully updated.
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
 	(cd $(LIBGRAPH); make clean)
@@ -328,6 +347,7 @@ jarlib:
 # automatic
 # | := 
 # variable set hash-table stats:
+ 
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
 #  recipe to execute (from 'Makefile', line 9):
 	(cd $(LIBGRAPH); make)  
@@ -346,12 +366,12 @@ jarlib:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 231 B / avg = 12 B
-# current buf: size = 8162 B / used = 231 B / count = 18 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 135 B / avg = 9 B
+# current buf: size = 8162 B / used = 135 B / count = 15 / avg = 9 B
 
-# strcache performance: lookups = 31 / hit rate = 41%
+# strcache performance: lookups = 28 / hit rate = 46%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Fri Jul  1 09:29:00 2022
+# Load=15/8192=0%, Rehash=0, Collisions=0/28=0%
+# Finished Make data base on Sun Jul  3 21:34:30 2022
 
  
