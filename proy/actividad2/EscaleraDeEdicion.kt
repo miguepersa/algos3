@@ -60,12 +60,6 @@ fun main(args: Array<String>) {
         val grafoDiccionario: GrafoDirigido = GrafoDirigido(diccionario.size)
         llenarGrafoDiccionario(grafoDiccionario, diccionario) // Agregamos los lados al grafo
 
-        println(grafoDiccionario.obtenerNumeroDeVertices())
-        println(grafoDiccionario.obtenerNumeroDeLados())
-        for (l in grafoDiccionario.iterator()) {
-            println(l)
-        }
-        /* 
         // Con el grafo lleno, procedemos a ejecutar DFSCaminos usando como raiz
         // cada vertice del grafo
         val arrDFSCaminos: Array<DFSCaminos> = Array<DFSCaminos>(grafoDiccionario.obtenerNumeroDeVertices(), {i -> DFSCaminos(grafoDiccionario, i)})
@@ -77,7 +71,7 @@ fun main(args: Array<String>) {
         // Mostramos la cadena de edicion mas larga y su tama;o
         println(cadenaDeEdicionDiccionario(cadenaDeEdicion, diccionario))
         println(cadenaDeEdicion.count())
-        */
+        
     } catch (e: RuntimeException) {
         println(e)
     } catch (e: java.io.FileNotFoundException) {

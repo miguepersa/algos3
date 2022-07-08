@@ -15,7 +15,7 @@ n
 o
 p
 q
-r 
+r
 s
 t
 u

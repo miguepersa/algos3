@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul  4 20:00:34 2022
+# Make data base, printed on Thu Jul  7 18:55:04 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6fe65aa5-2f32-4dd5-af10-7d6432e03bba.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e1f8ce78-87e9-48d7-99d6-859c9cd0a547.sock
 # environment
 LC_NAME = es_VE.UTF-8
 # environment
@@ -39,6 +39,7 @@ QT_ACCESSIBILITY = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
+ 
 .VARIABLES := 
 # environment
 PWD = /home/daniel/Documents/GitHub/algos3/proy/actividad2
@@ -47,7 +48,6 @@ PWD = /home/daniel/Documents/GitHub/algos3/proy/actividad2
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # automatic
- 
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 VSCODE_LOG_STACK = false
@@ -58,17 +58,17 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc58
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.EZ52O1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.MX8XO1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.123
+GNOME_TERMINAL_SERVICE = :1.137
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=4cf61a528f8e13d15c5ebf1762c37b13
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=a6677290687af8cd9062daba62c760ec
 # makefile
 CURDIR := /home/daniel/Documents/GitHub/algos3/proy/actividad2
 # environment
@@ -102,19 +102,19 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 3985
+VSCODE_PID = 5846
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1703,unix/daniel-X441UA:/tmp/.ICE-unix/1703
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1771,unix/daniel-X441UA:/tmp/.ICE-unix/1771
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=4cf61a528f8e13d15c5ebf1762c37b13
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=a6677290687af8cd9062daba62c760ec
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -132,7 +132,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d499f7f9_05d1_4b37_abf1_00aa6e47949c
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/aa529f78_0735_4aaf_a663_d5a7b648b818
 # environment
 MAKELEVEL := 0
 # default
@@ -166,7 +166,6 @@ XDG_CURRENT_DESKTOP = Unity
 # environment
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
- 
 +F = $(notdir $+)
 # environment
 DESKTOP_SESSION = ubuntu
@@ -179,7 +178,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1703
+SYSTEMD_EXEC_PID = 1771
 # environment
 DISPLAY = :0
 # environment
@@ -239,7 +238,6 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = es_VE.UTF-8
 # variable set hash-table stats:
- 
 # Load=113/1024=11%, Rehash=0, Collisions=12/147=8%
 
 # Pattern-specific Variable Values
@@ -277,7 +275,6 @@ EscaleraDeEdicion.class: EscaleraDeEdicion.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 12):
 	$(KC) $(KFLAG) $(LIBJAR) EscaleraDeEdicion.kt
 
@@ -329,9 +326,9 @@ jarlib:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 EscaleraDeEdicion.kt:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -350,6 +347,6 @@ EscaleraDeEdicion.kt:
 # strcache performance: lookups = 31 / hit rate = 41%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Mon Jul  4 20:00:34 2022
+# Finished Make data base on Thu Jul  7 18:55:04 2022
 
  

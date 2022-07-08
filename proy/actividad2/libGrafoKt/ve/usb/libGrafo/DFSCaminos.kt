@@ -27,11 +27,12 @@ data class VerticeDFSCaminos(val n: Int) {
 */
 public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
     var listaVerticesDFSCaminos: MutableList<VerticeDFSCaminos>
-    var listaCaminos: MutableList<LinkedList<Int>>
+    var caminoMasLargo: LinkedList<Int>
 
     init {
-        listaCaminos = mutableListOf()
+        caminoMasLargo = LinkedList<Int>()
         listaVerticesDFSCaminos = mutableListOf()
+
         for (i in 0 until g.obtenerNumeroDeVertices()) { // Inicializamos los vertices, todos de color BLANCO y y con predecesor nulo
             listaVerticesDFSCaminos.add(VerticeDFSCaminos(i))
         }
@@ -51,9 +52,13 @@ public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
             }
         }
             
-        // cuando ver no tiene adyacentes a;adimos el camino desde  el
-        // vertice inicial hasta ver
-        listaCaminos.add(caminoHasta(ver))
+        // Obtenemos el camino desde inicio hasta ver 
+        // Si ese camino es mas largo, se guarda
+        val caminoActual: LinkedList<Int> = caminoHasta(ver)
+        if (caminoMasLargo.count() < caminoActual.count()) {
+            caminoMasLargo = caminoActual
+        }
+
         listaVerticesDFSCaminos[ver].color = Color.BLANCO
         
     }
@@ -85,39 +90,5 @@ public class DFSCaminos(val g: GrafoDirigido, val inicio: Int) {
         return camino
     }
 
-    /* 
-        Se devuelven todos los caminos que se obtuvieron desde el vertice raiz
-        hasta los demas vertices sumideros del grafo
-
-        Se devuelve un iterable de caminos y cada caminos esta representado
-        como una lista enlazada
-
-        {P: true}
-        {Q: Se devuelven todos los caminos desde la raiz hasta los vertices
-            sumideros del grafo}
-    
-        Tiempo de ejecucion O(1)
-    */
-    fun obtenerTodosLosCaminos(): Iterable<LinkedList<Int>> = listaCaminos.asIterable()
-
-
-    /* 
-        Se recorren todos los caminos obtenidos en la creacion de la clase
-        y se devuelve el camino mas largo
-
-        {P: true}
-        {Q: se devuelve el camino con mas vertices desde la raiz}
-
-        Tiempo de ejecucion O(cantidad de caminos obtenidos)
-    */
-    fun obtenerCaminoMasLargo(): LinkedList<Int> {
-        val caminos: Iterable<LinkedList<Int>> = this.obtenerTodosLosCaminos()
-        var caminoMasLargo: LinkedList<Int> = caminos.last()
-
-        for (c in caminos) {
-            if (caminoMasLargo.count() < c.count()) caminoMasLargo = c
-        }
-
-        return caminoMasLargo
-    }
+    fun obtenerCaminoMasLargo(): LinkedList<Int> = caminoMasLargo
 }
