@@ -7,7 +7,7 @@ package ve.usb.libGrafo
  Si el vértice s no existe en el grafo se retorna un RuntimeException.
 */
 public CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
-
+    
     // Retorna cierto si hay un camino desde s hasta el vértice v.
     // Si el vértice v no existe, se retorna un RuntimeException.
     fun existeUnCamino(v: Int) : Boolean { }
