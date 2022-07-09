@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul  7 18:55:04 2022
+# Make data base, printed on Sat Jul  9 19:26:40 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e1f8ce78-87e9-48d7-99d6-859c9cd0a547.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-64812325-6d65-413a-aed4-9f550a8e5f84.sock
 # environment
 LC_NAME = es_VE.UTF-8
 # environment
@@ -39,7 +39,6 @@ QT_ACCESSIBILITY = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
- 
 .VARIABLES := 
 # environment
 PWD = /home/daniel/Documents/GitHub/algos3/proy/actividad2
@@ -58,17 +57,17 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc58
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.MX8XO1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.M6LUO1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.137
+GNOME_TERMINAL_SERVICE = :1.2896
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=a6677290687af8cd9062daba62c760ec
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=86c3590fa5f89ff66571de8562c98d0d
 # makefile
 CURDIR := /home/daniel/Documents/GitHub/algos3/proy/actividad2
 # environment
@@ -102,19 +101,19 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 5846
+VSCODE_PID = 51241
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1771,unix/daniel-X441UA:/tmp/.ICE-unix/1771
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1509,unix/daniel-X441UA:/tmp/.ICE-unix/1509
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=a6677290687af8cd9062daba62c760ec
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=86c3590fa5f89ff66571de8562c98d0d
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -132,7 +131,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/aa529f78_0735_4aaf_a663_d5a7b648b818
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/e4a1d62a_c6f9_43e2_b116_39028e833366
 # environment
 MAKELEVEL := 0
 # default
@@ -178,7 +177,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1771
+SYSTEMD_EXEC_PID = 1509
 # environment
 DISPLAY = :0
 # environment
@@ -246,9 +245,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15597702): 10 files, no impossibilities.
+# . (device 2050, inode 15597702): 8 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -289,6 +288,7 @@ all: jarlib EscaleraDeEdicion.class
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
+ 
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
@@ -328,7 +328,6 @@ jarlib:
 
 # Not a target:
 EscaleraDeEdicion.kt:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -341,12 +340,12 @@ EscaleraDeEdicion.kt:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 206 B / avg = 11 B
-# current buf: size = 8162 B / used = 206 B / count = 18 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 185 B / avg = 11 B
+# current buf: size = 8162 B / used = 185 B / count = 16 / avg = 11 B
 
-# strcache performance: lookups = 31 / hit rate = 41%
+# strcache performance: lookups = 29 / hit rate = 44%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Thu Jul  7 18:55:04 2022
+# Load=16/8192=0%, Rehash=0, Collisions=0/29=0%
+# Finished Make data base on Sat Jul  9 19:26:40 2022
 
  

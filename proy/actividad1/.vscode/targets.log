@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 30 12:27:20 2022
+# Make data base, printed on Sat Jul  9 18:42:46 2022
 
 # Variables
 
@@ -17,17 +17,19 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
+NO_AT_BRIDGE = 1
+# environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-cc6c5f92-1292-49d2-a32e-a47db48a6520.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a28f17ba-ed8b-4dbc-82f8-a40ebdf3e245.sock
 # environment
 LC_NAME = es_VE.UTF-8
 # environment
 LC_NUMERIC = es_VE.UTF-8
 # environment
-VSCODE_CWD = /home/daniel/Documents/USB/Laboratorio de algoritmos 3/Proyectos/Proyecto 1/actividad1
+VSCODE_CWD = /home/daniel/Documents/GitHub/algos3/proy/actividad1
 # environment
 LC_ADDRESS = es_VE.UTF-8
 # default
@@ -41,7 +43,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/daniel/Documents/USB/Laboratorio de algoritmos 3/Proyectos/Proyecto 1/actividad1
+PWD = /home/daniel/Documents/GitHub/algos3/proy/actividad1
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -57,19 +59,19 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc58
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.Y677N1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.M6LUO1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.111
+GNOME_TERMINAL_SERVICE = :1.2896
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=ac620b6f65c2ff2542aec2d262bdcdd9
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=86c3590fa5f89ff66571de8562c98d0d
 # makefile
-CURDIR := /home/daniel/Documents/USB/Laboratorio de algoritmos 3/Proyectos/Proyecto 1/actividad1
+CURDIR := /home/daniel/Documents/GitHub/algos3/proy/actividad1
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -101,19 +103,19 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 3308
+VSCODE_PID = 42522
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1740,unix/daniel-X441UA:/tmp/.ICE-unix/1740
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1509,unix/daniel-X441UA:/tmp/.ICE-unix/1509
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=ac620b6f65c2ff2542aec2d262bdcdd9
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=86c3590fa5f89ff66571de8562c98d0d
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -131,7 +133,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/9ac07366_2b3e_4e04_8dcb_31fd12df49b9
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ae3b1d33_6199_40df_8327_01b9db520b39
 # environment
 MAKELEVEL := 0
 # default
@@ -177,7 +179,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1740
+SYSTEMD_EXEC_PID = 1509
 # environment
 DISPLAY = :0
 # environment
@@ -237,7 +239,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = es_VE.UTF-8
 # variable set hash-table stats:
-# Load=113/1024=11%, Rehash=0, Collisions=12/147=8%
+# Load=114/1024=11%, Rehash=0, Collisions=12/148=8%
 
 # Pattern-specific Variable Values
 
@@ -245,9 +247,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15335617): 9 files, no impossibilities.
+# . (device 2050, inode 15597651): 8 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -258,7 +260,7 @@ LC_IDENTIFICATION = es_VE.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 18:29:03.771972799
+#  Last modified 2022-06-29 18:29:03.771972
 #  File has been updated.
 #  Successfully updated.
 
@@ -291,11 +293,11 @@ GradosDeSeparacion.kt:
 
 all: jarlib GradosDeSeparacion.class
 #  Command line target.
+ 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
@@ -340,12 +342,12 @@ jarlib:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 194 B / avg = 11 B
-# current buf: size = 8162 B / used = 194 B / count = 17 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 188 B / avg = 11 B
+# current buf: size = 8162 B / used = 188 B / count = 16 / avg = 11 B
 
-# strcache performance: lookups = 30 / hit rate = 43%
+# strcache performance: lookups = 29 / hit rate = 44%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Thu Jun 30 12:27:20 2022
+# Load=16/8192=0%, Rehash=0, Collisions=0/29=0%
+# Finished Make data base on Sat Jul  9 18:42:46 2022
 
  

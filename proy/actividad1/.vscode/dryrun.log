@@ -1,6 +1,7 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/daniel/Documents/USB/Laboratorio de algoritmos 3/Proyectos/Proyecto 1/actividad1'
+make: Entering directory '/home/daniel/Documents/GitHub/algos3/proy/actividad1'
 (cd libGrafoKt/; make)  
+ 
 kotlinc -cp libGrafoKt/libGrafoKt.jar GradosDeSeparacion.kt
-make: Leaving directory '/home/daniel/Documents/USB/Laboratorio de algoritmos 3/Proyectos/Proyecto 1/actividad1'
+make: Leaving directory '/home/daniel/Documents/GitHub/algos3/proy/actividad1'
  
