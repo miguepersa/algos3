@@ -23,6 +23,7 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/Utilidades.class\
 		$(GLIB)/CFC.class\
 		$(GLIB)/OrdenamientoTopologico.class\
+		$(GLIB)/OrdenamientoTopologicoCosto.class\
 		$(GLIB)/ParticionNiveles.class\
 		$(GLIB)/CicloDigrafo.class\
 		$(GLIB)/ConjuntosDisjuntos.class\
@@ -33,7 +34,10 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/KruskalAMC.class\
 		$(GLIB)/PrimAMC.class\
 		$(GLIB)/TablaGrafoDirigido.class\
-		$(GLIB)/TablaGrafoNoDirigido.class
+		$(GLIB)/TablaGrafoNoDirigido.class\
+		$(GLIB)/CCM_BellmanFord.class\
+		$(GLIB)/CCM_DAG.class\
+		$(GLIB)/CaminoCriticoPERT.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -126,5 +130,18 @@ $(GLIB)/TablaGrafoDirigido.class: $(GLIB)/TablaGrafoDirigido.kt
 
 $(GLIB)/TablaGrafoNoDirigido.class: $(GLIB)/TablaGrafoNoDirigido.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/TablaGrafoNoDirigido.kt
+
+$(GLIB)/CCM_BellmanFord.class: $(GLIB)/CCM_BellmanFord.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_BellmanFord.kt
+
+$(GLIB)/CCM_DAG.class: $(GLIB)/CCM_DAG.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_DAG.kt
+
+$(GLIB)/CaminoCriticoPERT.class: $(GLIB)/CaminoCriticoPERT.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CaminoCriticoPERT.kt
+
+$(GLIB)/OrdenamientoTopologicoCosto.class: $(GLIB)/OrdenamientoTopologicoCosto.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologicoCosto.kt
+	
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class

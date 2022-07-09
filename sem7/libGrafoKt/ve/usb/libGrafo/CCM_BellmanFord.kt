@@ -14,22 +14,22 @@ data class VerticeBellmanFord(val n: Int) {
  caminos de costo mínimo desde un vértice fuente s fijo.
  Si el vértice s no existe en el grafo se retorna un RuntimeException.
  */
-public CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
+public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
     var listaVertices: MutableList<VerticeBellmanFord>
     var cicloNegativo: Boolean
 
     init {
         // Llenamos nuestra lista con los vertices del grafo
-        listaVertices = MutableList()
-        for (i in g.obtenerNumeroDeVertices) listaVertices.add(VerticeBellmanFord(i))
+        listaVertices = mutableListOf()
+        for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeBellmanFord(i))
 
         listaVertices[s].d = 0.0 // Inicializamos la fuente fija
 
-        for (i in g.obtenerNumeroDeVertices()) {
+        for (i in 0 until g.obtenerNumeroDeVertices()) {
             for (arco in g.iterator()) {
                 val u: Int = arco.x.n
                 val v: Int = arco.y.n
-                relajacion(u, v, arco.obtenerCorto())
+                relajacion(u, v, arco.obtenerCosto())
             }
         }
 
@@ -63,7 +63,7 @@ public CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
     fun tieneCicloNegativo() : Boolean = cicloNegativo
 
     // Retorna los arcos del ciclo negativo con la forma <u, v>, <v, w>, ... ,<y, x>, <x, u>  
-    fun obtenerCicloNegativo() : Iterable<ArcoCosto> { }
+    // fun obtenerCicloNegativo() : Iterable<ArcoCosto> { }
 
     /* 
         Determine si existe un camino entre el vertice raiz s y vertice v
@@ -114,22 +114,39 @@ public CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
     // Retorna los arcos del camino de costo mínimo hasta v.
     // Si el vértice v no existe, se retorna un RuntimeException.
     fun obtenerCaminoDeCostoMinimo(v: Int) : Iterable<ArcoCosto> { 
-        var caminoCostoMinimo: MutableList<ArcoCosto> = mutableListOf()
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("CCM_DAG.obtenerCaminoCostoMinimo: El vertice $v no pertenece al grafo")
+        }
 
-        for (v in 0 until g.obtenerNumeroDeVertices()) {    
-            if (v != s) { // revisamos que el vertice no sea la raiz
-                if (this.existeUnCamino(v)) { // Revisamos si hay camino
-                    val u: Int = listaVertices[v].pred!!.n
-                    for (arco in g.iterator()) { // conseguimos el 
-                        if (u == arco.x.n && v == arco.y.n) {
-                            caminoCostoMinimo.add(arco)
-                            break
-                        }
-                    }
+        if (v == s) {
+            throw RuntimeException("CCM_DAG.obtenerCaminoDeCostoMinomo: No hay camino hasta el vertice raiz")
+        }
+
+        // Obtenemos el camino desde s hasta v
+        var camino: MutableList<Int> =  mutableListOf()
+        var auxver: Int = v 
+        while (auxver != s ) {
+            camino.add(0, auxver)
+            auxver = listaVertices[auxver].pred!!.n
+        }
+
+        camino.add(0, s) // Cada lado es (camino[i], camino[i + 1])
+
+        // Ahora, obtenemos el camino de cada lado del camino
+        var caminoCosto: MutableList<ArcoCosto> = mutableListOf()
+
+        for (i in 0 until camino.size - 1) {
+            val a: Int = camino[i]
+            val b: Int = camino[i + 1]
+            
+            // buscamos el lado (camino[i], camino[i+1])
+            for (l in g.iterator()) {
+                if (a == l.x.n && b == l.y.n) {
+                    caminoCosto.add(0, l)
                 }
             }
         }
 
-        caminoCostoMinimo.asIterable()
+        return caminoCosto.asIterable()
     }
 }
