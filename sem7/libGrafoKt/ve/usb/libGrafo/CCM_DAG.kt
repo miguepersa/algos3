@@ -106,7 +106,7 @@ public class CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
 
         Tiempo de ejecucion O(|V||G|)
     */
-    fun obtenerCaminoDeCostoMinimo(v: Int) : Iterable<ArcoCosto> { 
+       fun obtenerCaminoDeCostoMinimo(v: Int) : Iterable<ArcoCosto> { 
         if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("CCM_DAG.obtenerCaminoCostoMinimo: El vertice $v no pertenece al grafo")
         }
@@ -115,9 +115,16 @@ public class CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
             throw RuntimeException("CCM_DAG.obtenerCaminoDeCostoMinomo: No hay camino hasta el vertice raiz")
         }
 
+
         // Obtenemos el camino desde s hasta v
         var camino: MutableList<Int> =  mutableListOf()
+        var caminoCosto: MutableList<ArcoCosto> = mutableListOf()
         var auxver: Int = v 
+        
+        if (!this.existeUnCamino(v)) { // Si no existe el camino devolvemos un iterable vacio
+            return caminoCosto
+        }
+        
         while (auxver != s ) {
             camino.add(0, auxver)
             auxver = listaVertices[auxver].pred!!.n
@@ -126,7 +133,6 @@ public class CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
         camino.add(0, s) // Cada lado es (camino[i], camino[i + 1])
 
         // Ahora, obtenemos el camino de cada lado del camino
-        var caminoCosto: MutableList<ArcoCosto> = mutableListOf()
 
         for (i in 0 until camino.size - 1) {
             val a: Int = camino[i]
@@ -135,7 +141,7 @@ public class CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
             // buscamos el lado (camino[i], camino[i+1])
             for (l in g.iterator()) {
                 if (a == l.x.n && b == l.y.n) {
-                    caminoCosto.add(0, l)
+                    caminoCosto.add(l)
                 }
             }
         }

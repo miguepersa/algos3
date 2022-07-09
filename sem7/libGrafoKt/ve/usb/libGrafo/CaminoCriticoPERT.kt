@@ -89,7 +89,7 @@ public class CaminoCriticoPERT(val g: GrafoDirigidoCosto, val s: Int) {
         var camino: MutableList<Arco> = mutableListOf()
         for (i in listaVertices) {
             if (i.pred != null) {
-                camino.add(Arco(Vertice(i.n), Vertice(i.pred!!.n)))
+                camino.add(Arco(Vertice(i.pred!!.n), Vertice(i.n)))
             }
         }
 
@@ -101,7 +101,6 @@ public class CaminoCriticoPERT(val g: GrafoDirigidoCosto, val s: Int) {
                 }
             }
         }
-
         return caminoCosto.asIterable()
     }
 }

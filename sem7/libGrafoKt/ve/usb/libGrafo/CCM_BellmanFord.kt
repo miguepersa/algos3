@@ -40,12 +40,13 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
             val v: Int = arco.y.n
             if (listaVertices[v].d > listaVertices[u].d + arco.obtenerCosto()) cicloNegativo = false
         }
+
     }
     
     private fun relajacion(u: Int, v: Int, w: Double) {
         if (listaVertices[v].d > listaVertices[u].d + w) {
             listaVertices[v].d = listaVertices[u].d + w
-            listaVertices[v].pred = listaVertices[v]
+            listaVertices[v].pred = listaVertices[u]
         }
     }
 
@@ -122,8 +123,15 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
             throw RuntimeException("CCM_DAG.obtenerCaminoDeCostoMinomo: No hay camino hasta el vertice raiz")
         }
 
+
         // Obtenemos el camino desde s hasta v
         var camino: MutableList<Int> =  mutableListOf()
+        var caminoCosto: MutableList<ArcoCosto> = mutableListOf()
+
+        if (!this.existeUnCamino(v)) { // Si no existe el camino devolvemos un iterable vacio
+            return caminoCosto
+        }
+
         var auxver: Int = v 
         while (auxver != s ) {
             camino.add(0, auxver)
@@ -133,7 +141,6 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
         camino.add(0, s) // Cada lado es (camino[i], camino[i + 1])
 
         // Ahora, obtenemos el camino de cada lado del camino
-        var caminoCosto: MutableList<ArcoCosto> = mutableListOf()
 
         for (i in 0 until camino.size - 1) {
             val a: Int = camino[i]
@@ -142,7 +149,7 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
             // buscamos el lado (camino[i], camino[i+1])
             for (l in g.iterator()) {
                 if (a == l.x.n && b == l.y.n) {
-                    caminoCosto.add(0, l)
+                    caminoCosto.add(l)
                 }
             }
         }
