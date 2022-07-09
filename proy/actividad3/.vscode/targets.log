@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul  6 12:47:02 2022
+# Make data base, printed on Fri Jul  8 20:03:26 2022
 
 # Variables
 
@@ -16,9 +16,8 @@ KFLAG = -cp
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
- 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f521f2df-391f-4a29-8fa0-1c3bba5d980d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-705fead2-9ab9-4496-93cd-3d82626b1ae2.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
 # environment
@@ -42,7 +41,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/miguelp/algos3/proy/Actividad 3
+PWD = /home/miguelp/algos3/proy/actividad3
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -68,7 +67,7 @@ XAUTHORITY = /home/miguelp/.Xauthority
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/miguelp/algos3/proy/Actividad 3
+CURDIR := /home/miguelp/algos3/proy/actividad3
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -100,7 +99,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 74536
+VSCODE_PID = 15987
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -204,7 +203,7 @@ LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 74536
+GIO_LAUNCHED_DESKTOP_FILE_PID = 15987
 # environment
 _ = /usr/share/code/code
 # environment
@@ -271,7 +270,6 @@ Makefile:
 
 clean:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -316,6 +314,7 @@ jarlib:
 # @ := jarlib
 # automatic
 # * := 
+ 
 # automatic
 # < := 
 # automatic
@@ -353,6 +352,6 @@ jarlib:
 # strcache performance: lookups = 31 / hit rate = 41%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Wed Jul  6 12:47:02 2022
+# Finished Make data base on Fri Jul  8 20:03:26 2022
 
  

@@ -6,11 +6,10 @@ package ve.usb.libGrafo
 */
 public class ColaDePrioridad(val cap: Int) {
     var heapSize: Int = 0
-    var max: Int = cap
     var minHeap: Array<Vertice> = Array<Vertice>(cap, {i -> Vertice(i)})
 
     fun add(v: Vertice) {
-        if (heapSize == max) {
+        if (heapSize == cap) {
             throw RuntimeException("ColaDePrioridad.add: La cola esta llena")
         }
 
@@ -20,7 +19,7 @@ public class ColaDePrioridad(val cap: Int) {
         minHeap[i] = v
 
         // Devolvemos la prioridad de min heap
-        while (i != 0 && minHeap[parent(i)] > minHeap[i]) {
+        while (i != 0 && minHeap[parent(i)].key > minHeap[i].key) {
             swap(minHeap, i, parent(i))
             i = parent(i)
         }
@@ -36,7 +35,7 @@ public class ColaDePrioridad(val cap: Int) {
         minHeap[j].key = n
         var index: Int = j
                 
-        while (index != 0 && minHeap[parent(index)] > minHeap[index]) {
+        while (index != 0 && minHeap[parent(index)].key > minHeap[index].key) {
             swap(minHeap, index, parent(index))
             index = parent(index)
         }
@@ -65,8 +64,8 @@ public class ColaDePrioridad(val cap: Int) {
         var r: Int = right(i)
         var smallest: Int = i
 
-        if (l < heapSize && minHeap[l] < minHeap[i]) smallest = l
-        if (r < heapSize && minHeap[r] < minHeap[smallest]) smallest = r 
+        if (l < heapSize && minHeap[l].key < minHeap[i].key) smallest = l
+        if (r < heapSize && minHeap[r].key < minHeap[smallest].key) smallest = r 
 
 
         if (smallest != i) {

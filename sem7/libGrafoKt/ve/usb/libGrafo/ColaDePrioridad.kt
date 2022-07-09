@@ -6,11 +6,10 @@ package ve.usb.libGrafo
 */
 public class ColaDePrioridad(val cap: Int) {
     var heapSize: Int = 0
-    var max: Int = cap
     var minHeap: Array<Vertice> = Array<Vertice>(cap, {i -> Vertice(i)})
 
     fun add(v: Vertice) {
-        if (heapSize == max) {
+        if (heapSize == cap) {
             throw RuntimeException("ColaDePrioridad.add: La cola esta llena")
         }
 
@@ -42,7 +41,7 @@ public class ColaDePrioridad(val cap: Int) {
         }
     }
 
-    fun extrearMinimo(): Vertice {
+    fun extraerMinimo(): Vertice {
         if (heapSize <= 0) {
             throw  RuntimeException("ColaDePrioridad.extraerMinimo(): La cola esta vacia")
         }

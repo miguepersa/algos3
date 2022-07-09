@@ -4,12 +4,14 @@ import kotlin.math.pow
 fun main(args: Array<String>) {
     val grafo = GrafoDirigidoCosto(args[0])
 
-    val dag = CaminoCriticoPERT(grafo, 1)
+    val dag = CCM_Dijkstra(grafo, 0)
     
-    for (i in dag.obtenerCaminoCritico()) {
+    for (i in dag.obtenerCaminoDeCostoMinimo(4)) {
         print(i)
     }
-    println("\n"+ dag.costo().toString())
-    
+
+    for (i in dag.arrVertices) {
+        println("\n${i.n} ${i.key}")
+    }    
     
 }
