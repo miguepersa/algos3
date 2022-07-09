@@ -28,7 +28,7 @@ public class PrimAMC(val g: GrafoNoDirigidoCosto) {
         }
 
         while (!q.vacia()) {
-            var u: Vertice = q.extrearMinimo()
+            var u: Vertice = q.extraerMinimo()
             costo += u.key
             inQueue[u.n] = false
             for (v in g.adyacentes(u.n)) {

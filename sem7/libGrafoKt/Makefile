@@ -37,7 +37,8 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/TablaGrafoNoDirigido.class\
 		$(GLIB)/CCM_BellmanFord.class\
 		$(GLIB)/CCM_DAG.class\
-		$(GLIB)/CaminoCriticoPERT.class
+		$(GLIB)/CaminoCriticoPERT.class\
+		$(GLIB)/CCM_Dijkstra.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -136,6 +137,9 @@ $(GLIB)/CCM_BellmanFord.class: $(GLIB)/CCM_BellmanFord.kt
 
 $(GLIB)/CCM_DAG.class: $(GLIB)/CCM_DAG.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_DAG.kt
+
+$(GLIB)/CCM_Dijkstra.class: $(GLIB)/CCM_Dijkstra.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_Dijkstra.kt
 
 $(GLIB)/CaminoCriticoPERT.class: $(GLIB)/CaminoCriticoPERT.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CaminoCriticoPERT.kt

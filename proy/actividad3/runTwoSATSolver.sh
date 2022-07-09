@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kotlin -cp libGrafoKt/libGrafoKt.jar:. TwoSATSolver.class $1
+kotlin -cp libGrafoKt/libGrafoKt.jar:. TwoSATSolverKt.class $1

@@ -13,6 +13,7 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/Grafo.class\
 		$(GLIB)/GrafoDirigido.class\
 		$(GLIB)/DFS.class\
+		$(GLIB)/CicloDigrafo.class\
 		$(GLIB)/Utilidades.class\
 		$(GLIB)/CFC.class\
 		$(GLIB)/OrdenamientoTopologico.class
@@ -45,6 +46,9 @@ $(GLIB)/GrafoDirigido.class: $(GLIB)/GrafoDirigido.kt
 
 $(GLIB)/DFS.class: $(GLIB)/DFS.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/DFS.kt
+
+$(GLIB)/CicloDigrafo.class: $(GLIB)/CicloDigrafo.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CicloDigrafo.kt
 
 $(GLIB)/Utilidades.class: $(GLIB)/Utilidades.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Utilidades.kt
