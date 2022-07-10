@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul  9 17:52:25 2022
+# Make data base, printed on Sun Jul 10 11:57:56 2022
 
 # Variables
 
@@ -17,17 +17,20 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-MANDATORY_PATH = /usr/share/gconf/deepin.mandatory.path
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+SSH_AGENT_LAUNCHER = gnome-keyring
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-087cf482-d650-4333-b39c-b99bfc7c7d2f.sock
 # environment
 LC_NAME = es_VE.UTF-8
+ 
 # environment
 LC_NUMERIC = es_VE.UTF-8
 # environment
-VSCODE_CWD = /home/miguelp
+VSCODE_CWD = /home/daniel/Documents/GitHub/algos3/sem7
 # environment
 LC_ADDRESS = es_VE.UTF-8
-# environment
-GDM_LANG = es_ES
 # default
 MAKE_COMMAND := make
 # environment
@@ -39,31 +42,37 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/miguelp/algos3/sem7
+PWD = /home/daniel/Documents/GitHub/algos3/sem7
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-XDG_DATA_DIRS = /usr/share/deepin:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = /home/miguelp/.config/Code/CachedData/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9
-# environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LANG = C
 # environment
-XAUTHORITY = /home/miguelp/.Xauthority
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.7X50O1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# environment
+GNOME_TERMINAL_SERVICE = :1.125
 # makefile
 MAKEFLAGS = pqrR
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=bc248bc7ccdb0aa6848cd30062caf492
 # makefile
-CURDIR := /home/miguelp/algos3/sem7
+CURDIR := /home/daniel/Documents/GitHub/algos3/sem7
+# environment
+VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
@@ -79,35 +88,37 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # default
 .SHELLFLAGS := -c
 # environment
-QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
+WAYLAND_DISPLAY = wayland-0
 # environment
-XDG_CONFIG_DIRS = /etc/xdg/xdg-deepin:/etc/xdg
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-XDG_SESSION_DESKTOP = deepin
+XDG_SESSION_DESKTOP = ubuntu
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 712490
+VSCODE_VERBOSE_LOGGING = true
 # environment
-XDG_SESSION_TYPE = x11
+VSCODE_PID = 4476
+# environment
+XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-XDG_DATA_HOME = /home/miguelp/.local/share
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1887,unix/daniel-X441UA:/tmp/.ICE-unix/1887
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=bc248bc7ccdb0aa6848cd30062caf492
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"eae11d900af9c06c6da7ac60cedf8cf9.es","_translationsConfigFile":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es/tcf.json","_cacheRoot":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es","_resolvedLanguagePackCoreLocation":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9","_corruptedFile":"/home/miguelp/.config/Code/clp/eae11d900af9c06c6da7ac60cedf8cf9.es/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -119,103 +130,93 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-SHLVL = 0
+SHLVL = 1
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/525246c8_1f3c_49e3_a496_29357af5fb5b
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/miguelp/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 # default
 MAKEFILES := 
-# environment
-LANGUAGE = es_ES
 # environment
 LC_MONETARY = es_VE.UTF-8
 # automatic
 ^F = $(notdir $^)
 # environment
-QT_LOGGING_RULES = *.debug=false
-# environment
 LC_TIME = es_VE.UTF-8
 # environment
-XDG_CONFIG_HOME = /home/miguelp/.config
+VSCODE_LOG_NATIVE = false
 # environment
-QT_DBL_CLICK_DIST = 15
+USERNAME = daniel
+# environment
+GNOME_SETUP_DISPLAY = :1
 # environment
 LC_TELEPHONE = es_VE.UTF-8
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # automatic
 ?F = $(notdir $?)
-# environment
-XDG_SEAT = seat0
-# environment
-GTK_IM_MODULE = ibus
 # makefile (from 'Makefile', line 3)
 LIBGRAPH = libGrafoKt/
 # environment
-XDG_CURRENT_DESKTOP = Deepin
+XDG_CURRENT_DESKTOP = Unity
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
 +F = $(notdir $+)
 # environment
-XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+DESKTOP_SESSION = ubuntu
 # environment
-DESKTOP_SESSION = deepin
-# environment
-ORIGINAL_XDG_CURRENT_DESKTOP = Deepin
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
-CLUTTER_IM_MODULE = ibus
-# environment
-LOGNAME = miguelp
-# environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
-# environment
-XDG_VTNR = 1
+LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
+SYSTEMD_EXEC_PID = 1887
+# environment
 DISPLAY = :0
 # environment
-USER = miguelp
+USER = daniel
 # environment
 GTK_MODULES = gail:atk-bridge
-# environment
-DEFAULTS_PATH = /usr/share/gconf/deepin.default.path
 # default
 MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 4)
 LIBJAR = libGrafoKt/libGrafoKt.jar
 # environment
+DBUS_STARTER_BUS_TYPE = session
+# environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 712490
-# environment
-_ = /usr/share/code/code
+_ = /usr/bin/code
 # environment
 LC_PAPER = es_VE.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+COLORTERM = truecolor
 # environment
 XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/miguelp
+HOME = /home/daniel
 # environment
 QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-81c75eec-1.69.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-419f9acc-1.68.1-main.sock
 # environment
-XDG_SESSION_ID = c3
+TERM = xterm-256color
+# environment
+IM_CONFIG_PHASE = 1
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -223,17 +224,21 @@ XDG_SESSION_ID = c3
 # default
 SUFFIXES := 
 # environment
-XDG_CACHE_HOME = /home/miguelp/.cache
+VSCODE_CLI = 1
 # environment
-XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/miguelp
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+VTE_VERSION = 6800
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
-GDMSESSION = deepin
+XDG_MENU_PREFIX = gnome-
+# environment
+GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = es_VE.UTF-8
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=7/145=5%
+# Load=113/1024=11%, Rehash=0, Collisions=12/147=8%
 
 # Pattern-specific Variable Values
 
@@ -241,7 +246,7 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2053, inode 1197281): 9 files, no impossibilities.
+# . (device 2050, inode 15073812): 9 files, no impossibilities.
 
 # 9 files, no impossibilities in 1 directories.
 
@@ -261,7 +266,7 @@ Main.class: Main.kt
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-09 17:51:50.203738472
+#  Last modified 2022-06-29 17:50:19.009127
 #  File has been updated.
 #  Successfully updated.
 
@@ -286,7 +291,6 @@ all: jarlib Main.class
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 # Not a target:
@@ -342,6 +346,6 @@ jarlib:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Sat Jul  9 17:52:25 2022
+# Finished Make data base on Sun Jul 10 11:57:56 2022
 
  
