@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 13:13:17 2022
+# Make data base, printed on Sun Jul 17 17:04:08 2022
 
 # Variables
 
@@ -53,21 +53,21 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/92d25e35d9bf1a6b16
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.7XEWP1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.ZYTEP1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.94
+GNOME_TERMINAL_SERVICE = :1.108
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=5f1ebfc6842e883caeb25a3c62d2e539
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=721e5e6ebed53f242bf6ab3762d477f9
 # makefile
 CURDIR := /home/daniel/Documents/GitHub/algos3/sem8
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -93,19 +93,19 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 6870
+VSCODE_PID = 3669
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1850,unix/daniel-X441UA:/tmp/.ICE-unix/1850
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1563,unix/daniel-X441UA:/tmp/.ICE-unix/1563
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=5f1ebfc6842e883caeb25a3c62d2e539
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=721e5e6ebed53f242bf6ab3762d477f9
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -123,7 +123,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/a475c58e_c1b9_4769_b396_9c5ef0cf5188
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/64682b80_32f2_455a_b06e_47ae70a3dec2
 # environment
 MAKELEVEL := 0
 # default
@@ -167,7 +167,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1850
+SYSTEMD_EXEC_PID = 1563
 # environment
 DISPLAY = :0
 # environment
@@ -336,6 +336,6 @@ jarlib:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Sat Jul 16 13:13:17 2022
+# Finished Make data base on Sun Jul 17 17:04:08 2022
 
  

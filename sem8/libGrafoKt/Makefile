@@ -39,7 +39,8 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/CCM_BellmanFord.class\
 		$(GLIB)/CCM_DAG.class\
 		$(GLIB)/CaminoCriticoPERT.class\
-		$(GLIB)/CCM_Dijkstra.class
+		$(GLIB)/CCM_Dijkstra.class\
+		$(GLIB)/AEstrella.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -150,6 +151,8 @@ $(GLIB)/CaminoCriticoPERT.class: $(GLIB)/CaminoCriticoPERT.kt
 
 $(GLIB)/OrdenamientoTopologicoCosto.class: $(GLIB)/OrdenamientoTopologicoCosto.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologicoCosto.kt
-	
+
+$(GLIB)/AEstrella.class: $(GLIB)/AEstrella.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/AEstrella.kt	
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class
