@@ -10,6 +10,7 @@ public open class Vertice(val n: Int): Comparable<Vertice> {
     var cc: Int = 0
     var key: Double = Double.MAX_VALUE
     var name: String = ""
+    var fHat: Double = 0.0
 
     override fun toString(): String {
         return n.toString()

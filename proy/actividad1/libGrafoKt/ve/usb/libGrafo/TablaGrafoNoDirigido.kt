@@ -22,7 +22,7 @@ public class TablaGrafoNoDirigido(val nombreArchivo: String) {
     init {
         fileContent = File(nombreArchivo).readLines()
 		nVertices = fileContent[0].toInt()
-		arrVertices = fileContent[2].split(" ")
+		arrVertices = fileContent[2].split("\t")
 		tabla = HashMap<String, Int>()
 		for (i in 0..nVertices-1) {
 			tabla.put(arrVertices[i],i)
@@ -72,7 +72,7 @@ public class TablaGrafoNoDirigido(val nombreArchivo: String) {
     fun obtenerGrafoNoDirigido() : GrafoNoDirigido {
         var g = GrafoNoDirigido(nVertices)
 		for (i in 3 until fileContent.size) {
-			var vertices = fileContent[i].split(" ")
+			var vertices = fileContent[i].split("\t")
 			var v1 = Vertice(this.indiceVertice(vertices[0]))
 			v1.name = vertices[0]
 			var v2 = Vertice(this.indiceVertice(vertices[1]))

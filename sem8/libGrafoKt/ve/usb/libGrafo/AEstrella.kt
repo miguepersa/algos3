@@ -1,10 +1,5 @@
 package ve.usb.libGrafo
 
-data class VerticeAEstrella(val n: Int): Vertice {
-   var pred: VerticeAEstrella? = null
-   var d: Double = Double.MAX_VALUE
-   var fHat: Double = 0.0
-}
 
 /*
  Implementación del algoritmo de A* para encontrar un camino
@@ -30,7 +25,7 @@ public class AEstrella(val g: GrafoDirigidoCosto,
 		      val objs: Set<Int>,
 		      val hHat: (Int) -> Double) {
    
-   var listaVertices: MutableList<VerticeAEstrella>
+   var listaVertices: MutableList<Vertice>
    var verticeAlcanzado: Int
 
    init {
@@ -62,28 +57,36 @@ public class AEstrella(val g: GrafoDirigidoCosto,
       var openQueue: ColaDePrioridad = ColaDePrioridad()
       var inOpenQueue: MutableList<Boolean> = mutableListOf() // para determinar si esta o no un elemento en openQueue
 
-      for (i in 0 until g.obtenerNumeroDeVertices()) inOpenQueue(false)
-      inOpenQueue[s].true
+      for (i in 0 until g.obtenerNumeroDeVertices()) inOpenQueue.add(false)
+      inOpenQueue[s] = true
 
       listaVertices = mutableListOf()
       for (i in 0 until g.obtenerNumeroDeVertices()) {
-         listaVertices.add(VerticeAEstrella(i))
+         listaVertices.add(Vertice(i))
       }
 
-      listaVertices[s].fHat = hHat
+      listaVertices[s].fHat = hHat(s)
       listaVertices[s].pred = null
       openQueue.add(listaVertices[s])
 
-      var u: Int = openQueue.extraerMinimo()    
+      var u: Int = openQueue.extraerMinimo()
 
-      while (!objs.contains(u)) {
+      // Arreglo que contiene información de elementos contenidos en obj
+      var objContains = Array<Boolean>(listaVertices.size, {i -> false})
+
+      // Si i esta en objs, objContains[i] = true
+      for (i in objs) {
+         objContains[i] = true
+      }
+
+      while (!objContains[u]) {
          closed.add(u)
 
          for (v in g.adyacentes(u)) {
-            if (!inClosed(v.y.n)) {
+            if (!inClosed[v.y.n]) {
                val fHatNew = listaVertices[u].fHat + hHat(u) + v.obtenerCosto() + hHat(v.y.n)
 
-               if (!inOpenQueue(v.y.n)) { // Acomodar lista de boolean
+               if (!inOpenQueue[v.y.n]) { // Acomodar lista de boolean
                   listaVertices[v.y.n].fHat = fHatNew
                   listaVertices[v.y.n].pred = listaVertices[u]
                   openQueue.add(listaVertices[v.y.n])
@@ -102,11 +105,24 @@ public class AEstrella(val g: GrafoDirigidoCosto,
       verticeAlcanzado = u      
    }
    // Retorna el vértice meta del conjunto objs que fue alcanzado por el algoritmo.
-   // fun objetivoAlcanzado() : Int { }
+   fun objetivoAlcanzado() : Int = verticeAlcanzado
 
    // Retorna el costo del camino desde s hasta el vértice objetivo alcanzado. 
-   // fun costo() : Double {}
+   fun costo() : Double {
+      return listaVertices[verticeAlcanzado].fHat
+   }
 
    // Retorna los arcos del camino desde s hasta el vértice objetivo alcanzado. 
-   // fun obtenerCamino() : Iterable<ArcoCosto> { }
+   fun obtenerCamino() : Iterable<ArcoCosto> {
+      var v: Vertice? = listaVertices[verticeAlcanzado]
+      var camino: MutableList<ArcoCosto> = mutableListOf<ArcoCosto>()
+      while (v != null) {
+         if (v.pred != null) {
+            var u: Vertice = v.pred!!
+            camino.add(ArcoCosto(u, v, v.fHat - u.fHat))
+            v = v.pred
+         }
+      }
+      return camino.asIterable()
+   }
 }
