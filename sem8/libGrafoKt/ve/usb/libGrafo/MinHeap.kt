@@ -42,9 +42,9 @@ public class MinHeap() {
 
         while (ind > 0 && heapLlaves[padre(ind)] > heapLlaves[ind]) {
             // swap(parent(ind), ind) en el arreglo de indices
-            val auxInd: Int = heapIndices[ind]
-            heapIndices[ind] = heapIndices[padre(ind)]
-            heapIndices[padre(ind)] = auxInd
+            val auxInd: Int = heapIndices[heap[ind]]
+            heapIndices[heap[ind]] = heapIndices[heap[padre(ind)]]
+            heapIndices[heap[padre(ind)]] = auxInd
 
             //swap(parent(ind), ind) en el arreglo del heap
             val auxHeap: Int = heap[ind]

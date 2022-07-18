@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 18 10:44:43 2022
+# Make data base, printed on Mon Jul 18 10:51:53 2022
 
 # Variables
 
@@ -93,7 +93,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 3604
+VSCODE_PID = 4889
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -123,7 +123,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/103cfaf1_a613_4f1d_8b79_6b437c00d586
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/52d02b4b_45be_41af_91b5_aab30e4b1fd8
 # environment
 MAKELEVEL := 0
 # default
@@ -336,6 +336,6 @@ jarlib:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Mon Jul 18 10:44:43 2022
+# Finished Make data base on Mon Jul 18 10:51:53 2022
 
  

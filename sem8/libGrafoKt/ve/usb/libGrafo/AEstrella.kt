@@ -1,6 +1,10 @@
 package ve.usb.libGrafo
 import java.util.PriorityQueue
 
+data class VerticeAEstrella(val n: Int) {
+   var pred: VerticeAEstrella? = null
+   var fHat: Double = Double.MAX_VALUE
+}
 /*
  Implementación del algoritmo de A* para encontrar un camino
  desde un vértice fuente s fijo hasta alguno de los vértices objetivos. 
@@ -25,7 +29,7 @@ public class AEstrella(val g: GrafoDirigidoCosto,
 		      val objs: Set<Int>,
 		      val hHat: (Int) -> Double) {
    
-   var listaVertices: MutableList<Vertice>
+   var listaVertices: MutableList<VerticeAEstrella>
    var verticeAlcanzado: Int
 
    init {
@@ -49,59 +53,60 @@ public class AEstrella(val g: GrafoDirigidoCosto,
       }
 
       var closed: MutableList<Int> = mutableListOf()
-      var inClosed: MutableList<Boolean> = mutableListOf() // para determinar si esta o no un elemento en closed
-      
-      // Inicializamos los arreglos inClosed y inOpenQueue
-      for (i in 0 until g.obtenerNumeroDeVertices()) inClosed.add(false) // no hay ningun elemento en closed
+      var closedContains: MutableList<Boolean> = mutableListOf()
+      for (i in 0 until g.obtenerNumeroDeVertices()) closedContains.add(false) // closed esta vacia
             
-      var openQueue: PriorityQueue<Pair<Int, Double>> = PriorityQueue(compareBy{ it.second })
+      var openQueue: PriorityQueue<VerticeAEstrella> = PriorityQueue(compareBy{ it.fHat })
+      var openQueueContains: MutableList<Boolean> = mutableListOf() 
+      for (i in 0 until g.obtenerNumeroDeVertices()) openQueueContains.add(false) // openQueue esta vacia
 
-      var inOpenQueue: MutableList<Boolean> = mutableListOf() // para determinar si esta o no un elemento en openQueue
-      for (i in 0 until g.obtenerNumeroDeVertices()) inOpenQueue.add(false)
-      inOpenQueue[s] = false
 
       listaVertices = mutableListOf()
       for (i in 0 until g.obtenerNumeroDeVertices()) {
-         listaVertices.add(Vertice(i))
+         listaVertices.add(VerticeAEstrella(i))
       }
 
       listaVertices[s].fHat = hHat(s)
       listaVertices[s].pred = null
-      openQueue.add(Pair(s, listaVertices[s].fHat))
 
-      var u: Int = openQueue.remove().first
+      openQueue.add(listaVertices[s])
+      var u: Int = openQueue.remove().n
 
       // Arreglo que contiene información de elementos contenidos en obj
-      var objContains = Array<Boolean>(listaVertices.size, {i -> false})
-
-      // Si i esta en objs, objContains[i] = true
-      for (i in objs) {
-         objContains[i] = true
-      }
-
+      val objContains: MutableList<Boolean> = mutableListOf()
+      for (i in 0 until g.obtenerNumeroDeVertices()) objContains.add(false)
+      for (i in objs) objContains[i] = true
+      
       while (!objContains[u]) {
          closed.add(u)
+         closedContains[u] = true
 
          for (v in g.adyacentes(u)) {
-            if (!inClosed[v.y.n]) {
+            if (!closedContains[v.y.n]) {
                val fHatNew = listaVertices[u].fHat - hHat(u) + v.obtenerCosto() + hHat(v.y.n)
 
-               if (!inOpenQueue[v.y.n]) { 
+               if (!openQueueContains[v.y.n]) { 
+
                   listaVertices[v.y.n].fHat = fHatNew
                   listaVertices[v.y.n].pred = listaVertices[u]
-                  inOpenQueue[v.y.n] = true
-                  openQueue.add(Pair(v.y.n, listaVertices[v.y.n].fHat))
+
+                  openQueueContains[v.y.n] = true
+                  openQueue.add(listaVertices[v.y.n])
+
                } else {
+
                   if (fHatNew < listaVertices[v.y.n].fHat) {
-                     openQueue.remove(Pair(v.y.n, listaVertices[v.y.n].fHat))
+                     openQueue.remove(listaVertices[v.y.n])
                      listaVertices[v.y.n].fHat = fHatNew
                      listaVertices[v.y.n].pred = listaVertices[u]
-                     openQueue.add(Pair(v.y.n, listaVertices[v.y.n].fHat))
+                     openQueue.add(listaVertices[v.y.n])
                   }
+
                }
             }
          }
-         u = openQueue.remove().first
+         u = openQueue.remove().n
+         openQueueContains[u] = false
       }
 
       verticeAlcanzado = u      
@@ -116,13 +121,13 @@ public class AEstrella(val g: GrafoDirigidoCosto,
 
    // Retorna los arcos del camino desde s hasta el vértice objetivo alcanzado. 
    fun obtenerCamino() : Iterable<ArcoCosto> {
-      var v: Vertice? = listaVertices[verticeAlcanzado]
+      var v: VerticeAEstrella = listaVertices[verticeAlcanzado]
       var camino: MutableList<ArcoCosto> = mutableListOf<ArcoCosto>()
       while (v != null && v.n != s) {
          if (v.pred != null) {
-            var u: Vertice = v.pred!!
-            camino.add(ArcoCosto(u, v, v.fHat - u.fHat))
-            v = v.pred
+            var u: VerticeAEstrella = v.pred!!
+            camino.add(0, ArcoCosto(Vertice(u.n), Vertice(v.n), v.fHat - u.fHat))
+            v = v.pred!!
          }
       }
       return camino.asIterable()

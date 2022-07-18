@@ -8,9 +8,17 @@ fun h(i: Int): Double {
 
 fun main(args: Array<String>) {
     val grafo = GrafoDirigidoCosto(args[0])
+    val s: Int = 4
 
-    var a = AEstrella(grafo, 0, setOf<Int>(3), ::h)
-
-    println(a.objetivoAlcanzado())
-    
+    for (i in 0 until 5) {
+        if (i != s) {
+            var prueba = AEstrella(grafo, s, setOf(i), {j -> 0.0})
+            println(i)
+            println(prueba.objetivoAlcanzado())
+            println(prueba.costo())
+            println(prueba.obtenerCamino())
+            println()
+        }
+        
+    }
 }

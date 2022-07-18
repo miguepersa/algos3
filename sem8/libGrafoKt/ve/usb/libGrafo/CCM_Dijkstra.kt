@@ -1,5 +1,10 @@
 package ve.usb.libGrafo
 
+data class VerticeDijstra(val n: Int) {
+    var pred: VerticeDijstra? = null
+    var d: Double = Double.MAX_VALUE
+}
+
 /*
  Implementación del algoritmo de Dijkstra para encontrar los
  caminos de costo mínimo desde un vértice fuente s fijo. La
@@ -8,32 +13,45 @@ package ve.usb.libGrafo
  Si el vértice s no pertenece al grafo, entonces se retorna una RuntimeException.
 */
 public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
+    var listaVertices: MutableList<VerticeDijstra>
+    var conjuntoVertices: MutableList<Int>
 
-    val nVertices: Int  // Numero de vertices de g
-    var arrVertices: Array<Vertice> // Arreglo de vertices de g
-    var verticesCamino: MutableList<Vertice>
-    var q: ColaDePrioridad
-    
     init {
-        nVertices = g.nVertices
-        arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
-        arrVertices[s].key = 0.0
-        verticesCamino = mutableListOf<Vertice>()
-        q = ColaDePrioridad()
+        if (s < 0 || s >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("CCM_Dijkstra.init: El vertice fuente $s no pertenece al grafo")
+        }
+
+        for (l in g.iterator()) {
+            if (l.obtenerCosto() < 0) {
+                throw RuntimeException("CCM_Dijkstra.init: El grafo dado tiene un lado con costo negativo")
+            }
+        }
         
-        for (i in arrVertices) {
-            q.add(i)
+        // Inicializar fuente fija
+        listaVertices = mutableListOf()
+        for (i in 0 until g.obtenerNumeroDeVertices()) {
+            listaVertices.add(VerticeDijstra(i))
+        }
+        listaVertices[s].d = 0.0
+
+        conjuntoVertices = mutableListOf()
+
+        var q: ColaDePrioridad = ColaDePrioridad()
+
+        for (i in 0 until g.obtenerNumeroDeVertices()) {
+            q.add(i, listaVertices[i].d)
         }
 
         while (!q.vacia()) {
             var u: Int = q.extraerMinimo()
-            verticesCamino.add(arrVertices[u])
-            var ady = g.adyacentes(u)
-            for (i in ady) {
-                var v = arrVertices[i.y.n]
-                if (v.key > arrVertices[u].key + i.costo) {  // Relajacion
-                    q.decreaseKey(v.n, arrVertices[u].key + i.costo)
-                    v.pred = arrVertices[u]
+
+            conjuntoVertices.add(u)
+
+            for (v in g.adyacentes(u)) {
+                if (listaVertices[v.y.n].d > listaVertices[u].d + v.obtenerCosto()) { // Relajacion
+                    listaVertices[v.y.n].d = listaVertices[u].d + v.obtenerCosto()
+                    listaVertices[v.y.n].pred = listaVertices[u]
+                    q.decreaseKey(v.y.n, listaVertices[v.y.n].d) 
                 }
             }
         }
@@ -42,35 +60,21 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
     // Retorna cierto si hay un camino desde s hasta el vértice v.
     // Si el vértice v no existe, se retorna un RuntimeException.
     fun existeUnCamino(v: Int) : Boolean {
-        if (v < 0 || v >= nVertices) {
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw  RuntimeException("CCM_Dijkstra.existeUnCamino: el vertice $v no existe en el grafo")
         }
-        var u: Vertice? = arrVertices[v]
-        while (u != null) {
-            u = u.pred
-            if (u == null) {
-                break
-            }
-            if (u.n == s) {
-                return true
-            }
-        }
-        return false
+        
+        return listaVertices[v].d != Double.MAX_VALUE
     }
 
     // Retorna la distancia del camino de costo mínimo desde s hasta el vértice v. 
     // Si el vértice v no existe, se retorna un RuntimeException.
     fun costo(v: Int) : Double {
-        if (this.existeUnCamino(v)) {
-            var costo: Double = 0.0
-            var u: Vertice? = arrVertices[v]
-            while (u != null) {
-                costo += u.key
-                u = u.pred
-            }
-            return costo
+        if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
+            throw  RuntimeException("CCM_Dijkstra.existeUnCamino: el vertice $v no existe en el grafo")
         }
-        return Double.MAX_VALUE
+
+        return listaVertices[v].d
     }
 
     // Retorna los arcos del camino de costo mínimo hasta v.
@@ -96,7 +100,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         var auxver: Int = v 
         while (auxver != s ) {
             camino.add(0, auxver)
-            auxver = arrVertices[auxver].pred!!.n
+            auxver = listaVertices[auxver].pred!!.n
         }
 
         camino.add(0, s) // Cada lado es (camino[i], camino[i + 1])

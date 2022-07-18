@@ -24,7 +24,7 @@ public class PrimAMC(val g: GrafoNoDirigidoCosto) {
         var q: ColaDePrioridad = ColaDePrioridad()
 
         for (i in 0 until g.obtenerNumeroDeVertices()) {
-            q.add(arrVertices[i])
+            q.add(i, arrVertices[i].key)
         }
 
         while (!q.vacia()) {

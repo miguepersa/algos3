@@ -6,8 +6,8 @@ package ve.usb.libGrafo
 public class ColaDePrioridad() {
     var queue: MinHeap = MinHeap() // Representamos la cola de prioridad como un minHeap
 
-    fun add(v: Vertice) {
-        queue.agregar(v.n, v.key)
+    fun add(i: Int, k: Double) {
+        queue.agregar(i, k)
     }
 
     fun decreaseKey(i: Int, n: Double) {
@@ -19,4 +19,8 @@ public class ColaDePrioridad() {
     }
 
     fun vacia(): Boolean = queue.heapTamano == 0
+
+    fun imprimir() {
+        println(queue.heap)
+    }
 }
