@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 17 17:04:08 2022
+# Make data base, printed on Mon Jul 18 10:44:43 2022
 
 # Variables
 
@@ -53,17 +53,17 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/92d25e35d9bf1a6b16
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.ZYTEP1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.K4SIP1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.108
+GNOME_TERMINAL_SERVICE = :1.92
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=721e5e6ebed53f242bf6ab3762d477f9
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=109bcd4cb61cf1a73def776462d571b1
 # makefile
 CURDIR := /home/daniel/Documents/GitHub/algos3/sem8
 # environment
@@ -93,19 +93,19 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 3669
+VSCODE_PID = 3604
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1563,unix/daniel-X441UA:/tmp/.ICE-unix/1563
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1886,unix/daniel-X441UA:/tmp/.ICE-unix/1886
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=721e5e6ebed53f242bf6ab3762d477f9
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=109bcd4cb61cf1a73def776462d571b1
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -123,7 +123,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/64682b80_32f2_455a_b06e_47ae70a3dec2
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/103cfaf1_a613_4f1d_8b79_6b437c00d586
 # environment
 MAKELEVEL := 0
 # default
@@ -167,7 +167,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1563
+SYSTEMD_EXEC_PID = 1886
 # environment
 DISPLAY = :0
 # environment
@@ -336,6 +336,6 @@ jarlib:
 # strcache performance: lookups = 30 / hit rate = 43%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Sun Jul 17 17:04:08 2022
+# Finished Make data base on Mon Jul 18 10:44:43 2022
 
  

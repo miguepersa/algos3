@@ -1,5 +1,5 @@
 package ve.usb.libGrafo
-
+import java.util.PriorityQueue
 
 /*
  Implementación del algoritmo de A* para encontrar un camino
@@ -54,11 +54,11 @@ public class AEstrella(val g: GrafoDirigidoCosto,
       // Inicializamos los arreglos inClosed y inOpenQueue
       for (i in 0 until g.obtenerNumeroDeVertices()) inClosed.add(false) // no hay ningun elemento en closed
             
-      var openQueue: ColaDePrioridad = ColaDePrioridad()
-      var inOpenQueue: MutableList<Boolean> = mutableListOf() // para determinar si esta o no un elemento en openQueue
+      var openQueue: PriorityQueue<Pair<Int, Double>> = PriorityQueue(compareBy{ it.second })
 
+      var inOpenQueue: MutableList<Boolean> = mutableListOf() // para determinar si esta o no un elemento en openQueue
       for (i in 0 until g.obtenerNumeroDeVertices()) inOpenQueue.add(false)
-      inOpenQueue[s] = true
+      inOpenQueue[s] = false
 
       listaVertices = mutableListOf()
       for (i in 0 until g.obtenerNumeroDeVertices()) {
@@ -67,9 +67,9 @@ public class AEstrella(val g: GrafoDirigidoCosto,
 
       listaVertices[s].fHat = hHat(s)
       listaVertices[s].pred = null
-      openQueue.add(listaVertices[s])
+      openQueue.add(Pair(s, listaVertices[s].fHat))
 
-      var u: Int = openQueue.extraerMinimo()
+      var u: Int = openQueue.remove().first
 
       // Arreglo que contiene información de elementos contenidos en obj
       var objContains = Array<Boolean>(listaVertices.size, {i -> false})
@@ -84,22 +84,24 @@ public class AEstrella(val g: GrafoDirigidoCosto,
 
          for (v in g.adyacentes(u)) {
             if (!inClosed[v.y.n]) {
-               val fHatNew = listaVertices[u].fHat + hHat(u) + v.obtenerCosto() + hHat(v.y.n)
+               val fHatNew = listaVertices[u].fHat - hHat(u) + v.obtenerCosto() + hHat(v.y.n)
 
-               if (!inOpenQueue[v.y.n]) { // Acomodar lista de boolean
+               if (!inOpenQueue[v.y.n]) { 
                   listaVertices[v.y.n].fHat = fHatNew
                   listaVertices[v.y.n].pred = listaVertices[u]
-                  openQueue.add(listaVertices[v.y.n])
+                  inOpenQueue[v.y.n] = true
+                  openQueue.add(Pair(v.y.n, listaVertices[v.y.n].fHat))
                } else {
                   if (fHatNew < listaVertices[v.y.n].fHat) {
+                     openQueue.remove(Pair(v.y.n, listaVertices[v.y.n].fHat))
                      listaVertices[v.y.n].fHat = fHatNew
                      listaVertices[v.y.n].pred = listaVertices[u]
+                     openQueue.add(Pair(v.y.n, listaVertices[v.y.n].fHat))
                   }
                }
             }
          }
-
-         u = openQueue.extraerMinimo()
+         u = openQueue.remove().first
       }
 
       verticeAlcanzado = u      
@@ -116,7 +118,7 @@ public class AEstrella(val g: GrafoDirigidoCosto,
    fun obtenerCamino() : Iterable<ArcoCosto> {
       var v: Vertice? = listaVertices[verticeAlcanzado]
       var camino: MutableList<ArcoCosto> = mutableListOf<ArcoCosto>()
-      while (v != null) {
+      while (v != null && v.n != s) {
          if (v.pred != null) {
             var u: Vertice = v.pred!!
             camino.add(ArcoCosto(u, v, v.fHat - u.fHat))

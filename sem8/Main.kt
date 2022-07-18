@@ -3,16 +3,14 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 fun h(i: Int): Double {
-    return sqrt(2.toDouble()) * i.toDouble()
+    return 0.0
 }
 
 fun main(args: Array<String>) {
     val grafo = GrafoDirigidoCosto(args[0])
 
-    var a = AEstrella(grafo, 1, setOf<Int>(4), ::h)
+    var a = AEstrella(grafo, 0, setOf<Int>(3), ::h)
 
-    for (i in a.obtenerCamino()) {
-        println(i)
-    }
+    println(a.objetivoAlcanzado())
     
 }

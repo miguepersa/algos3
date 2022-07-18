@@ -6,17 +6,10 @@ package ve.usb.libGrafo
     El minimo se determina con respecto a llave
 */
 public class MinHeap() {
-    var heap: MutableList<Int> // representacion de la cola
-    var heapLlaves: MutableList<Double> // valor de la llave del elemento i
-    var heapIndices: MutableList<Int> // posicion dentro de heap del elemento i
-    var heapTamano: Int // cantidad de elementos de la cola
-
-    init {
-        heap = mutableListOf()
-        heapLlaves = mutableListOf()
-        heapIndices = mutableListOf()
-        heapTamano = 0
-    }
+    var heap: MutableList<Int> = mutableListOf() // representacion de la cola
+    var heapLlaves: MutableList<Double> = mutableListOf() // valor de la llave del elemento i
+    var heapIndices: MutableList<Int> = mutableListOf() // posicion dentro de heap del elemento i
+    var heapTamano: Int = 0 // cantidad de elementos de la cola
 
     private fun padre(i: Int): Int = (i - 1) / 2
     private fun hijoIzq(i: Int): Int = (2 * i) + 1
@@ -76,6 +69,7 @@ public class MinHeap() {
         heapIndices[heap[heapTamano - 1]] = auxInd
 
         heap[0] = heap[heapTamano - 1]
+        heapLlaves[0] = heapLlaves[heapTamano - 1]
         heapTamano--
 
         minHeapify(0)
@@ -97,7 +91,7 @@ public class MinHeap() {
 
         if (d < heapTamano && heapLlaves[d] < heapLlaves[menor]) menor = d
 
-        if (menor != i) {
+        if (menor != ind) {
             // swap(heap[ind], heap[menor]) en el arreglo de indices
             val auxInd: Int = heapIndices[heap[ind]]
             heapIndices[heap[ind]] = heapIndices[heap[menor]]
