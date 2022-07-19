@@ -1,0 +1,35 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/daniel/Documents/GitHub/algos3/sem7/libGrafoKt'
+kotlinc ve/usb/libGrafo/Color.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Exceptions.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Vertice.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Lado.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Arco.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ArcoCosto.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Arista.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/AristaCosto.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/FuncionesExtras.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Grafo.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/FuncionesExtras.kt ve/usb/libGrafo/GrafoDirigido.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/FuncionesExtras.kt ve/usb/libGrafo/GrafoDirigidoCosto.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/FuncionesExtras.kt ve/usb/libGrafo/GrafoNoDirigido.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/FuncionesExtras.kt ve/usb/libGrafo/GrafoNoDirigidoCosto.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/BFS.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/DFS.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Utilidades.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/OrdenamientoTopologico.kt ve/usb/libGrafo/CFC.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/OrdenamientoTopologico.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ParticionNiveles.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/CicloDigrafo.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ConjuntosDisjuntos.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ComponentesConexasCD.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ComponentesConexasDFS.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ColaDePrioridad.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ComponentesConexasCostoDFS.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/Utilidades.kt ve/usb/libGrafo/KruskalAMC.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/ColaDePrioridad.kt ve/usb/libGrafo/PrimAMC.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/TablaGrafoDirigido.kt
+kotlinc -cp ve/usb/libGrafo: ve/usb/libGrafo/TablaGrafoNoDirigido.kt
+jar -cvf libGrafoKt.jar ve/usb/libGrafo/*.class 
+make: Leaving directory '/home/daniel/Documents/GitHub/algos3/sem7/libGrafoKt'
+ 
