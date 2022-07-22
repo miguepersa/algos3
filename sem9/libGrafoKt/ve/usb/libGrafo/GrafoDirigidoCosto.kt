@@ -8,6 +8,7 @@ public class GrafoDirigidoCosto : Grafo {
     val nVertices: Int
     val repGrafo: Array<LinkedList<Vertice>>
     var listaLados: LinkedList<ArcoCosto>
+    var listaLadosAdyacentes: Array<MutableList<ArcoCosto>>
     var arrVertices: Array<Vertice>
     var nLados: Int
 
@@ -27,6 +28,7 @@ public class GrafoDirigidoCosto : Grafo {
         nVertices = numDeVertices
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<ArcoCosto>()
+        listaLadosAdyacentes = Array<MutableList<ArcoCosto>>(nVertices){mutableListOf<ArcoCosto>()}
         arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
         nLados = 0
     }
@@ -48,6 +50,7 @@ public class GrafoDirigidoCosto : Grafo {
         nVertices = fileContent[0].toInt()
         repGrafo = Array<LinkedList<Vertice>>(nVertices){LinkedList<Vertice>()}
         listaLados = LinkedList<ArcoCosto>()
+        listaLadosAdyacentes = Array<MutableList<ArcoCosto>>(nVertices){mutableListOf<ArcoCosto>()}
         nLados = 0
         arrVertices = Array<Vertice>(nVertices, {i -> Vertice(i)})
 
@@ -83,6 +86,7 @@ public class GrafoDirigidoCosto : Grafo {
 
         repGrafo[a.x.n].add(a.y)
         listaLados.add(a)
+        listaLadosAdyacentes[a.x.n].add(a)
         nLados++
 
         return true
@@ -175,13 +179,7 @@ public class GrafoDirigidoCosto : Grafo {
         O(nLados)
      */
     override fun adyacentes(v: Int) : Iterable<ArcoCosto> {
-        var ady: LinkedList<ArcoCosto> = LinkedList<ArcoCosto>()
-        for (i in listaLados){
-            if (i.inicio.n == v) {
-                ady.add(i)
-            }
-        }
-        return ady.asIterable()
+        return listaLadosAdyacentes[v].asIterable()
     }
 
     /* 
