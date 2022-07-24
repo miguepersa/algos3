@@ -2,7 +2,7 @@ package ve.usb.libGrafo
 
 data class VerticeCcmDAG(val n: Int) {
     var pred: VerticeCcmDAG? = null
-    var d: Double = Double.MAX_VALUE
+    var d: Double = Double.POSITIVE_INFINITY
 }
 /*
  Implementación del algoritmo para encontrar los
@@ -30,10 +30,7 @@ public class CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
 
         listaVertices = mutableListOf()
 
-        for (i in 0 until g.obtenerNumeroDeVertices()) {
-            listaVertices.add(VerticeCcmDAG(i))    
-        }
-
+        for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeCcmDAG(i))
         listaVertices[s].d = 0.0 // Inicializamos la fuente fija
 
         for (u in ordenTopologico) {
@@ -68,7 +65,7 @@ public class CCM_DAG(val g: GrafoDirigidoCosto, val s: Int) {
             throw RuntimeException("CCM_DAG.existeUnCamino(): El vertice $v no pertenece al grafo")
         }
 
-        return listaVertices[v].d != Double.MAX_VALUE
+        return listaVertices[v].d <= Double.POSITIVE_INFINITY
     }
 
     /* 

@@ -41,7 +41,8 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/CaminoCriticoPERT.class\
 		$(GLIB)/CCM_Dijkstra.class\
 		$(GLIB)/AEstrella.class\
-		$(GLIB)/Johnson.class
+		$(GLIB)/Johnson.class\
+		$(GLIB)/FloydWarshall.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -159,5 +160,8 @@ $(GLIB)/AEstrella.class: $(GLIB)/AEstrella.kt
 $(GLIB)/Johnson.class: $(GLIB)/Johnson.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Johnson.kt
 
+$(GLIB)/FloydWarshall.class: $(GLIB)/FloydWarshall.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FloydWarshall.kt
+	
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class

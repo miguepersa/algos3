@@ -1,7 +1,7 @@
 package ve.usb.libGrafo
 
 data class VerticePERT(val n: Int) {
-    var d: Double = Double.MIN_VALUE 
+    var d: Double = Double.NEGATIVE_INFINITY
     var pred: VerticePERT? = null
 }
 /*

@@ -6,7 +6,7 @@ package ve.usb.libGrafo
 */
 data class VerticeBellmanFord(val n: Int) {
     var pred: VerticeBellmanFord? = null
-    var d: Double = Double.MAX_VALUE
+    var d: Double = Double.POSITIVE_INFINITY
 }
 
 /*
@@ -17,10 +17,13 @@ data class VerticeBellmanFord(val n: Int) {
 public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
     var listaVertices: MutableList<VerticeBellmanFord>
     var listaVerticesCicloNegativo: MutableList<Int>
-    var listaArcosCicloNegativo: MutableList<ArcoCosto>
     var cicloNegativo: Boolean
 
     init {
+        if (s < 0 || s >= g.obtenerNumeroDeVertices()) {
+            throw RuntimeException("CCM_BellmanFord.init: El vertice $s no pertenece al grafo")
+        }
+        
         // Llenamos nuestra lista con los vertices del grafo
         listaVertices = mutableListOf()
         for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeBellmanFord(i))
@@ -44,24 +47,6 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
             if (listaVertices[v].d > listaVertices[u].d + arco.obtenerCosto()) {
                 cicloNegativo = true
                 listaVerticesCicloNegativo.add(v)
-            }
-        }
-
-        // A los vertice alcanzables desde s en los que haya 
-        // un ciclo de costo negativo marcamos 
-        for (u in listaVerticesCicloNegativo) {
-            DFSCiclonegativo(u)
-        }
-
-        // Para cada lado que tenga extremos 
-        // tengan distancia negativa se a;aden a la lisca
-        // de ciclo negativo
-        listaArcosCicloNegativo = mutableListOf()
-        for (arco in g.iterator()) {
-            val u: Int = arco.x.n 
-            val v: Int = arco.y.n
-            if (listaVertices[u].d == Double.MIN_VALUE && listaVertices[v].d == Double.MIN_VALUE) {
-                listaArcosCicloNegativo.add(arco)
             }
         }
     }
@@ -118,7 +103,26 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
         if (!this.tieneCicloNegativo()) {
             throw RuntimeException("CCM_BellmanFord.obtenerCicloNegativo: El grafo no tiene un ciclo negativo alcanzable desde $s")
         }
+
+        // A los vertice alcanzables desde s en los que haya 
+        // un ciclo de costo negativo marcamos 
+        for (u in listaVerticesCicloNegativo) {
+            DFSCiclonegativo(u)
+        }
+
+        // Para cada lado que tenga extremos 
+        // tengan distancia negativa se a;aden a la lisca
+        // de ciclo negativo
+        var listaArcosCicloNegativo: MutableList<ArcoCosto> = mutableListOf()
         
+        for (arco in g.iterator()) {
+            val u: Int = arco.x.n 
+            val v: Int = arco.y.n
+            if (listaVertices[u].d == Double.MIN_VALUE && listaVertices[v].d == Double.MIN_VALUE) {
+                listaArcosCicloNegativo.add(arco)
+            }
+        }
+
         var ciclo: MutableList<ArcoCosto> = mutableListOf()
         
         // Escogemos el primer arco del ciclo
@@ -146,7 +150,7 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
         Existe un camino desde s hasta v si y solo si luego de la ejecucion
         del algoritmo v.d <= inf
 
-        En nuestro caso inf = Double.MAX_VALUE
+        En nuestro caso inf = Double.POSITIVE_INFINITY
 
         {P: Un vertice que pertenece al grafo}
         {Q: v.d <= inf}
@@ -162,7 +166,7 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
             throw RuntimeException("CCM_BellmanFord.existeUnCamino(): El vertice $v no pertenece al grafo")
         }
 
-        return listaVertices[v].d != Double.MAX_VALUE
+        return listaVertices[v].d < Double.POSITIVE_INFINITY
     }
 
     /* 

@@ -3,7 +3,7 @@ import java.util.PriorityQueue
 
 data class VerticeAEstrella(val n: Int) {
    var pred: VerticeAEstrella? = null
-   var fHat: Double = Double.MAX_VALUE
+   var fHat: Double = Double.POSITIVE_INFINITY
 }
 /*
  Implementación del algoritmo de A* para encontrar un camino

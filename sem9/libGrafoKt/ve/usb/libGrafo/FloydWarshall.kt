@@ -15,6 +15,7 @@ public class FloydWarshall(val W : Array<Array<Double>>) {
     var matrizD: Array<Array<Double>>
     var matrizPred: Array<Array<Int?>>
     var nVertices: Int
+    
     init {
         nVertices = W.size
 

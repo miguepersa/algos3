@@ -1,0 +1,39 @@
+pruebas bellmanFord
+Vertice 0  0	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	12.3	19.8	0.8	3.0999999999999996	25.4	3.4999999999999996	
+Vertice 1  21.9	0	4.6	12.1	18.9	5.4	17.7	5.7	
+Vertice 2  17.3	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	7.5	14.299999999999999	16.599999999999998	13.1	2.4	
+Vertice 3  9.8	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	14.0	0	6.8	9.1	5.6	9.5	
+Vertice 4  kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	2.3	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	2.6999999999999997	
+Vertice 5  kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0.4	
+Vertice 6  4.2	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	8.4	15.9	1.2	3.5	0	3.9	
+Vertice 7  kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	
+
+pruebas dijkstra
+Vertice 0  0	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	12.3	19.8	0.8	3.0999999999999996	25.4	3.4999999999999996	
+Vertice 1  21.9	0	4.6	12.1	18.9	5.4	17.7	5.7	
+Vertice 2  17.3	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	7.5	14.299999999999999	16.599999999999998	13.1	2.4	
+Vertice 3  9.8	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	14.0	0	6.8	9.1	5.6	9.5	
+Vertice 4  kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	2.3	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	2.6999999999999997	
+Vertice 5  kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0.4	
+Vertice 6  4.2	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	8.4	15.9	1.2	3.5	0	3.9	
+Vertice 7  kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	kotlin.jvm.internal.DoubleCompanionObject@7dc5e7b4.POSITIVE_INFINITY	0	
+
+pruebas floyd warshall
+Vertice 0  0.0	Infinity	12.3	19.8	0.8	3.0999999999999996	25.4	3.4999999999999996	
+Vertice 1  21.9	0.0	4.6	12.1	18.9	5.4	17.7	5.7	
+Vertice 2  17.3	Infinity	0.0	7.5	14.299999999999999	16.6	13.1	2.4	
+Vertice 3  9.8	Infinity	14.0	0.0	6.8	9.1	5.6	9.5	
+Vertice 4  Infinity	Infinity	Infinity	Infinity	0.0	2.3	Infinity	2.6999999999999997	
+Vertice 5  Infinity	Infinity	Infinity	Infinity	Infinity	0.0	Infinity	0.4	
+Vertice 6  4.2	Infinity	8.4	15.9	1.2	3.5	0.0	3.9	
+Vertice 7  Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	0.0	
+
+pruebas johnson
+Vertice 0  0.0	Infinity	12.3	19.8	0.8	3.0999999999999996	25.4	3.4999999999999996	
+Vertice 1  21.9	0.0	4.6	12.1	18.9	5.4	17.7	5.7	
+Vertice 2  17.3	Infinity	0.0	7.5	14.299999999999999	16.599999999999998	13.1	2.4	
+Vertice 3  9.8	Infinity	14.0	0.0	6.8	9.1	5.6	9.5	
+Vertice 4  Infinity	Infinity	Infinity	Infinity	0.0	2.3	Infinity	2.6999999999999997	
+Vertice 5  Infinity	Infinity	Infinity	Infinity	Infinity	0.0	Infinity	0.4	
+Vertice 6  4.2	Infinity	8.4	15.9	1.2	3.5	0.0	3.9	
+Vertice 7  Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	0.0	

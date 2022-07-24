@@ -16,23 +16,25 @@ public class Johnson(val g: GrafoDirigidoCosto) {
     init {
         gPrimo = GrafoDirigidoCosto(g.nVertices + 1)
         s = g.nVertices // Vertice 's' estara de ultima en G'
-        h = Array<Double>(gPrimo.nVertices, {Double.MAX_VALUE}) // Costos inicializados en infinito
-        d = Array<Array<Double>>(s, {Array(s, {Double.MAX_VALUE})}) // Costos de caminos minimos inicializados en infinito
+        h = Array<Double>(gPrimo.nVertices, {Double.POSITIVE_INFINITY}) // Costos inicializados en infinito
+        d = Array<Array<Double>>(s, {Array(s, {Double.POSITIVE_INFINITY})}) // Costos de caminos minimos inicializados en infinito
         mPredecesores = Array<Array<Int?>>(s, {Array(s, {null})})   // Matriz de predecesores inicializada en null
-        for (i in g.listaLados) {
-            gPrimo.agregarArcoCosto(i)  // Agregamos a G' los lados de G
-        }
+
+        // Computamos G'
+        for (i in g.listaLados) gPrimo.agregarArcoCosto(i)  // Agregamos a G' los lados de G
         for (v in 0 until g.nVertices) {    // Agregamos a G' los lados (s,v) para cada v de G
             gPrimo.agregarArcoCosto(ArcoCosto(gPrimo.arrVertices[s], gPrimo.arrVertices[v], 0.0))
         }
+
         bellmanFord = CCM_BellmanFord(gPrimo, s)    // Aplicamos Bellman-Ford en G' partiendo de 's'
         if (bellmanFord.cicloNegativo) {
             println("Ciclo negativo")
-        }
-        else {
+
+        } else {
             for (v in gPrimo.arrVertices) {
                 h[v.n] = bellmanFord.costo(v.n) // Guardamos los costos calculados en Bellman-Ford en nuestro arreglo de costos
             }
+
             var grafoAux = GrafoDirigidoCosto(g.nVertices)  // Grafo auxiliar
             for (lado in gPrimo.listaLados) {
                 var wcosto = lado.costo + h[lado.x.n] - h[lado.y.n]

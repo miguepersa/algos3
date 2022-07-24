@@ -2,7 +2,7 @@ package ve.usb.libGrafo
 
 data class VerticeDijstra(val n: Int) {
     var pred: VerticeDijstra? = null
-    var d: Double = Double.MAX_VALUE
+    var d: Double = Double.POSITIVE_INFINITY
 }
 
 /*
@@ -29,9 +29,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         
         // Inicializar fuente fija
         listaVertices = mutableListOf()
-        for (i in 0 until g.obtenerNumeroDeVertices()) {
-            listaVertices.add(VerticeDijstra(i))
-        }
+        for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeDijstra(i))
         listaVertices[s].d = 0.0
 
         conjuntoVertices = mutableListOf()
@@ -64,7 +62,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
             throw  RuntimeException("CCM_Dijkstra.existeUnCamino: el vertice $v no existe en el grafo")
         }
         
-        return listaVertices[v].d != Double.MAX_VALUE
+        return listaVertices[v].d < Double.POSITIVE_INFINITY
     }
 
     // Retorna la distancia del camino de costo mínimo desde s hasta el vértice v. 
