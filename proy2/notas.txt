@@ -1,0 +1,10 @@
+Esquema de la solucion
+
+Ejecutar dijstra desde el vertice inicial para obtener el tiempo 
+hasta el vertice final
+
+La modificacion para el dijkstra es la siguiente:
+    En relacaion(u, v, w) el valor de u.d es el tiempo en llegar al vertice u
+    
+    Para obtener v.d tenemos el siguiente esquema 
+        
