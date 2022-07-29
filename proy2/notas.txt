@@ -7,4 +7,21 @@ La modificacion para el dijkstra es la siguiente:
     En relacaion(u, v, w) el valor de u.d es el tiempo en llegar al vertice u
     
     Para obtener v.d tenemos el siguiente esquema 
-        
+        si la calle (u,v) se encuentra en mantenimiento y su tiempo de mantenimiento
+        es ti a tf el csoto del lado (u, v) es tf - u.d + w(u,v). Es decir, se debe 
+        esperar a que la calle se limpie para poder cruzarla y se cruza la calle
+        recien limpia.
+
+        En caso de que la calle no este limpiada se calcula el costo de cruzar la calle basado
+        en la ultima limpieza y el tiempo actual usando la formula dada
+
+    Para llevar el registro de los tiempo de limpieza y el tiempo en el que ocurrio
+    la ultima limpieza de la calle se a;aden atributos al arcoCosto
+
+    Los atributos a a;adir son arcoCosto.limpiezaHorario que sea un array de pares(ti, tf)
+    y el tiempo de su ultima limpieza. 
+
+    Para obtener el tiempo de la ultima limpieza revisamos el tiempo actual y el horario de limpieza
+    en mas cercano al tiempo actual.
+
+En el cliente se cargan los lados con tiempo de ultima limpieza 0 y sus horarios de limpieza 
