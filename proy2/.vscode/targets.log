@@ -6,12 +6,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 26 11:35:20 2022
+# Make data base, printed on Thu Jul 28 20:59:14 2022
 
 # Variables
 
-# makefile (from 'Makefile', line 2)
-KFLAG = -cp
 # environment
 GDK_BACKEND = x11
 # environment
@@ -25,7 +23,7 @@ LC_NAME = es_VE.UTF-8
 # environment
 LC_NUMERIC = es_VE.UTF-8
 # environment
-VSCODE_CWD = /home/daniel
+VSCODE_CWD = /home/daniel/Documents/GitHub/algos3/proy2
 # environment
 LC_ADDRESS = es_VE.UTF-8
 # default
@@ -38,9 +36,8 @@ QT_ACCESSIBILITY = 1
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
- 
 # environment
-PWD = /home/daniel/Documents/GitHub/algos3/sem9
+PWD = /home/daniel/Documents/GitHub/algos3/proy2
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -54,25 +51,25 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/3b889b090b5ad5793f
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.1PBCQ1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.5LTXP1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.116
+GNOME_TERMINAL_SERVICE = :1.252
 # makefile
 MAKEFLAGS = pqrR
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=4878d1851c44aac2117b8bc962e30479
 # makefile
-CURDIR := /home/daniel/Documents/GitHub/algos3/sem9
+CURDIR := /home/daniel/Documents/GitHub/algos3/proy2
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
-# makefile (from 'Makefile', line 1)
-KC = kotlinc
 # environment
 MFLAGS = -pqrR
 # environment
@@ -87,24 +84,24 @@ XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 XDG_SESSION_DESKTOP = ubuntu
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST := Makefile
+# makefile
+MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 5197
+VSCODE_PID = 9555
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1892,unix/daniel-X441UA:/tmp/.ICE-unix/1892
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1924,unix/daniel-X441UA:/tmp/.ICE-unix/1924
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=4878d1851c44aac2117b8bc962e30479
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -122,13 +119,13 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/60f61250_6815_4652_afcc_44db5f2f0256
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/8e759f58_b565_4509_ade9_6786aec45185
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+PATH = /home/daniel/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 # default
 MAKEFILES := 
 # environment
@@ -147,8 +144,6 @@ LC_TELEPHONE = es_VE.UTF-8
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # automatic
 ?F = $(notdir $?)
-# makefile (from 'Makefile', line 3)
-LIBGRAPH = libGrafoKt/
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # environment
@@ -164,9 +159,9 @@ GNUMAKEFLAGS :=
 # environment
 LOGNAME = daniel
 # makefile
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 2118
+SYSTEMD_EXEC_PID = 1924
 # environment
 DISPLAY = :0
 # environment
@@ -175,8 +170,8 @@ USER = daniel
 GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
-# makefile (from 'Makefile', line 4)
-LIBJAR = libGrafoKt/libGrafoKt.jar
+# environment
+DBUS_STARTER_BUS_TYPE = session
 # environment
 LC_MEASUREMENT = es_VE.UTF-8
 # environment
@@ -224,7 +219,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = es_VE.UTF-8
 # variable set hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=10/140=7%
+# Load=104/1024=10%, Rehash=0, Collisions=11/131=8%
 
 # Pattern-specific Variable Values
 
@@ -232,9 +227,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15074520): 13 files, no impossibilities.
+# . (device 2050, inode 15600543): 4 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 4 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -242,28 +237,12 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Files
 
-Main.class: Main.kt
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 12):
-	$(KC) $(KFLAG) $(LIBJAR) Main.kt
-
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-22 13:04:38.835671031
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
-	(cd $(LIBGRAPH); make clean)
- 
-	rm -rf *.class META-INF
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -271,68 +250,44 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 
-all: jarlib Main.class
+# Not a target:
+all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-
-# Not a target:
-Main.kt:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
 #  File has not been updated.
 
-jarlib:
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := jarlib
-# automatic
-# * := 
-# automatic
-# < := 
-# automatic
-# + := 
-# automatic
-# % := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
-#  recipe to execute (from 'Makefile', line 9):
-	(cd $(LIBGRAPH); make)  
+#  Failed to be updated.
 
 # Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/25=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 270 B / avg = 12 B
-# current buf: size = 8162 B / used = 270 B / count = 21 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 12 / storage = 109 B / avg = 9 B
+# current buf: size = 8162 B / used = 109 B / count = 12 / avg = 9 B
 
-# strcache performance: lookups = 34 / hit rate = 38%
+# strcache performance: lookups = 15 / hit rate = 20%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Tue Jul 26 11:35:20 2022
+ 
+make: *** No rule to make target 'all'.  Stop.
+
+# Load=12/8192=0%, Rehash=0, Collisions=0/15=0%
+# Finished Make data base on Thu Jul 28 20:59:14 2022
 
  
