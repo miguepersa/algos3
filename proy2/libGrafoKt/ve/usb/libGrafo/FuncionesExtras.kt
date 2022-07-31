@@ -34,7 +34,7 @@ fun obtenerArista(linea: String, vertices: Array<Vertice>): Arista {
 fun obtenerAristaCosto(linea: String, vertices: Array<Vertice>): AristaCosto {
     val infoLinea: List<String> = linea.split(" ")
 
-    return AristaCosto(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()], infoLinea[2].toDouble())
+    return AristaCosto(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()], infoLinea[2].toInt())
 }
 
 /* 

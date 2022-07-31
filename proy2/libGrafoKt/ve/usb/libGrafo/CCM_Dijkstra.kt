@@ -15,6 +15,7 @@ data class VerticeDijstra(val n: Int) {
 public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
     var listaVertices: MutableList<VerticeDijstra>
     var conjuntoVertices: MutableList<Int>
+    var t: Int
 
     init {
         if (s < 0 || s >= g.obtenerNumeroDeVertices()) {
@@ -28,6 +29,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         }
         
         // Inicializar fuente fija
+        t = 0
         listaVertices = mutableListOf()
         for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeDijstra(i))
         listaVertices[s].d = 0
@@ -41,18 +43,29 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         }
 
         while (!q.vacia()) {
+            t++
             var u: Int = q.extraerMinimo()
 
             conjuntoVertices.add(u)
 
             for (v in g.adyacentes(u)) {
-                if (listaVertices[v.y.n].d > listaVertices[u].d + v.obtenerCosto(listaVertices[u].d)) { // Relajacion
-                    listaVertices[v.y.n].d = listaVertices[u].d + v.obtenerCosto(listaVertices[u].d)
-                    listaVertices[v.y.n].pred = listaVertices[u]
-                    q.decreaseKey(v.y.n, listaVertices[v.y.n].d) 
+                if (v.x.n == u) {
+                    if (listaVertices[v.y.n].d > listaVertices[u].d + v.obtenerCosto(t)) { // Relajacion
+                        listaVertices[v.y.n].d = listaVertices[u].d + v.obtenerCosto(t)
+                        listaVertices[v.y.n].pred = listaVertices[u]
+                        q.decreaseKey(v.y.n, listaVertices[v.y.n].d) 
+                    }
+                }
+                else if (v.y.n == u) {
+                    if (listaVertices[v.x.n].d > listaVertices[u].d + v.obtenerCosto(t)) { // Relajacion
+                        listaVertices[v.x.n].d = listaVertices[u].d + v.obtenerCosto(t)
+                        listaVertices[v.x.n].pred = listaVertices[u]
+                        q.decreaseKey(v.x.n, listaVertices[v.x.n].d) 
+                    }
                 }
             }
         }
+        
     }
 
     // Retorna cierto si hay un camino desde s hasta el vértice v.
