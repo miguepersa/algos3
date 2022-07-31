@@ -2,7 +2,7 @@ package ve.usb.libGrafo
 
 data class VerticeDijstra(val n: Int) {
     var pred: VerticeDijstra? = null
-    var d: Double = Double.POSITIVE_INFINITY
+    var d: Int = Int.MAX_VALUE
 }
 
 /*
@@ -22,7 +22,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         }
 
         for (l in g.iterator()) {
-            if (l.obtenerCosto() < 0) {
+            if (l.costo < 0) {
                 throw RuntimeException("CCM_Dijkstra.init: El grafo dado tiene un lado con costo negativo")
             }
         }
@@ -30,7 +30,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         // Inicializar fuente fija
         listaVertices = mutableListOf()
         for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeDijstra(i))
-        listaVertices[s].d = 0.0
+        listaVertices[s].d = 0
 
         conjuntoVertices = mutableListOf()
 
@@ -46,8 +46,8 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
             conjuntoVertices.add(u)
 
             for (v in g.adyacentes(u)) {
-                if (listaVertices[v.y.n].d > listaVertices[u].d + v.obtenerCosto()) { // Relajacion
-                    listaVertices[v.y.n].d = listaVertices[u].d + v.obtenerCosto()
+                if (listaVertices[v.y.n].d > listaVertices[u].d + v.obtenerCosto(listaVertices[u].d)) { // Relajacion
+                    listaVertices[v.y.n].d = listaVertices[u].d + v.obtenerCosto(listaVertices[u].d)
                     listaVertices[v.y.n].pred = listaVertices[u]
                     q.decreaseKey(v.y.n, listaVertices[v.y.n].d) 
                 }
@@ -67,7 +67,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
 
     // Retorna la distancia del camino de costo mínimo desde s hasta el vértice v. 
     // Si el vértice v no existe, se retorna un RuntimeException.
-    fun costo(v: Int) : Double {
+    fun costo(v: Int) : Int {
         if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw  RuntimeException("CCM_Dijkstra.existeUnCamino: el vertice $v no existe en el grafo")
         }

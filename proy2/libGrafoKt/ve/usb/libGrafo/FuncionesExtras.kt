@@ -56,12 +56,13 @@ fun obtenerArco(linea: String, vertices: Array<Vertice>): Arco {
 
     Input: linea -> String que contiene informacion sobre un arcoCosto
     Output: Un arcoCosto que representa la informacion de linea
-*/
+
 fun obtenerArcoCosto(linea: String, vertices: Array<Vertice>): ArcoCosto {
     val infoLinea: List<String> = linea.split(" ")
 
     return ArcoCosto(vertices[infoLinea[0].toInt()], vertices[infoLinea[1].toInt()], infoLinea[2].toDouble())
 }
+*/
 
 /* 
     Determina si existe o no una arista en un grafo
@@ -134,6 +135,7 @@ fun arcoEnGrafoDirigido(arr: Array<LinkedList<Vertice>>, arco: Arco): Boolean {
     Output: true -> la arista esta en la lista
             false -> la arista no esta en la lista
  */
+ /*
 fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boolean {
     for (i in lista) {
         if ((i.y.n == arista.y.n && i.x.n == arista.x.n) || i.x.n == arista.y.n && i.y.n == arista.x.n) {
@@ -142,6 +144,7 @@ fun aristaCostoEnLista(lista: LinkedList<AristaCosto>, arista: AristaCosto): Boo
     }
     return false
 }
+*/
 
 /*
     Determina si un arco está en una lista enlazada
@@ -175,6 +178,7 @@ fun arcoEnLista(lista: LinkedList<Arco>, arco: Arco): Boolean {
     Output: true -> El arco esta en la lista
             false -> El arco no esta en la lista
 */
+/*
 fun arcoCostoEnLista(lista: LinkedList<ArcoCosto>, arco: ArcoCosto): Boolean {
     for (i in lista) {
         if (i.inicio.n == arco.inicio.n && i.fin.n == arco.fin.n) {
@@ -183,3 +187,4 @@ fun arcoCostoEnLista(lista: LinkedList<ArcoCosto>, arco: ArcoCosto): Boolean {
     }
     return false
 }
+*/

@@ -6,11 +6,11 @@ package ve.usb.libGrafo
 public class ColaDePrioridad() {
     var queue: MinHeap = MinHeap() // Representamos la cola de prioridad como un minHeap
 
-    fun add(i: Int, k: Double) {
+    fun add(i: Int, k: Int) {
         queue.agregar(i, k)
     }
 
-    fun decreaseKey(i: Int, n: Double) {
+    fun decreaseKey(i: Int, n: Int) {
         queue.disminuirLlave(i, n)
     }
 

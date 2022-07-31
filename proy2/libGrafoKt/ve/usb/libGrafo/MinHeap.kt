@@ -7,7 +7,7 @@ package ve.usb.libGrafo
 */
 public class MinHeap() {
     var heap: MutableList<Int> = mutableListOf() // representacion de la cola
-    var heapLlaves: MutableList<Double> = mutableListOf() // valor de la llave del elemento i
+    var heapLlaves: MutableList<Int> = mutableListOf() // valor de la llave del elemento i
     var heapIndices: MutableList<Int> = mutableListOf() // posicion dentro de heap del elemento i
     var heapTamano: Int = 0 // cantidad de elementos de la cola
 
@@ -28,15 +28,15 @@ public class MinHeap() {
 
         Tiemo de ejecucion O(lg |heapTamano|)
     */
-    fun agregar(id: Int, llave: Double) {
+    fun agregar(id: Int, llave: Int) {
         heap.add(id)
-        heapLlaves.add(Double.MAX_VALUE)
+        heapLlaves.add(Int.MAX_VALUE)
         heapIndices.add(heapTamano)
         heapTamano++
         this.disminuirLlave(heap[heapTamano - 1], llave)
     } 
 
-    fun disminuirLlave(id: Int, llave: Double) {
+    fun disminuirLlave(id: Int, llave: Int) {
         var ind = heapIndices[id]
         heapLlaves[ind] = llave
 
@@ -52,7 +52,7 @@ public class MinHeap() {
             heap[padre(ind)] = auxHeap
 
             //swap(parent(ind), ind) en el arreglo de llaves
-            val auxLlave: Double = heapLlaves[ind]
+            val auxLlave: Int = heapLlaves[ind]
             heapLlaves[ind] = heapLlaves[padre(ind)]
             heapLlaves[padre(ind)] = auxLlave
 
@@ -103,7 +103,7 @@ public class MinHeap() {
             heap[menor] = auxHeap
 
             // swap(ind, menor) en el arreglo de llaves
-            val auxLlave: Double = heapLlaves[ind]
+            val auxLlave: Int = heapLlaves[ind]
             heapLlaves[ind] = heapLlaves[menor]
             heapLlaves[menor] = auxLlave
 

@@ -14,35 +14,10 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/AristaCosto.class\
 		$(GLIB)/FuncionesExtras.class\
 		$(GLIB)/Grafo.class\
-		$(GLIB)/GrafoDirigido.class\
 		$(GLIB)/GrafoDirigidoCosto.class\
-		$(GLIB)/GrafoNoDirigido.class\
-		$(GLIB)/GrafoNoDirigidoCosto.class\
-		$(GLIB)/BFS.class\
-		$(GLIB)/DFS.class\
-		$(GLIB)/Utilidades.class\
-		$(GLIB)/CFC.class\
-		$(GLIB)/OrdenamientoTopologico.class\
-		$(GLIB)/OrdenamientoTopologicoCosto.class\
-		$(GLIB)/ParticionNiveles.class\
-		$(GLIB)/CicloDigrafo.class\
-		$(GLIB)/ConjuntosDisjuntos.class\
-		$(GLIB)/ComponentesConexasCD.class\
-		$(GLIB)/ComponentesConexasDFS.class\
 		$(GLIB)/MinHeap.class\
 		$(GLIB)/ColaDePrioridad.class\
-		$(GLIB)/ComponentesConexasCostoDFS.class\
-		$(GLIB)/KruskalAMC.class\
-		$(GLIB)/PrimAMC.class\
-		$(GLIB)/TablaGrafoDirigido.class\
-		$(GLIB)/TablaGrafoNoDirigido.class\
-		$(GLIB)/CCM_BellmanFord.class\
-		$(GLIB)/CCM_DAG.class\
-		$(GLIB)/CaminoCriticoPERT.class\
-		$(GLIB)/CCM_Dijkstra.class\
-		$(GLIB)/AEstrella.class\
-		$(GLIB)/Johnson.class\
-		$(GLIB)/FloydWarshall.class
+		$(GLIB)/CCM_Dijkstra.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 

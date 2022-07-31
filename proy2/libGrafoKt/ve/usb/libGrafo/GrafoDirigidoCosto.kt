@@ -44,7 +44,8 @@ public class GrafoDirigidoCosto : Grafo {
         Output: ~~
 
         Tiempo de ejecucion O(lineas del archivo)
-    */  
+    */
+    /*
     constructor(nombreArchivo: String)  {
         val fileContent: List<String> = File(nombreArchivo).readLines()
         nVertices = fileContent[0].toInt()
@@ -61,6 +62,7 @@ public class GrafoDirigidoCosto : Grafo {
         }
 
     }
+    */
 
     /* 
         Agregamos un lado al grafo. Si el lado tiene extremos invalidos
@@ -195,6 +197,7 @@ public class GrafoDirigidoCosto : Grafo {
 
         O(nLados)
      */
+    /*
     fun ladosAdyacentes(l: ArcoCosto) : Iterable<ArcoCosto> {
         if (!arcoEnGrafoDirigido(repGrafo, l)) {
             throw RuntimeException("La arista no pertenece al grafo")
@@ -210,6 +213,7 @@ public class GrafoDirigidoCosto : Grafo {
         }
         return ady.asIterable()
     }
+    */
 
     /*
         Retorna todos los lados del grafo en un iterador

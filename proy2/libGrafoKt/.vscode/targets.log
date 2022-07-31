@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul  9 10:19:31 2022
+# Make data base, printed on Sun Jul 31 01:40:37 2022
 
 # Variables
 
@@ -21,13 +21,11 @@ GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-134fc593-5daa-444a-97c4-7bc0878a4f94.sock
-# environment
 LC_NAME = es_VE.UTF-8
 # environment
 LC_NUMERIC = es_VE.UTF-8
 # environment
-VSCODE_CWD = /home/daniel/Documents/GitHub/algos3/sem7/libGrafoKt
+VSCODE_CWD = /home/daniel/Documents/GitHub/algos3/proy2/libGrafoKt
 # environment
 LC_ADDRESS = es_VE.UTF-8
 # default
@@ -41,37 +39,33 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/daniel/Documents/GitHub/algos3/sem7/libGrafoKt
+PWD = /home/daniel/Documents/GitHub/algos3/proy2/libGrafoKt
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-OLDPWD = /home/daniel/Documents/GitHub/algos3/sem7
+OLDPWD = /home/daniel/Documents/GitHub/algos3/proy2
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
-# environment
-VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.M6LUO1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.B7REQ1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.111
+GNOME_TERMINAL_SERVICE = :1.302
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/daniel/Documents/GitHub/algos3/sem7/libGrafoKt
-# environment
-VSCODE_PIPE_LOGGING = true
+CURDIR := /home/daniel/Documents/GitHub/algos3/proy2/libGrafoKt
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
@@ -99,15 +93,13 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
-VSCODE_PID = 4214
+VSCODE_PID = 29894
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1509,unix/daniel-X441UA:/tmp/.ICE-unix/1509
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/2007,unix/daniel-X441UA:/tmp/.ICE-unix/2007
 # automatic
 *F = $(notdir $*)
 # environment
@@ -131,13 +123,13 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/756df2ad_90ea_4c97_930f_f05b9c2a81e5
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/6b0ff426_f80a_4270_a774_e7cc2b036f0c
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+PATH = /home/daniel/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 # default
 MAKEFILES := 
 # makefile (from 'Makefile', line 3)
@@ -148,8 +140,6 @@ LC_MONETARY = es_VE.UTF-8
 ^F = $(notdir $^)
 # environment
 LC_TIME = es_VE.UTF-8
-# environment
-VSCODE_LOG_NATIVE = false
 # environment
 USERNAME = daniel
 # environment
@@ -177,7 +167,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1957
+SYSTEMD_EXEC_PID = 2322
 # environment
 DISPLAY = :0
 # environment
@@ -207,7 +197,7 @@ QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-419f9acc-1.68.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-419f9acc-1.69.2-main.sock
 # environment
 TERM = xterm-256color
 # environment
@@ -233,7 +223,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = es_VE.UTF-8
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=11/236=5%
+# Load=106/1024=10%, Rehash=0, Collisions=10/236=4%
 
 # Pattern-specific Variable Values
 
@@ -241,15 +231,28 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15073814): 6 files, no impossibilities.
+# . (device 2050, inode 15601674): 7 files, no impossibilities.
 
-# 6 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
+
+ve/usb/libGrafo/CaminoCriticoPERT.class: ve/usb/libGrafo/CaminoCriticoPERT.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 128):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CaminoCriticoPERT.kt
+
+# Not a target:
+ve/usb/libGrafo/CCM_BellmanFord.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 ve/usb/libGrafo/ColaDePrioridad.kt:
@@ -267,17 +270,18 @@ ve/usb/libGrafo/OrdenamientoTopologico.class: ve/usb/libGrafo/OrdenamientoTopolo
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 92):
+#  recipe to execute (from 'Makefile', line 77):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologico.kt
 
 # Not a target:
 ve/usb/libGrafo/Arco.kt:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
+ 
 
 # Not a target:
- 
 ve/usb/libGrafo/ComponentesConexasDFS.kt:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -287,22 +291,49 @@ ve/usb/libGrafo/FuncionesExtras.class: ve/usb/libGrafo/FuncionesExtras.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 65):
+#  recipe to execute (from 'Makefile', line 50):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FuncionesExtras.kt
 
 ve/usb/libGrafo/TablaGrafoDirigido.class: ve/usb/libGrafo/TablaGrafoDirigido.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 125):
+#  recipe to execute (from 'Makefile', line 113):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/TablaGrafoDirigido.kt
 
 ve/usb/libGrafo/Exceptions.class: ve/usb/libGrafo/Exceptions.kt
 #  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := ve/usb/libGrafo/Exceptions.class
+# automatic
+# * := 
+# automatic
+# < := ve/usb/libGrafo/Exceptions.kt
+# automatic
+# + := ve/usb/libGrafo/Exceptions.kt
+# automatic
+# % := 
+# automatic
+# ^ := ve/usb/libGrafo/Exceptions.kt
+# automatic
+# ? := ve/usb/libGrafo/Exceptions.kt
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=3/15=20%
+#  recipe to execute (from 'Makefile', line 29):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Exceptions.kt
+
+ve/usb/libGrafo/MinHeap.class: ve/usb/libGrafo/MinHeap.kt
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 44):
-	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Exceptions.kt
+#  recipe to execute (from 'Makefile', line 101):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/MinHeap.kt
 
 # Not a target:
 ve/usb/libGrafo/GrafoDirigidoCosto.kt:
@@ -310,8 +341,22 @@ ve/usb/libGrafo/GrafoDirigidoCosto.kt:
 #  Modification time never checked.
 #  File has not been updated.
 
+ve/usb/libGrafo/FloydWarshall.class: ve/usb/libGrafo/FloydWarshall.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 140):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FloydWarshall.kt
+	
+
 # Not a target:
 ve/usb/libGrafo/Arista.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ve/usb/libGrafo/CCM_DAG.kt:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -320,14 +365,14 @@ ve/usb/libGrafo/DFS.class: ve/usb/libGrafo/DFS.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 86):
+#  recipe to execute (from 'Makefile', line 71):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/DFS.kt
 
 ve/usb/libGrafo/ParticionNiveles.class: ve/usb/libGrafo/ParticionNiveles.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 98):
+#  recipe to execute (from 'Makefile', line 83):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ParticionNiveles.kt
 
 # Not a target:
@@ -339,7 +384,7 @@ ve/usb/libGrafo/DFS.kt:
 # Not a target:
 ve/usb/libGrafo/Color.kt:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 17:50:19.013127
+#  Last modified 2022-07-22 13:04:38.867671
 #  File has been updated.
 #  Successfully updated.
 
@@ -347,27 +392,39 @@ ve/usb/libGrafo/CFC.class: ve/usb/libGrafo/CFC.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 95):
+#  recipe to execute (from 'Makefile', line 80):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologico.kt $(GLIB)/CFC.kt
+
+# Not a target:
+ve/usb/libGrafo/MinHeap.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ve/usb/libGrafo/OrdenamientoTopologicoCosto.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 ve/usb/libGrafo/ComponentesConexasCostoDFS.class: ve/usb/libGrafo/ComponentesConexasCostoDFS.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 116):
+#  recipe to execute (from 'Makefile', line 104):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ComponentesConexasCostoDFS.kt
 
 ve/usb/libGrafo/ComponentesConexasDFS.class: ve/usb/libGrafo/ComponentesConexasDFS.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 110):
+#  recipe to execute (from 'Makefile', line 95):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ComponentesConexasDFS.kt
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 17:50:19.009127
+#  Last modified 2022-07-31 01:22:33.782626979
 #  File has been updated.
 #  Successfully updated.
 
@@ -375,14 +432,14 @@ ve/usb/libGrafo/TablaGrafoNoDirigido.class: ve/usb/libGrafo/TablaGrafoNoDirigido
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 128):
+#  recipe to execute (from 'Makefile', line 116):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/TablaGrafoNoDirigido.kt
 
 ve/usb/libGrafo/BFS.class: ve/usb/libGrafo/BFS.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 83):
+#  recipe to execute (from 'Makefile', line 68):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/BFS.kt
 
 # Not a target:
@@ -401,45 +458,52 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 130):
+#  recipe to execute (from 'Makefile', line 143):
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class
 
 ve/usb/libGrafo/ConjuntosDisjuntos.class: ve/usb/libGrafo/ConjuntosDisjuntos.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 104):
+#  recipe to execute (from 'Makefile', line 89):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ConjuntosDisjuntos.kt
 
-libGrafoKt.jar: ve/usb/libGrafo/Color.class ve/usb/libGrafo/Exceptions.class ve/usb/libGrafo/Vertice.class ve/usb/libGrafo/Lado.class ve/usb/libGrafo/Arco.class ve/usb/libGrafo/ArcoCosto.class ve/usb/libGrafo/Arista.class ve/usb/libGrafo/AristaCosto.class ve/usb/libGrafo/FuncionesExtras.class ve/usb/libGrafo/Grafo.class ve/usb/libGrafo/GrafoDirigido.class ve/usb/libGrafo/GrafoDirigidoCosto.class ve/usb/libGrafo/GrafoNoDirigido.class ve/usb/libGrafo/GrafoNoDirigidoCosto.class ve/usb/libGrafo/BFS.class ve/usb/libGrafo/DFS.class ve/usb/libGrafo/Utilidades.class ve/usb/libGrafo/CFC.class ve/usb/libGrafo/OrdenamientoTopologico.class ve/usb/libGrafo/ParticionNiveles.class ve/usb/libGrafo/CicloDigrafo.class ve/usb/libGrafo/ConjuntosDisjuntos.class ve/usb/libGrafo/ComponentesConexasCD.class ve/usb/libGrafo/ComponentesConexasDFS.class ve/usb/libGrafo/ColaDePrioridad.class ve/usb/libGrafo/ComponentesConexasCostoDFS.class ve/usb/libGrafo/KruskalAMC.class ve/usb/libGrafo/PrimAMC.class ve/usb/libGrafo/TablaGrafoDirigido.class ve/usb/libGrafo/TablaGrafoNoDirigido.class
+libGrafoKt.jar: ve/usb/libGrafo/Color.class ve/usb/libGrafo/Exceptions.class ve/usb/libGrafo/Vertice.class ve/usb/libGrafo/Lado.class ve/usb/libGrafo/Arco.class ve/usb/libGrafo/ArcoCosto.class ve/usb/libGrafo/Arista.class ve/usb/libGrafo/AristaCosto.class ve/usb/libGrafo/FuncionesExtras.class ve/usb/libGrafo/Grafo.class ve/usb/libGrafo/GrafoDirigidoCosto.class ve/usb/libGrafo/Utilidades.class ve/usb/libGrafo/MinHeap.class ve/usb/libGrafo/ColaDePrioridad.class ve/usb/libGrafo/CCM_Dijkstra.class
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-#  recipe to execute (from 'Makefile', line 38):
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+#  recipe to execute (from 'Makefile', line 23):
 	jar -cvf $@ $(GLIB)/*.class 
 
 ve/usb/libGrafo/Vertice.class: ve/usb/libGrafo/Vertice.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 47):
+#  recipe to execute (from 'Makefile', line 32):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Vertice.kt
 
 ve/usb/libGrafo/KruskalAMC.class: ve/usb/libGrafo/KruskalAMC.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 119):
+#  recipe to execute (from 'Makefile', line 107):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Utilidades.kt $(GLIB)/KruskalAMC.kt
+
+ve/usb/libGrafo/CCM_Dijkstra.class: ve/usb/libGrafo/CCM_Dijkstra.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 125):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_Dijkstra.kt
 
 ve/usb/libGrafo/Arista.class: ve/usb/libGrafo/Arista.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 59):
+#  recipe to execute (from 'Makefile', line 44):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Arista.kt
 
 # Not a target:
@@ -450,29 +514,10 @@ ve/usb/libGrafo/ConjuntosDisjuntos.kt:
 
 ve/usb/libGrafo/Color.class: ve/usb/libGrafo/Color.kt
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2022-07-31 01:38:52.000461635
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := ve/usb/libGrafo/Color.class
-# automatic
-# * := 
-# automatic
-# < := ve/usb/libGrafo/Color.kt
-# automatic
-# + := ve/usb/libGrafo/Color.kt
-# automatic
-# % := 
-# automatic
-# ^ := ve/usb/libGrafo/Color.kt
-# automatic
-# ? := ve/usb/libGrafo/Color.kt
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=3/13=23%
-#  recipe to execute (from 'Makefile', line 41):
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 26):
 	$(KC) $(GLIB)/Color.kt
 
 # Not a target:
@@ -485,20 +530,34 @@ ve/usb/libGrafo/GrafoDirigidoCosto.class: ve/usb/libGrafo/GrafoDirigidoCosto.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 74):
+#  recipe to execute (from 'Makefile', line 59):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FuncionesExtras.kt $(GLIB)/GrafoDirigidoCosto.kt
 
 ve/usb/libGrafo/GrafoDirigido.class: ve/usb/libGrafo/GrafoDirigido.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 71):
+#  recipe to execute (from 'Makefile', line 56):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FuncionesExtras.kt $(GLIB)/GrafoDirigido.kt
+
+# Not a target:
+ve/usb/libGrafo/Johnson.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ve/usb/libGrafo/AEstrella.class: ve/usb/libGrafo/AEstrella.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 134):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/AEstrella.kt
 
 # Not a target:
 ve/usb/libGrafo/GrafoNoDirigido.kt:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -507,31 +566,46 @@ ve/usb/libGrafo/CFC.kt:
 #  Modification time never checked.
 #  File has not been updated.
 
+ve/usb/libGrafo/CCM_DAG.class: ve/usb/libGrafo/CCM_DAG.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 122):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_DAG.kt
+
 ve/usb/libGrafo/Lado.class: ve/usb/libGrafo/Lado.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 50):
+#  recipe to execute (from 'Makefile', line 35):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Lado.kt
 
-# Not a target:
-ve/usb/libGrafo/Exceptions.kt:
+ve/usb/libGrafo/OrdenamientoTopologicoCosto.class: ve/usb/libGrafo/OrdenamientoTopologicoCosto.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 131):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/OrdenamientoTopologicoCosto.kt
+
+# Not a target:
+ve/usb/libGrafo/Exceptions.kt:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-22 13:04:38.867671
+#  File has been updated.
+#  Successfully updated.
 
 ve/usb/libGrafo/GrafoNoDirigido.class: ve/usb/libGrafo/GrafoNoDirigido.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 77):
+#  recipe to execute (from 'Makefile', line 62):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FuncionesExtras.kt $(GLIB)/GrafoNoDirigido.kt
 
 ve/usb/libGrafo/Grafo.class: ve/usb/libGrafo/Grafo.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 68):
+#  recipe to execute (from 'Makefile', line 53):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Grafo.kt
 
 # Not a target:
@@ -540,11 +614,18 @@ ve/usb/libGrafo/Grafo.class: ve/usb/libGrafo/Grafo.kt
 #  Modification time never checked.
 #  File has not been updated.
 
+ve/usb/libGrafo/Johnson.class: ve/usb/libGrafo/Johnson.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 137):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Johnson.kt
+
 ve/usb/libGrafo/AristaCosto.class: ve/usb/libGrafo/AristaCosto.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 62):
+#  recipe to execute (from 'Makefile', line 47):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/AristaCosto.kt
 
 # Not a target:
@@ -557,7 +638,7 @@ ve/usb/libGrafo/CicloDigrafo.class: ve/usb/libGrafo/CicloDigrafo.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 101):
+#  recipe to execute (from 'Makefile', line 86):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CicloDigrafo.kt
 
 all: libGrafoKt.jar
@@ -567,9 +648,8 @@ all: libGrafoKt.jar
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 
- 
 # Not a target:
 ve/usb/libGrafo/BFS.kt:
 #  Implicit rule search has not been done.
@@ -592,7 +672,7 @@ ve/usb/libGrafo/Utilidades.class: ve/usb/libGrafo/Utilidades.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 89):
+#  recipe to execute (from 'Makefile', line 74):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Utilidades.kt
 
 # Not a target:
@@ -611,7 +691,7 @@ ve/usb/libGrafo/GrafoNoDirigidoCosto.class: ve/usb/libGrafo/GrafoNoDirigidoCosto
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 80):
+#  recipe to execute (from 'Makefile', line 65):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FuncionesExtras.kt $(GLIB)/GrafoNoDirigidoCosto.kt
 
 # Not a target:
@@ -630,24 +710,50 @@ ve/usb/libGrafo/PrimAMC.class: ve/usb/libGrafo/PrimAMC.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 122):
+#  recipe to execute (from 'Makefile', line 110):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ColaDePrioridad.kt $(GLIB)/PrimAMC.kt
 
 ve/usb/libGrafo/ComponentesConexasCD.class: ve/usb/libGrafo/ComponentesConexasCD.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 107):
+#  recipe to execute (from 'Makefile', line 92):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ComponentesConexasCD.kt
 
 ve/usb/libGrafo/ArcoCosto.class: ve/usb/libGrafo/ArcoCosto.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 56):
+#  recipe to execute (from 'Makefile', line 41):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ArcoCosto.kt
 
 # Not a target:
+ve/usb/libGrafo/CaminoCriticoPERT.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ve/usb/libGrafo/CCM_BellmanFord.class: ve/usb/libGrafo/CCM_BellmanFord.kt
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 119):
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/CCM_BellmanFord.kt
+
+# Not a target:
+ve/usb/libGrafo/CCM_Dijkstra.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ve/usb/libGrafo/AEstrella.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ 
 ve/usb/libGrafo/Lado.kt:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -693,8 +799,14 @@ ve/usb/libGrafo/ColaDePrioridad.class: ve/usb/libGrafo/ColaDePrioridad.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 113):
+#  recipe to execute (from 'Makefile', line 98):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/ColaDePrioridad.kt
+
+# Not a target:
+ve/usb/libGrafo/FloydWarshall.kt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 ve/usb/libGrafo/Vertice.kt:
@@ -706,24 +818,23 @@ ve/usb/libGrafo/Arco.class: ve/usb/libGrafo/Arco.kt
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 53):
+#  recipe to execute (from 'Makefile', line 38):
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Arco.kt
 
 # files hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=0/170=0%
+# Load=84/1024=8%, Rehash=0, Collisions=2/167=1%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 73 / storage = 2175 B / avg = 29 B
-# current buf: size = 8162 B / used = 2175 B / count = 73 / avg = 29 B
+# strcache buffers: 1 (0) / strings = 92 / storage = 2799 B / avg = 30 B
+# current buf: size = 8162 B / used = 2799 B / count = 92 / avg = 30 B
 
-# strcache performance: lookups = 143 / hit rate = 48%
+# strcache performance: lookups = 156 / hit rate = 41%
 # hash-table stats:
- 
-# Load=73/8192=1%, Rehash=0, Collisions=0/143=0%
-# Finished Make data base on Sat Jul  9 10:19:31 2022
+# Load=92/8192=1%, Rehash=0, Collisions=0/156=0%
+# Finished Make data base on Sun Jul 31 01:40:37 2022
 
  

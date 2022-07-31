@@ -1,53 +1,55 @@
 package ve.usb.libGrafo
+import kotlin.math.ceil
 
 public class ArcoCosto(val x: Vertice, val y: Vertice, 
                         val costo: Int, 
                         val horarios: MutableList<Pair<Int, Int>>) : Arco(x, y) {
     
     
-    /* 
-        Obtiene el costo asociado de cruzar la calle
+    /*  
+        Obtenemos el costo de cruzar el camino, el costo de cruzar
+        depende del tiempo en el que llegamos al vertice x
 
-        Tenemos dos casos:
-            La calle esta siendo limpiada
-            La calle no esta siendo limpiada
+        Para determiar este costo tenemos dos casos
 
-        Cuando la calle esta siendo limpieada:
-            Tom tiene que esperar a que limpien la calle y luego cruzarla.
-            El costo es la suma del tiempo que tiene que esperar tom a que
-            limpien la calle mas el tiempo de cruzar la calle cuando esta limpia
+        El lado se esta limpiando cuando llegamos al vertice x
+            esperamos a que termine la limpieza y cruzamos
 
-        Cuando no esta siendo limpiada
-            El tiempo es calculado usando la siguiente formula
-            min(techo((1+T/100)*ti), 100500*ti) donde T es el tiempo que lleva la 
-            calle recibiendo nieve y ti es el tiempo que toma cruzar la calle
-            son nieve. T se obtiene restando el tiempo actual con el tiempo de la ultima
-            limpieza 
+        El lado no se esta limpiando cuando llegamos al vertice x
+            calculamos el coste de cruzar usando la formula dada
+
+        Con estos primeros costos procedemos a determinar si el tiempo final
+        es un tiempo valido.
+
+        Esto es que no se crucemos la calle mientras ocurre un mantenimiento
+        y que el tiempo final no termine entre un mantenimiento
                 
         {P: t >= 0}
-        {Q: true}
+        {Q: el tiempo que demoramos cruzando el lado}
 
         Input: ~~
-        Output: El costo asociado del arco
+        Output: El tiempo que demoramos cruzando el lado, este tiempo contempla
+                las esperas necesarias
 
-        Tiempo de ejecucion O(1)
+        Tiempo de ejecucion O(horarios.size)
     */ 
     fun obtenerCosto(t: Int) : Int {
         // Determinamos si la calle esta siendo limpiada.
         val limpieza: Pair<Boolean, Int> = estaSiendoLimpiada(t)
+        val tiempoEspera: Int
+        val tiempoCosto: Int
         
         if (limpieza.first) { // La calle se esta limpiando
-            val tiempoEspera: Int = limpieza.second - t
-            val tiempoCosto: Int = tiempoEspera + costo
-            val tiempoFinal: Int = obtenerTiempoFinal(t, tiempoCosto)
-            
-            return tiempoFinal
+            tiempoEspera = limpieza.second - t
+            tiempoCosto = tiempoEspera + costo
         
         } else { // La calle no se esta limpiando 
             // Determinamos cual fue la ultima limpieza
-            var ultimaLimpieza: Int = obtenerUltimaLimpieza(t)
-
+            val ultimaLimpieza: Int = obtenerUltimaLimpieza(t)
+            tiempoCosto = minOf(ceil((1.0 + (ultimaLimpieza.toDouble() / 100.0))*costo.toDouble()), (100500*costo).toDouble()).toInt()
         }
+
+        return obtenerTiempoFinal(t, tiempoCosto)
     }
 
     /* 
@@ -57,7 +59,10 @@ public class ArcoCosto(val x: Vertice, val y: Vertice,
         la limpieza
 
         {P: t >= 0}
-        {Q: true si existe un elemento en horarios tal que horarios.first <= t <= horarios.secons}
+        {Q: true si existe un elemento en horarios tal que horarios.first <= t <= horarios.second
+            o false y 0 caso contrarior}
+
+        Input: t: Int tiempo en que llegamos al vertice x
 
         Tiempo de ejecucion O(horarios.size)
     */
@@ -72,12 +77,16 @@ public class ArcoCosto(val x: Vertice, val y: Vertice,
     }
 
     /* 
-        Determinamos el tiempo final luego de cruzar el lado
+        Determina el tiempo final revisando si este no se solapa con algun
+        otro horario.
 
-        Para esto tomamos en cuenta que no pueden haber carros
-        si la calle se esta limpiando por lo que tenemos que 
-        revisar si en el tiempo entre ti y tf no hay ningun 
-        mantenimiento y que tf no entre en ningun mantenimiento
+        Revisamos los horarios tales que esten despues de ti 
+        tales que tf solape con algun programa de limpieza
+
+        en caso de que solape, se espera el tiepmo necesari y reasignamos
+        el tiempo final
+
+        este proceso se vuelve a repetir hasta que tf contenga las esperas necesarias
 
         {P: 0 <= ti <= tf}
         {Q: true si solo hay una sola limpieza entre ti y tf y en tf no hay limpieza}
@@ -87,29 +96,48 @@ public class ArcoCosto(val x: Vertice, val y: Vertice,
 
         Tiempo de ejecucion O(horarios.size)
     */
-    private fun obtenerTiempoFinal(ti: Int, tf: Int): Int{
-        if (hayLimpiezaEntre(ti, tf)){
-            return 
+    private fun obtenerTiempoFinal(ti: Int, tf: Int): Int {
+        var tfAux: Int = tf
+
+        for (horario in horarios) {
+            // verificamos los horarios que ocurren despues del tiempo inicial 
+            if (ti < horario.first) {
+                //verificamos si luego luego de cruzar
+                // esta luego de un horario o si esta justo en el horario
+                if (horario.second + ti <= tfAux || horario.first < tfAux + ti) {
+                    tfAux = horario.second - ti + costo // tiempo de espera + costo sin nieve, todavia no cruzamos
+                }
+            }
         }
 
-        return tf
-
+        return tfAux
     }  
     
     /* 
-        Determinamos el tiempo de la ultima limpieza
+        Determinamos el que momento ocurrio la ultima limpieza
+        de la calle.
 
-        Para esto obtemelos los tiempos finales que son menores 
-        a t.
+        para esto revisamos todos las limpiezas que esten antes de t
+        y vamos guardando la mas reciente
 
-        Sean tf_i los tiempos finales menores a t.
+        {P: t>= 0}
+        {Q: se duelve el tiepmo final de la limpieza mas cercana a t}
 
+        Inputt: t: Int tiempo en el que llegamos al vertice x
+        Output: Tiempo de la ultima limpieza
 
+        Tiempo de ejecucion O(horarios.size)
     */
     private fun obtenerUltimaLimpieza(t: Int): Int {
-        var tiempo: Int = 0
         var ultimaLimpieza: Int = 0
         
+        for (horario in horarios) {
+            if (horario.first < t) {
+                if (horario.second > ultimaLimpieza) ultimaLimpieza = horario.second
+            }
+        }
+
+        return ultimaLimpieza
     }
 
     /* 
@@ -126,6 +154,4 @@ public class ArcoCosto(val x: Vertice, val y: Vertice,
     override fun toString() : String {
         return "<$x, $y, $costo>"
     }
-
-    fun determinarUltimaLimpieza()
 } 
