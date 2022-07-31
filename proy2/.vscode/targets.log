@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 28 20:59:14 2022
+# Make data base, printed on Sat Jul 30 20:04:45 2022
 
 # Variables
 
@@ -51,17 +53,17 @@ VSCODE_CODE_CACHE_PATH = /home/daniel/.config/Code/CachedData/3b889b090b5ad5793f
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.5LTXP1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.B7REQ1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.252
+GNOME_TERMINAL_SERVICE = :1.302
 # makefile
 MAKEFLAGS = pqrR
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=4878d1851c44aac2117b8bc962e30479
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=b1ab01545a627135de6a5e7a62e54584
 # makefile
 CURDIR := /home/daniel/Documents/GitHub/algos3/proy2
 # environment
@@ -89,19 +91,19 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 9555
+VSCODE_PID = 15952
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/1924,unix/daniel-X441UA:/tmp/.ICE-unix/1924
+SESSION_MANAGER = local/daniel-X441UA:@/tmp/.ICE-unix/2007,unix/daniel-X441UA:/tmp/.ICE-unix/2007
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=4878d1851c44aac2117b8bc962e30479
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=b1ab01545a627135de6a5e7a62e54584
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -119,7 +121,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/8e759f58_b565_4509_ade9_6786aec45185
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f9959cf8_f1e2_44a2_a632_5061d7d59d02
 # environment
 MAKELEVEL := 0
 # default
@@ -161,7 +163,7 @@ LOGNAME = daniel
 # makefile
 .DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 1924
+SYSTEMD_EXEC_PID = 2007
 # environment
 DISPLAY = :0
 # environment
@@ -227,9 +229,9 @@ LC_IDENTIFICATION = es_VE.UTF-8
 
 # Directories
 
-# . (device 2050, inode 15600543): 4 files, no impossibilities.
+# . (device 2050, inode 15600543): 8 files, no impossibilities.
 
-# 4 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -279,15 +281,13 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 12 / storage = 109 B / avg = 9 B
-# current buf: size = 8162 B / used = 109 B / count = 12 / avg = 9 B
-
-# strcache performance: lookups = 15 / hit rate = 20%
-# hash-table stats:
+# strcache buffers: 1 (0) / strings = 16 / storage = 172 B / avg = 10 B
+# current buf: size = 8162 B / used = 172 B / count = 16 / avg = 10 B
  
-make: *** No rule to make target 'all'.  Stop.
 
-# Load=12/8192=0%, Rehash=0, Collisions=0/15=0%
-# Finished Make data base on Thu Jul 28 20:59:14 2022
+# strcache performance: lookups = 19 / hit rate = 15%
+# hash-table stats:
+# Load=16/8192=0%, Rehash=0, Collisions=0/19=0%
+# Finished Make data base on Sat Jul 30 20:04:45 2022
 
  

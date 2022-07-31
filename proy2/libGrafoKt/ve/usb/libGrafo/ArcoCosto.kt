@@ -3,7 +3,8 @@ package ve.usb.libGrafo
 public class ArcoCosto(val x: Vertice, val y: Vertice, 
                         val costo: Int, 
                         val horarios: MutableList<Pair<Int, Int>>) : Arco(x, y) {
-
+    
+    
     /* 
         Obtiene el costo asociado de cruzar la calle
 
@@ -33,11 +34,14 @@ public class ArcoCosto(val x: Vertice, val y: Vertice,
     */ 
     fun obtenerCosto(t: Int) : Int {
         // Determinamos si la calle esta siendo limpiada.
-        val limpieza: Pair<Boolean, Int> = estaSiendoLimpiada()
+        val limpieza: Pair<Boolean, Int> = estaSiendoLimpiada(t)
         
         if (limpieza.first) { // La calle se esta limpiando
             val tiempoEspera: Int = limpieza.second - t
-            return tiempoEspera + costo
+            val tiempoCosto: Int = tiempoEspera + costo
+            val tiempoFinal: Int = obtenerTiempoFinal(t, tiempoCosto)
+            
+            return tiempoFinal
         
         } else { // La calle no se esta limpiando 
             // Determinamos cual fue la ultima limpieza
@@ -67,6 +71,31 @@ public class ArcoCosto(val x: Vertice, val y: Vertice,
         return Pair(false, 0)
     }
 
+    /* 
+        Determinamos el tiempo final luego de cruzar el lado
+
+        Para esto tomamos en cuenta que no pueden haber carros
+        si la calle se esta limpiando por lo que tenemos que 
+        revisar si en el tiempo entre ti y tf no hay ningun 
+        mantenimiento y que tf no entre en ningun mantenimiento
+
+        {P: 0 <= ti <= tf}
+        {Q: true si solo hay una sola limpieza entre ti y tf y en tf no hay limpieza}
+
+        Input: ti y tf es un entero
+        Output: true si no hay limpieza entre ti y tf
+
+        Tiempo de ejecucion O(horarios.size)
+    */
+    private fun obtenerTiempoFinal(ti: Int, tf: Int): Int{
+        if (hayLimpiezaEntre(ti, tf)){
+            return 
+        }
+
+        return tf
+
+    }  
+    
     /* 
         Determinamos el tiempo de la ultima limpieza
 
