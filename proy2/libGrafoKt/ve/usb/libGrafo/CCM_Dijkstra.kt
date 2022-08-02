@@ -12,10 +12,9 @@ data class VerticeDijstra(val n: Int) {
  Si el grafo de entrada tiene un lado con costo negativo,  entonces se retorna una RuntimeException.
  Si el vértice s no pertenece al grafo, entonces se retorna una RuntimeException.
 */
-public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
+public class CCM_Dijkstra(val g: GrafoNoDirigidoCosto, val s: Int, val obj: Int) {
     var listaVertices: MutableList<VerticeDijstra>
     var conjuntoVertices: MutableList<Int>
-    var t: Int
 
     init {
         if (s < 0 || s >= g.obtenerNumeroDeVertices()) {
@@ -29,7 +28,6 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         }
         
         // Inicializar fuente fija
-        t = 0
         listaVertices = mutableListOf()
         for (i in 0 until g.obtenerNumeroDeVertices()) listaVertices.add(VerticeDijstra(i))
         listaVertices[s].d = 0
@@ -43,22 +41,24 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
         }
 
         while (!q.vacia()) {
-            t++
             var u: Int = q.extraerMinimo()
+
+            if (u == obj) break
 
             conjuntoVertices.add(u)
 
             for (v in g.adyacentes(u)) {
+                val t: Int = v.obtenerCosto(listaVertices[u].d)
                 if (v.x.n == u) {
-                    if (listaVertices[v.y.n].d > listaVertices[u].d + v.obtenerCosto(t)) { // Relajacion
-                        listaVertices[v.y.n].d = listaVertices[u].d + v.obtenerCosto(t)
+                    if (listaVertices[v.y.n].d > listaVertices[u].d + t) { // Relajacion
+                        listaVertices[v.y.n].d = listaVertices[u].d + t
                         listaVertices[v.y.n].pred = listaVertices[u]
                         q.decreaseKey(v.y.n, listaVertices[v.y.n].d) 
                     }
                 }
                 else if (v.y.n == u) {
-                    if (listaVertices[v.x.n].d > listaVertices[u].d + v.obtenerCosto(t)) { // Relajacion
-                        listaVertices[v.x.n].d = listaVertices[u].d + v.obtenerCosto(t)
+                    if (listaVertices[v.x.n].d > listaVertices[u].d + t) { // Relajacion
+                        listaVertices[v.x.n].d = listaVertices[u].d + t
                         listaVertices[v.x.n].pred = listaVertices[u]
                         q.decreaseKey(v.x.n, listaVertices[v.x.n].d) 
                     }
@@ -90,7 +90,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
 
     // Retorna los arcos del camino de costo mínimo hasta v.
     // Si el vértice v no existe, se retorna un RuntimeException.
-    fun obtenerCaminoDeCostoMinimo(v: Int) : Iterable<ArcoCosto> {
+    fun obtenerCaminoDeCostoMinimo(v: Int) : Iterable<AristaCosto> {
         if (v < 0 || v >= g.obtenerNumeroDeVertices()) {
             throw RuntimeException("CCM_Dijkstra.obtenerCaminoCostoMinimo: El vertice $v no pertenece al grafo")
         }
@@ -102,7 +102,7 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
 
         // Obtenemos el camino desde s hasta v
         var camino: MutableList<Int> =  mutableListOf()
-        var caminoCosto: MutableList<ArcoCosto> = mutableListOf()
+        var caminoCosto: MutableList<AristaCosto> = mutableListOf()
 
         if (!this.existeUnCamino(v)) { // Si no existe el camino devolvemos un iterable vacio
             return caminoCosto

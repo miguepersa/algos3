@@ -14,7 +14,7 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/AristaCosto.class\
 		$(GLIB)/FuncionesExtras.class\
 		$(GLIB)/Grafo.class\
-		$(GLIB)/GrafoDirigidoCosto.class\
+		$(GLIB)/GrafoNoDirigidoCosto.class\
 		$(GLIB)/MinHeap.class\
 		$(GLIB)/ColaDePrioridad.class\
 		$(GLIB)/CCM_Dijkstra.class

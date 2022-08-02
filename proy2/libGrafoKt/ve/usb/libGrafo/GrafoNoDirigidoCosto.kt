@@ -133,6 +133,7 @@ public class GrafoNoDirigidoCosto: Grafo {
 
         O(nLados)
      */
+     /*
     fun ladosAdyacentes(l: AristaCosto) : Iterable<AristaCosto> {
         if (!aristaEnGrafoNoDirigido(repGrafo, l)) {
             throw RuntimeException("La arista no pertenece al grafo")
@@ -147,6 +148,7 @@ public class GrafoNoDirigidoCosto: Grafo {
         }
         return ady.asIterable()
     }
+    */
 
     /*
         Retorna todos los lados del grafo en un iterador

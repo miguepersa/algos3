@@ -48,7 +48,11 @@ public class AristaCosto(val x: Vertice,
         } else { // La calle no se esta limpiando 
             // Determinamos cual fue la ultima limpieza
             val ultimaLimpieza: Int = obtenerUltimaLimpieza(t)
-            tiempoCosto = minOf(ceil((1.0 + (ultimaLimpieza.toDouble() / 100.0))*costo.toDouble()), (100500*costo).toDouble()).toInt()
+            
+            val op1: Int = ceil((1.0 + ((t - ultimaLimpieza).toDouble() / 100))*costo.toDouble()).toInt()
+            val op2: Int = 100500*costo
+
+            tiempoCosto = minOf(op1, op2)
         }
 
         return obtenerTiempoFinal(t, tiempoCosto)
@@ -147,8 +151,8 @@ public class AristaCosto(val x: Vertice,
           Agrega el par (t0, t1) a la lista de horarios de limpieza del lado
      */
     fun agregarLimpieza(t0: Int, t1: Int) {
-     horarios.add(Pair<Int,Int>(t0,t1))
-     horarios.sortBy {it.first}
+        horarios.add(Pair<Int,Int>(t0,t1))
+        horarios.sortBy {it.first}
     }
 
     /* 
@@ -164,7 +168,7 @@ public class AristaCosto(val x: Vertice,
           Tiempo de ejecucion O(1)
     */
     override fun toString() : String {
-         return "($x, $y, $costo)"
+         return "(${x.toString()}, ${y.toString()}, $costo)"
     }
 
 } 
